@@ -10,17 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171013082728) do
+ActiveRecord::Schema.define(version: 20171018040809) do
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.integer "place_id"
     t.string "image"
     t.integer "price"
     t.string "detail"
-    t.integer "genre_id"
     t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "department_id"
+    t.integer "place_id"
+    t.integer "genre_id"
+    t.index ["department_id"], name: "index_items_on_department_id"
+    t.index ["genre_id"], name: "index_items_on_genre_id"
+    t.index ["place_id"], name: "index_items_on_place_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
