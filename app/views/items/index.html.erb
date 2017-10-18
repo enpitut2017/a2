@@ -44,10 +44,13 @@
   </select> <br>
 
 <% if params["department_select"].to_i > 0 %>
-  <% @stories = @stories.where(department_id: params["department_select"]) %>
+  <% @items = @items.where(department_id: params["department_select"]) %>
 <% end %>
-<% if params["category_select"].to_i > 0 %>
-  <% @stories = @stories.where(category_id: params["category_select"]) %>
+<% if params["genre_select"].to_i > 0 %>
+  <% @items = @items.where(genre_id: params["genre_select"]) %>
+<% end %>
+<% if params["place_select"].to_i > 0 %>
+  <% @items = @items.where(place_id: params["place_select"]) %>
 <% end %>
 
   <input type="submit" value="検索">
