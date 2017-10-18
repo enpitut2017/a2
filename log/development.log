@@ -680,3 +680,218 @@ Completed 200 OK in 414ms (Views: 360.7ms | ActiveRecord: 3.9ms)
 Completed 200 OK in 471ms (Views: 435.9ms | ActiveRecord: 9.1ms)
 
 
+Started GET "/items/new" for 10.0.2.2 at 2017-10-18 04:57:14 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#new as HTML
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (22.4ms)
+  Rendered items/new.html.erb within layouts/application (34.6ms)
+Completed 200 OK in 394ms (Views: 339.4ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-10-18 04:57:17 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (57.8ms)
+Completed 200 OK in 190ms (Views: 166.1ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/items?department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-18 04:57:19 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 127ms (Views: 109.5ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/items?department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-18 04:57:20 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 128ms (Views: 109.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/items?department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-18 04:57:22 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.6ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 139ms (Views: 122.7ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/items/new" for 10.0.2.2 at 2017-10-18 04:57:24 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#new as HTML
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (5.4ms)
+  Rendered items/new.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 127ms (Views: 116.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for 10.0.2.2 at 2017-10-18 04:57:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oq799+qSNhsQJ2mW2otmQVo23vfeCmJb5XF/VuUBYDFu6/EGYyMxZ7WPI1QAszMKc8ckt0uVdlKoUiKj0ctTig==", "item"=>{"name"=>"fads", "place_id"=>"1", "image"=>"staff", "price"=>"1", "detail"=>"adds", "genre_id"=>"1", "student_id"=>"1", "department_id"=>"1"}, "commit"=>"Create Item"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.3ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "fads"], ["image", "staff"], ["price", 1], ["detail", "adds"], ["student_id", 1], ["created_at", "2017-10-18 04:57:38.309249"], ["updated_at", "2017-10-18 04:57:38.309249"], ["department_id", 1], ["place_id", 1], ["genre_id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/items/1
+Completed 302 Found in 14ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-10-18 04:57:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 122ms (Views: 97.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-10-18 04:57:40 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.7ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 106ms (Views: 90.5ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/items?department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-18 04:57:43 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 121ms (Views: 102.8ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/items/new" for 10.0.2.2 at 2017-10-18 04:57:49 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#new as HTML
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (3.1ms)
+  Rendered items/new.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 117ms (Views: 101.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for 10.0.2.2 at 2017-10-18 04:58:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Yq+Ix125bwwpFV16dpXb8L767xNZP6gNLwXkkFRuHwKu6oQ21AhocIy9F7isrY67lwsVU8ygvARiJrllYKQsuQ==", "item"=>{"name"=>"dosa", "place_id"=>"0", "image"=>"sa", "price"=>"1", "detail"=>"das", "genre_id"=>"1", "student_id"=>"1", "department_id"=>"0"}, "commit"=>"Create Item"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.2ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "dosa"], ["image", "sa"], ["price", 1], ["detail", "das"], ["student_id", 1], ["created_at", "2017-10-18 04:58:02.747011"], ["updated_at", "2017-10-18 04:58:02.747011"], ["department_id", 0], ["place_id", 0], ["genre_id", 1]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/items/2
+Completed 302 Found in 16ms (ActiveRecord: 8.2ms)
+
+
+Started GET "/items/2" for 10.0.2.2 at 2017-10-18 04:58:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 92ms (Views: 77.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-10-18 04:58:04 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 97ms (Views: 80.8ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/items?department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-18 04:58:05 +0000
+Started GET "/items/new" for 10.0.2.2 at 2017-10-18 04:58:05 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+Processing by ItemsController#new as HTML
+  Parameters: {"department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/new.html.erb within layouts/application
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  Rendered items/_form.html.erb (3.5ms)
+  [1m[36mGenre Load (1.9ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  Rendered items/new.html.erb within layouts/application (21.5ms)
+  [1m[36mPlace Load (1.4ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (24.7ms)
+Completed 200 OK in 209ms (Views: 185.3ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 201ms (Views: 173.7ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/items?department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-18 04:58:11 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 112ms (Views: 93.9ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/items/new" for 10.0.2.2 at 2017-10-18 04:58:12 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/items?department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-18 04:58:12 +0000
+Processing by ItemsController#new as HTML
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/new.html.erb within layouts/application
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  Rendered items/_form.html.erb (3.5ms)
+  [1m[36mGenre Load (1.4ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  Rendered items/new.html.erb within layouts/application (21.0ms)
+  [1m[36mPlace Load (1.4ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 198ms (Views: 173.7ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 188ms (Views: 162.6ms | ActiveRecord: 4.9ms)
+
+
