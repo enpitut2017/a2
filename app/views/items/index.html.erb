@@ -35,7 +35,7 @@
     <% end %>
   </select> <br>
 
-<% if params["freeword_select"] != "" %>
+<% if params["freeword_select"] != "" && params["freeword_select"] != nil %>
   <% @items = @items.where("name like(?)", "%#{params['freeword_select']}%") %>
 <% end %>
 <% if params["department_select"].to_i > 0 %>
