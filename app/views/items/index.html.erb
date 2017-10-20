@@ -4,45 +4,40 @@
 
 
 <!--検索機能-->
+
 <form name="search_form" method="get">
+  <strong>フリーワード検索</strong><br>
+  <input type="text" name="freeword_select" size="40">
+
   <strong>絞り込み・並び替え</strong><br>
   学類：
   <% @departments = Department.all %>
   <select name="department_select">
-    <option value="0">指定しない</option>
+    <option value="0" selected="selected">指定しない</option>
     <% @departments.each do |dep| %>
-      <% if params["department_select"].to_i == dep.id %>
-        <option value="<%= dep.id %>" selected="selected"><%= dep.name %></option>
-      <% else %>
         <option value="<%= dep.id %>"><%= dep.name %></option>
-      <% end %>
     <% end %>
   </select>
   ジャンル：
   <% @genres = Genre.all %>
   <select name="genre_select">
-    <option value="0">指定しない</option>
+    <option value="0" selected="selected">指定しない</option>
     <% @genres.each do |gen| %>
-      <% if params["genre_select"].to_i == gen.id %>
-        <option value="<%= gen.id %>" selected="selected"><%= gen.name %></option>
-      <% else %>
-        <option value="<%= gen.id %>"><%= gen.name %></option>
-      <% end %>
+      <option value="<%= gen.id %>"><%= gen.name %></option>
     <% end %>
-  </select> <br>
+  </select>
   場所：
   <% @places = Place.all %>
   <select name="place_select">
-    <option value="0">指定しない</option>
+    <option value="0" selected="selected">指定しない</option>
     <% @places.each do |pla| %>
-      <% if params["place_select"].to_i == pla.id %>
-        <option value="<%= pla.id %>" selected="selected"><%= pla.name %></option>
-      <% else %>
-        <option value="<%= pla.id %>"><%= pla.name %></option>
-      <% end %>
+      <option value="<%= pla.id %>"><%= pla.name %></option>
     <% end %>
   </select> <br>
 
+<% if params["freeword_select"] != "" %>
+  <% @items = @items.where(name: params["freeword_select"]) %>
+<% end %>
 <% if params["department_select"].to_i > 0 %>
   <% @items = @items.where(department_id: params["department_select"]) %>
 <% end %>
