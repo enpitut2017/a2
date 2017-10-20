@@ -1099,3 +1099,444 @@ Migrating to AddGenresToItems (20171018040809)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "departments" ("id", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 25], ["name", "芸術専門学群"], ["created_at", "2017-10-18 05:23:38.217302"], ["updated_at", "2017-10-18 05:23:38.217302"]]
   [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 10.0.2.2 at 2017-10-20 06:45:55 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (98.3ms)
+Completed 200 OK in 518ms (Views: 462.1ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2017-10-20 07:06:40 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" IS NULL[0m
+  Rendered items/index.html.erb within layouts/application (75.7ms)
+Completed 200 OK in 507ms (Views: 461.2ms | ActiveRecord: 12.5ms)
+
+
+Started GET "/items/new" for 10.0.2.2 at 2017-10-20 07:06:43 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#new as HTML
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (26.5ms)
+  Rendered items/new.html.erb within layouts/application (37.8ms)
+Completed 200 OK in 169ms (Views: 116.3ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/items" for 10.0.2.2 at 2017-10-20 07:06:55 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4xMuDrXnVwbuH3Qi10IsPcPW8/luGA4bQoiEReHLRUcvViL/PFZQeku3PuANenl26icJufuHGhIPq9mw1QF2/A==", "item"=>{"name"=>"kk", "place_id"=>"1", "image"=>"pdf", "price"=>"1", "detail"=>"bfs", "genre_id"=>"1", "student_id"=>"1", "department_id"=>"1"}, "commit"=>"Create Item"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.7ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "kk"], ["image", "pdf"], ["price", 1], ["detail", "bfs"], ["student_id", 1], ["created_at", "2017-10-20 07:06:55.623672"], ["updated_at", "2017-10-20 07:06:55.623672"], ["department_id", 1], ["place_id", 1], ["genre_id", 1]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/items/1
+Completed 302 Found in 14ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-10-20 07:06:55 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 105ms (Views: 88.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-10-20 07:06:57 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" IS NULL[0m
+  Rendered items/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 103ms (Views: 87.9ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-10-20 07:07:00 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.9ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" IS NULL[0m
+  Rendered items/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 103ms (Views: 88.7ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/items/new" for 10.0.2.2 at 2017-10-20 07:07:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#new as HTML
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (2.8ms)
+  Rendered items/new.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 112ms (Views: 101.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for 10.0.2.2 at 2017-10-20 07:07:12 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kyvTXiqQSu2XWm/fspYPGygvimK46qmQPTKSMLMB4Mxfbt+voyFNkTLyJR1orlpQAd5wIi11vZlwEc/Fh8vTdw==", "item"=>{"name"=>"a", "place_id"=>"1", "image"=>"s", "price"=>"1", "detail"=>"ss", "genre_id"=>"1", "student_id"=>"1", "department_id"=>"1"}, "commit"=>"Create Item"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "a"], ["image", "s"], ["price", 1], ["detail", "ss"], ["student_id", 1], ["created_at", "2017-10-20 07:07:12.094322"], ["updated_at", "2017-10-20 07:07:12.094322"], ["department_id", 1], ["place_id", 1], ["genre_id", 1]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/items/2
+Completed 302 Found in 15ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/items/2" for 10.0.2.2 at 2017-10-20 07:07:12 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 98ms (Views: 83.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/items/new" for 10.0.2.2 at 2017-10-20 07:07:18 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#new as HTML
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (3.4ms)
+  Rendered items/new.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 108ms (Views: 98.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-10-20 07:07:19 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.9ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" IS NULL[0m
+  Rendered items/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 105ms (Views: 92.0ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/items/new" for 10.0.2.2 at 2017-10-20 07:07:19 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#new as HTML
+  Rendering items/new.html.erb within layouts/application
+  Rendered items/_form.html.erb (2.6ms)
+  Rendered items/new.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 97ms (Views: 86.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2017-10-20 07:07:20 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.6ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.8ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" IS NULL[0m
+  Rendered items/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 104ms (Views: 89.9ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/" for 10.0.2.2 at 2017-10-20 07:07:20 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" IS NULL[0m
+  Rendered items/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 153ms (Views: 132.7ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:07:29 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 105ms (Views: 88.4ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:07:31 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.6ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 105ms (Views: 87.3ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/?freeword_select=kk&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:07:35 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"kk", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.7ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = ?[0m  [["name", "kk"]]
+  Rendered items/index.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 106ms (Views: 88.1ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/?freeword_select=a&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:07:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"a", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.6ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = ?[0m  [["name", "a"]]
+  Rendered items/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 101ms (Views: 84.6ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/?freeword_select=ff&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:07:42 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"ff", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = ?[0m  [["name", "ff"]]
+  Rendered items/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 102ms (Views: 85.2ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/?freeword_select=a&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:07:47 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"a", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.4ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = ?[0m  [["name", "a"]]
+  Rendered items/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 111ms (Views: 93.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:07:49 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 104ms (Views: 86.8ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/?freeword_select=k&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:07:54 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"k", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.7ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.5ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.3ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = ?[0m  [["name", "k"]]
+  Rendered items/index.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 110ms (Views: 92.2ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/?freeword_select=kk&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:07:58 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"kk", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.6ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = ?[0m  [["name", "kk"]]
+  Rendered items/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 100ms (Views: 84.0ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:08:03 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (2.7ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 104ms (Views: 85.9ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:16:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (2.0ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (97.2ms)
+Completed 200 OK in 541ms (Views: 493.2ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:17:31 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (2.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (107.2ms)
+Completed 200 OK in 540ms (Views: 491.1ms | ActiveRecord: 17.8ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:21:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (83.5ms)
+Completed 200 OK in 439ms (Views: 395.1ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:21:05 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (2.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 116ms (Views: 96.4ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:21:09 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 112ms (Views: 96.4ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/?freeword_select=&department_select=2&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:21:13 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"2", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."department_id" = ?[0m  [["department_id", 2]]
+  Rendered items/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 109ms (Views: 95.7ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:21:15 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.6ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 112ms (Views: 94.5ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:23:58 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.9ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (94.1ms)
+Completed 200 OK in 497ms (Views: 440.3ms | ActiveRecord: 18.7ms)
+
+
+Started GET "/?freeword_select=&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:24:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.4ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.3ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 115ms (Views: 95.5ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/?freeword_select=&department_select=3&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:24:04 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"", "department_select"=>"3", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."department_id" = ?[0m  [["department_id", 3]]
+  Rendered items/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 104ms (Views: 90.2ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/?freeword_select=kk&department_select=0&genre_select=0&place_select=0" for 10.0.2.2 at 2017-10-20 07:24:11 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Parameters: {"freeword_select"=>"kk", "department_select"=>"0", "genre_select"=>"0", "place_select"=>"0"}
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = ?[0m  [["name", "kk"]]
+  Rendered items/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 111ms (Views: 94.5ms | ActiveRecord: 3.9ms)
+
+
