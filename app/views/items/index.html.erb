@@ -35,8 +35,8 @@
     <% end %>
   </select> <br>
 
-<% if params["freeword_select"] != "" %>
-  <% @items = @items.where(name: params["freeword_select"]) %>
+<% if params["freeword_select"] != "" && params["freeword_select"] != nil %>
+  <% @items = @items.where("name like(?)", "%#{params['freeword_select']}%") %>
 <% end %>
 <% if params["department_select"].to_i > 0 %>
   <% @items = @items.where(department_id: params["department_select"]) %>
@@ -71,13 +71,13 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.name %></td>
-        <td><%= item.place_id %></td>
+        <td><%= item.place.name %></td>
         <td><%= item.image %></td>
         <td><%= item.price %></td>
         <td><%= item.detail %></td>
-        <td><%= item.genre_id %></td>
+        <td><%= item.genre.name %></td>
         <td><%= item.student_id %></td>
-        <td><%= item.department_id %></td>
+        <td><%= item.department.name %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
