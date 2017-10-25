@@ -1,4 +1,9 @@
 class Item < ApplicationRecord
+  
+  belongs_to :genre, optional: true
+  belongs_to :place, optional: true
+  belongs_to :department, optional: true
+
 	validate :name_error
 	validate :place_id_error
 	validate :image_error
@@ -7,7 +12,6 @@ class Item < ApplicationRecord
 	validate :genre_id_error
 	validate :student_id_error
 	validate :department_id_error
-
 
 	def name_error
 	  #nameが空の時にエラーメッセージを追加する
@@ -64,5 +68,5 @@ class Item < ApplicationRecord
             errors[:base] << "学類の欄は空白のまま送信できません"
           end
         end
-	
+
 end
