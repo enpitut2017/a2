@@ -54,8 +54,8 @@
   <strong>コメント:</strong>
   <%= @comments = Comment.all %>
   <%= @comments.each do |com| %>
-    <% if @items.id == @comments.item_id %>
-      <%= @comments.comment_id %>
+    <% if @items.id == com.item_id %>
+      <%= com.comment_id %>
     <% end %>
   <% end %>
 </p>

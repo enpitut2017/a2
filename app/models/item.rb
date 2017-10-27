@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to :place, optional: true
   belongs_to :department, optional: true
   belongs_to :comment, optional: true
-
+  has_many:comments
 	validate :name_error
 	validate :place_id_error
 	validate :image_error
