@@ -1,43 +1,63 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>名前:</strong>
   <%= @item.name %>
 </p>
 
 <p>
-  <strong>Place:</strong>
+  <strong>場所:</strong>
   <%= @item.place_id %>
 </p>
 
 <p>
-  <strong>Image:</strong>
+  <strong>画像:</strong>
   <%= @item.image %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>価格:</strong>
   <%= @item.price %>
 </p>
 
 <p>
-  <strong>Detail:</strong>
+  <strong>詳細:</strong>
   <%= @item.detail %>
 </p>
 
 <p>
-  <strong>Genre:</strong>
+  <strong>ジャンル:</strong>
   <%= @item.genre_id %>
 </p>
 
 <p>
-  <strong>Student:</strong>
+  <strong>出品者の学籍番号:</strong>
   <%= @item.student_id %>
 </p>
 
 <p>
-  <strong>Department:</strong>
+  <strong>学類:</strong>
   <%= @item.department_id %>
+</p>
+
+<%= form_with(model: comment, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :comment_body, "コメント入力" %>
+    <%= form.text_area :comment_body, id: :comment_comment_body, item_id: @item.id, :size=>"40x10"%>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  <% end %>
+
+<p>
+  <strong>コメント:</strong>
+  <%= @comments = Comment.all %>
+  <%= @comments.each do |com| %>
+    <% if @items.id == @comments.item_id %>
+      <%= @comments.comment_id %>
+    <% end %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
