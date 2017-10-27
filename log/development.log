@@ -1540,3 +1540,588 @@ Processing by ItemsController#index as HTML
 Completed 200 OK in 111ms (Views: 94.5ms | ActiveRecord: 3.9ms)
 
 
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20171027070705)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_id" integer, "comment_body" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171027070705"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_place_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_place_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+Started GET "/" for 10.0.2.2 at 2017-10-27 08:19:48 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (3.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered items/index.html.erb within layouts/application (139.8ms)
+Completed 500 Internal Server Error in 214ms (ActiveRecord: 19.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    71:     <% @items.each do |item| %>
+    72:       <tr>
+    73:         <td><%= item.name %></td>
+    74:         <td><%= item.place.name %></td>
+    75:         <td><%= item.image %></td>
+    76:         <td><%= item.price %></td>
+    77:         <td><%= item.detail %></td>
+  
+app/views/items/index.html.erb:74:in `block in _app_views_items_index_html_erb__4363100632240744786_47423029877700'
+app/views/items/index.html.erb:71:in `_app_views_items_index_html_erb__4363100632240744786_47423029877700'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_id" integer, "comment_body" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "departments"[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "genres"[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "genres" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "items"[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image" varchar, "price" integer, "detail" varchar, "student_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "department_id" integer, "place_id" integer, "genre_id" integer)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE  INDEX "index_items_on_department_id" ON "items" ("department_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE  INDEX "index_items_on_genre_id" ON "items" ("genre_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+[0m
+  [1m[35m (0.6ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE  INDEX "index_items_on_place_id" ON "items" ("place_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "places"[0m
+  [1m[35m (16.7ms)[0m  [1m[35mCREATE TABLE "places" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171027070705)[0m
+  [1m[35m (9.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171013082728),
+(20171018034852),
+(20171018034916),
+(20171018034928),
+(20171018040021),
+(20171018040744),
+(20171018040809);
+
+[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-27 08:20:04.250312"], ["updated_at", "2017-10-27 08:20:04.250312"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_id" integer, "comment_body" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "departments"[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "genres"[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "genres" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "items"[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image" varchar, "price" integer, "detail" varchar, "student_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "department_id" integer, "place_id" integer, "genre_id" integer)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE  INDEX "index_items_on_department_id" ON "items" ("department_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE  INDEX "index_items_on_genre_id" ON "items" ("genre_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE  INDEX "index_items_on_place_id" ON "items" ("place_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "places"[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "places" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171027070705)[0m
+  [1m[35m (5.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171013082728),
+(20171018034852),
+(20171018034916),
+(20171018034928),
+(20171018040021),
+(20171018040744),
+(20171018040809);
+
+[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-27 08:20:04.391235"], ["updated_at", "2017-10-27 08:20:04.391235"]]
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mDepartment Load (1.3ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "﻿人文学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.2ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "﻿人文学類"], ["created_at", "2017-10-27 08:20:04.476688"], ["updated_at", "2017-10-27 08:20:04.476688"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "比較文化学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.4ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "比較文化学類"], ["created_at", "2017-10-27 08:20:04.487115"], ["updated_at", "2017-10-27 08:20:04.487115"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "日本語・日本文化学類"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "日本語・日本文化学類"], ["created_at", "2017-10-27 08:20:04.496461"], ["updated_at", "2017-10-27 08:20:04.496461"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "社会学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "社会学類"], ["created_at", "2017-10-27 08:20:04.506339"], ["updated_at", "2017-10-27 08:20:04.506339"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "国際総合学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "国際総合学類"], ["created_at", "2017-10-27 08:20:04.514489"], ["updated_at", "2017-10-27 08:20:04.514489"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "教育学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "教育学類"], ["created_at", "2017-10-27 08:20:04.526770"], ["updated_at", "2017-10-27 08:20:04.526770"]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "心理学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "心理学類"], ["created_at", "2017-10-27 08:20:04.536330"], ["updated_at", "2017-10-27 08:20:04.536330"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "障害科学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "障害科学類"], ["created_at", "2017-10-27 08:20:04.546232"], ["updated_at", "2017-10-27 08:20:04.546232"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "生物学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "生物学類"], ["created_at", "2017-10-27 08:20:04.556147"], ["updated_at", "2017-10-27 08:20:04.556147"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "生物資源学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "生物資源学類"], ["created_at", "2017-10-27 08:20:04.565613"], ["updated_at", "2017-10-27 08:20:04.565613"]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "地球学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "地球学類"], ["created_at", "2017-10-27 08:20:04.575422"], ["updated_at", "2017-10-27 08:20:04.575422"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "数学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "数学類"], ["created_at", "2017-10-27 08:20:04.584852"], ["updated_at", "2017-10-27 08:20:04.584852"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "物理学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "物理学類"], ["created_at", "2017-10-27 08:20:04.594124"], ["updated_at", "2017-10-27 08:20:04.594124"]]
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "化学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "化学類"], ["created_at", "2017-10-27 08:20:04.604609"], ["updated_at", "2017-10-27 08:20:04.604609"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "応用理工学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "応用理工学類"], ["created_at", "2017-10-27 08:20:04.616000"], ["updated_at", "2017-10-27 08:20:04.616000"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "工学システム学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "工学システム学類"], ["created_at", "2017-10-27 08:20:04.626223"], ["updated_at", "2017-10-27 08:20:04.626223"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.3ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "社会工学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "社会工学類"], ["created_at", "2017-10-27 08:20:04.636562"], ["updated_at", "2017-10-27 08:20:04.636562"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "情報科学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "情報科学類"], ["created_at", "2017-10-27 08:20:04.646667"], ["updated_at", "2017-10-27 08:20:04.646667"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "情報メディア創成学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "情報メディア創成学類"], ["created_at", "2017-10-27 08:20:04.656607"], ["updated_at", "2017-10-27 08:20:04.656607"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "知識情報・図書館学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "知識情報・図書館学類"], ["created_at", "2017-10-27 08:20:04.666683"], ["updated_at", "2017-10-27 08:20:04.666683"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "医学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "医学類"], ["created_at", "2017-10-27 08:20:04.676582"], ["updated_at", "2017-10-27 08:20:04.676582"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "看護学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "看護学類"], ["created_at", "2017-10-27 08:20:04.686311"], ["updated_at", "2017-10-27 08:20:04.686311"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "医療科学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "医療科学類"], ["created_at", "2017-10-27 08:20:04.696088"], ["updated_at", "2017-10-27 08:20:04.696088"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "体育専門学群"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.5ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "体育専門学群"], ["created_at", "2017-10-27 08:20:04.706442"], ["updated_at", "2017-10-27 08:20:04.706442"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "芸術専門学群"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "芸術専門学群"], ["created_at", "2017-10-27 08:20:04.719589"], ["updated_at", "2017-10-27 08:20:04.719589"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "その他"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "その他"], ["created_at", "2017-10-27 08:20:04.729502"], ["updated_at", "2017-10-27 08:20:04.729502"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天１"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "天１"], ["created_at", "2017-10-27 08:20:04.751157"], ["updated_at", "2017-10-27 08:20:04.751157"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天２"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "天２"], ["created_at", "2017-10-27 08:20:04.761484"], ["updated_at", "2017-10-27 08:20:04.761484"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天３"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "天３"], ["created_at", "2017-10-27 08:20:04.771566"], ["updated_at", "2017-10-27 08:20:04.771566"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春１"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春１"], ["created_at", "2017-10-27 08:20:04.782010"], ["updated_at", "2017-10-27 08:20:04.782010"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春２"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春２"], ["created_at", "2017-10-27 08:20:04.792178"], ["updated_at", "2017-10-27 08:20:04.792178"]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春３"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春３"], ["created_at", "2017-10-27 08:20:04.802439"], ["updated_at", "2017-10-27 08:20:04.802439"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春４"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.1ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春４"], ["created_at", "2017-10-27 08:20:04.813013"], ["updated_at", "2017-10-27 08:20:04.813013"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "桜"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "桜"], ["created_at", "2017-10-27 08:20:04.823902"], ["updated_at", "2017-10-27 08:20:04.823902"]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "松代"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "松代"], ["created_at", "2017-10-27 08:20:04.833861"], ["updated_at", "2017-10-27 08:20:04.833861"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "吾妻"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "吾妻"], ["created_at", "2017-10-27 08:20:04.844416"], ["updated_at", "2017-10-27 08:20:04.844416"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "花畑"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "花畑"], ["created_at", "2017-10-27 08:20:04.853904"], ["updated_at", "2017-10-27 08:20:04.853904"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "研究学園"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "研究学園"], ["created_at", "2017-10-27 08:20:04.863274"], ["updated_at", "2017-10-27 08:20:04.863274"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "その他"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "その他"], ["created_at", "2017-10-27 08:20:04.873057"], ["updated_at", "2017-10-27 08:20:04.873057"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "家具"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "家具"], ["created_at", "2017-10-27 08:20:04.893970"], ["updated_at", "2017-10-27 08:20:04.893970"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "家電"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "家電"], ["created_at", "2017-10-27 08:20:04.905993"], ["updated_at", "2017-10-27 08:20:04.905993"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "小物・雑貨"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.9ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "小物・雑貨"], ["created_at", "2017-10-27 08:20:04.915036"], ["updated_at", "2017-10-27 08:20:04.915036"]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "教科書"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "教科書"], ["created_at", "2017-10-27 08:20:04.927682"], ["updated_at", "2017-10-27 08:20:04.927682"]]
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "自転車"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "自転車"], ["created_at", "2017-10-27 08:20:04.936410"], ["updated_at", "2017-10-27 08:20:04.936410"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "その他"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "その他"], ["created_at", "2017-10-27 08:20:04.946428"], ["updated_at", "2017-10-27 08:20:04.946428"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "線形代数"], ["image", "linear.png"], ["price", 990], ["detail", "線形代数の教科書です。大事なところには線が引いてあります。\n\n  誰か買ってくれませんか？"], ["student_id", 201511234], ["created_at", "2017-10-27 08:20:04.975749"], ["updated_at", "2017-10-27 08:20:04.975749"], ["department_id", 9], ["place_id", 2], ["genre_id", 4]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "木の机"], ["image", "table.png"], ["price", 1300], ["detail", "引っ越すので机あげます。\n  車で家まで運びます！"], ["student_id", 201712345], ["created_at", "2017-10-27 08:20:04.984635"], ["updated_at", "2017-10-27 08:20:04.984635"], ["department_id", 4], ["place_id", 5], ["genre_id", 1]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.4ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "冷蔵庫"], ["image", "reizouko.png"], ["price", 380], ["detail", "冷蔵庫もういらないのですが、車がないのでご了承ください。"], ["student_id", 201258483], ["created_at", "2017-10-27 08:20:04.993521"], ["updated_at", "2017-10-27 08:20:04.993521"], ["department_id", 18], ["place_id", 8], ["genre_id", 2]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.7ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "赤い自転車"], ["image", "bike.png"], ["price", 1480], ["detail", "そんなにエクストリームしてません"], ["student_id", 201712345], ["created_at", "2017-10-27 08:20:05.002460"], ["updated_at", "2017-10-27 08:20:05.002460"], ["department_id", 20], ["place_id", 9], ["genre_id", 5]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_place_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_place_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mDepartment Load (1.4ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "﻿人文学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "比較文化学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "日本語・日本文化学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "社会学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "国際総合学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "教育学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "心理学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "障害科学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "生物学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "生物資源学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "地球学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "数学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "物理学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "化学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "応用理工学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "工学システム学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "社会工学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "情報科学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "情報メディア創成学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "知識情報・図書館学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "医学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "看護学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "医療科学類"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "体育専門学群"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "芸術専門学群"], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "その他"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天１"], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天２"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天３"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春１"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春２"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春３"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春４"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "桜"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "松代"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "吾妻"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "花畑"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "研究学園"], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "その他"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "家具"], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "家電"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "小物・雑貨"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.5ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "教科書"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.5ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "自転車"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.5ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "その他"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.6ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "線形代数"], ["image", "linear.png"], ["price", 990], ["detail", "線形代数の教科書です。大事なところには線が引いてあります。\n\n  誰か買ってくれませんか？"], ["student_id", 201511234], ["created_at", "2017-10-27 08:20:17.666775"], ["updated_at", "2017-10-27 08:20:17.666775"], ["department_id", 9], ["place_id", 2], ["genre_id", 4]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.7ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "木の机"], ["image", "table.png"], ["price", 1300], ["detail", "引っ越すので机あげます。\n  車で家まで運びます！"], ["student_id", 201712345], ["created_at", "2017-10-27 08:20:17.681542"], ["updated_at", "2017-10-27 08:20:17.681542"], ["department_id", 4], ["place_id", 5], ["genre_id", 1]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "冷蔵庫"], ["image", "reizouko.png"], ["price", 380], ["detail", "冷蔵庫もういらないのですが、車がないのでご了承ください。"], ["student_id", 201258483], ["created_at", "2017-10-27 08:20:17.690618"], ["updated_at", "2017-10-27 08:20:17.690618"], ["department_id", 18], ["place_id", 8], ["genre_id", 2]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "赤い自転車"], ["image", "bike.png"], ["price", 1480], ["detail", "そんなにエクストリームしてません"], ["student_id", 201712345], ["created_at", "2017-10-27 08:20:17.699988"], ["updated_at", "2017-10-27 08:20:17.699988"], ["department_id", 20], ["place_id", 9], ["genre_id", 5]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 10.0.2.2 at 2017-10-27 08:20:30 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.8ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.3ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  Rendered items/index.html.erb within layouts/application (672.8ms)
+Completed 200 OK in 885ms (Views: 792.0ms | ActiveRecord: 42.3ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-10-27 08:20:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 1.9ms)
+
+
+  
+SyntaxError (/home/vagrant/workspace/a2/app/views/items/show.html.erb:43: syntax error, unexpected tIDENTIFIER, expecting ')'
+odel: comment, local: true) fo |form| );@output_buffer.safe_
+                              ^
+/home/vagrant/workspace/a2/app/views/items/show.html.erb:43: syntax error, unexpected ')'
+ment, local: true) fo |form| );@output_buffer.safe_append='
+                              ^
+/home/vagrant/workspace/a2/app/views/items/show.html.erb:63: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+                ^
+/home/vagrant/workspace/a2/app/views/items/show.html.erb:65: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/items/show.html.erb:43: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/items/show.html.erb:43: syntax error, unexpected ')'
+app/views/items/show.html.erb:63: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/items/show.html.erb:65: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/items/1" for 10.0.2.2 at 2017-10-27 08:21:34 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 101ms (ActiveRecord: 4.3ms)
+
+
+  
+SyntaxError (/home/vagrant/workspace/a2/app/views/items/show.html.erb:63: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/items/show.html.erb:63: syntax error, unexpected keyword_ensure, expecting keyword_end
+Started GET "/items/1" for 10.0.2.2 at 2017-10-27 08:21:43 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 1.3ms)
+
+
+  
+SyntaxError (/home/vagrant/workspace/a2/app/views/items/show.html.erb:63: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/items/show.html.erb:63: syntax error, unexpected keyword_ensure, expecting keyword_end
+Started GET "/items/1" for 10.0.2.2 at 2017-10-27 08:25:56 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  Rendered items/show.html.erb within layouts/application (217.1ms)
+Completed 500 Internal Server Error in 349ms (ActiveRecord: 7.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00560df3b03a90>:0x00560df3af7a88>):
+    40:   <%= @item.department_id %>
+    41: </p>
+    42: 
+    43: <%= form_with(model: comment, local: true) do |form| %>
+    44:   <div class="field">
+    45:     <%= form.label :comment_body, "コメント入力" %>
+    46:     <%= form.text_area :comment_body, id: :comment_comment_body, item_id: @item.id, :size=>"40x10"%>
+  
+app/views/items/show.html.erb:43:in `_app_views_items_show_html_erb___3068332893306722415_47308961515080'
