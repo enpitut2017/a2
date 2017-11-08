@@ -1,6 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<table class="item_table_show" border="1">
+  <tr>
+    <td rowspan="8" width="30%"><%= image_tag('no_image.png') %></td>
+  </tr>
+  <tr>
+    <td class="cell_label_show">商品名</td>
+    <td><%= @item.name %></td>
+  </tr>
+  <tr>
+    <td class="cell_label_show">価格</td>
+    <td><%= @item.price %> 円</td>
+  </tr>
+  <tr>
+    <td class="cell_label_show">地域</td>
+    <td><%= @item.place.name %></td>
+  </tr>
+  <tr>
+    <td class="cell_label_show">商品の詳細</td>
+    <td><%= @item.detail %></td>
+  </tr>
+  <tr>
+    <td class="cell_label_show">ジャンル</td>
+    <td><%= @item.genre.name %></td>
+  </tr>
+  <tr>
+    <td class="cell_label_show">学籍番号</td>
+    <td><%= @item.student_id %></td>
+  </tr>
+  <tr>
+    <td class="cell_label_show">学類</td>
+    <td><%= @item.department.name %></td>
+  </tr>
+</table>
+<!-- <p>
   <strong>Name:</strong>
   <%= @item.name %>
 </p>
@@ -38,7 +71,7 @@
 <p>
   <strong>Department:</strong>
   <%= @item.department_id %>
-</p>
+</p> -->
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to '商品を編集する', edit_item_path(@item) %> |
+<%= link_to '商品一覧に戻る', items_path %>

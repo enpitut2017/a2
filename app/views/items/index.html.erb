@@ -51,7 +51,7 @@
   <input type="submit" value="検索">
 </form>
 
-
+<!--
 <table>
   <thead>
     <tr>
@@ -85,7 +85,40 @@
     <% end %>
   </tbody>
 </table>
+-->
+
+<% @items.each do |item| %>
+<table class="item_table" border="1">
+  <tr>
+    <td rowspan="4" width="180"> <%= link_to image_tag('no_image.png', { :alt => 'no_image'}), item %></td>
+  </tr>
+  <tr>
+    <td class="cell_label">商品名</td>
+    <td><%= link_to item.name, item %></td>
+  </tr>
+  <tr>
+    <td class="cell_label">価格</td>
+    <td><%= item.price %> 円</td>
+  </tr>
+  <tr>
+    <td class="cell_label">地域</td>
+    <td><%= item.place.name %></td>
+  </tr>
+  <!-- <tr>
+    <td><%= item.detail %></td>
+  </tr>
+  <tr>
+    <td><%= item.genre_id %></td>
+  </tr>
+  <tr>
+    <td><%= item.student_id %></td>
+  </tr>
+  <tr>
+    <td><%= item.department_id %></td>
+  </tr> -->
+</table>
+<% end %>
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to '新しく商品を追加する', new_item_path %>

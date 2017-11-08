@@ -45,8 +45,7 @@ bower.json
 # Ignore Byebug command history file.
 .byebug_history
 
-.DS_Store
-/.DS_Store
+
 
 # Ignore bundler config.
 /.bundle
@@ -68,4 +67,3 @@ bower.json
 
 /.idea/*
 .DS_Store
-

@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+table.item_table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+table.item_table_show{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+td.cell_label{
+  font-weight: bold;
+  width: 4em;
+  border-right: hidden;
+}
+
+td.cell_label_show{
+  font-weight: bold;
+  width: 7em;
+  border-right: hidden;
+}
+
+img{
+  width: 100%;
+  height: auto;
+  text-align:center;
+  vertical-align: middle;
+}
