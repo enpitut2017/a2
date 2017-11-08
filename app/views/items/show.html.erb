@@ -10,11 +10,11 @@
   </tr>
   <tr>
     <td class="cell_label_show">価格</td>
-    <td><%= @item.price %></td>
+    <td><%= @item.price %> 円</td>
   </tr>
   <tr>
     <td class="cell_label_show">地域</td>
-    <td><%= @item.place_id %></td>
+    <td><%= @item.place.name %></td>
   </tr>
   <tr>
     <td class="cell_label_show">商品の詳細</td>
@@ -22,7 +22,7 @@
   </tr>
   <tr>
     <td class="cell_label_show">ジャンル</td>
-    <td><%= @item.genre_id %></td>
+    <td><%= @item.genre.name %></td>
   </tr>
   <tr>
     <td class="cell_label_show">学籍番号</td>
@@ -30,7 +30,7 @@
   </tr>
   <tr>
     <td class="cell_label_show">学類</td>
-    <td><%= @item.department_id %></td>
+    <td><%= @item.department.name %></td>
   </tr>
 </table>
 <!-- <p>
