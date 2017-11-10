@@ -40,14 +40,17 @@
   <%= @item.department_id %>
 </p>
 
-
-<div>
-  <% @comments.each do |comment| %>
-    <div>
-      <p><%= comment.body %></p>
-    </div>
+<p>
+  <strong>コメント:</strong></p>
+  <% comments = Comment.where(item_id: @item.id ) %>
+  <% comments.each do |comment| %> r
+      <%= comment.comment_body   %> t
+      <%= comment.item_id %> y
+      <%= @item.id %>
+      </p>
   <% end %>
-</div>
+</p>
+
 
 <%= form_with(model: Comment.new, local: true) do |form| %>
   <div class="field">
@@ -60,15 +63,6 @@
   </div>
 <% end %>
 
-
-<p>
-  <strong>コメント:</strong>
-  
-  <% comments = Comment.where(item_id: @item.id) %>
-  <% comments.each do |comment| %>
-      <%= comment.comment_body  %>
-  <% end %>
-</p>
 
 
 
