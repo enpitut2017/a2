@@ -10,7 +10,15 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    @item = Item.find(params[:id])
+    @comments = @item.comments.all
+    @comment = @item.comments.build
+
   end
+
+
+
+
 
   # GET /items/new
   def new

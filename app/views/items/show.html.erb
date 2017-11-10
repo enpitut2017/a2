@@ -40,25 +40,40 @@
   <%= @item.department_id %>
 </p>
 
-<%= form_with(model: comment, local: true) do |form| %>
+
+<div>
+  <% @comments.each do |comment| %>
+    <div>
+      <p><%= comment.body %></p>
+    </div>
+  <% end %>
+</div>
+
+<%= form_with(model: Comment.new, local: true) do |form| %>
   <div class="field">
     <%= form.label :comment_body, "コメント入力" %>
     <%= form.text_area :comment_body, id: :comment_comment_body, item_id: @item.id, :size=>"40x10"%>
   </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
-  <% end %>
+<% end %>
+
 
 <p>
   <strong>コメント:</strong>
-  <%= @comments = Comment.all %>
-  <%= @comments.each do |com| %>
-    <% if @items.id == @comments.item_id %>
-      <%= @comments.comment_id %>
-    <% end %>
+  
+  <% comments = Comment.where(item_id: @item.id) %>
+  <% comments.each do |comment| %>
+      <%= comment.comment_body  %>
   <% end %>
 </p>
+
+
+
+
+
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
