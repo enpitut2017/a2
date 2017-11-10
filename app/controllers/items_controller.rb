@@ -25,6 +25,22 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    if @item.save
+      email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
+      body = "出品が完了しました。
+
+      このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+      心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+      ==================================
+       enPiT2017 tsuku.byebuy@gmail.com
+         チームA1 ムードメーカー  小島 直
+      ==================================
+      "
+
+      print email
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
+    end
 
     respond_to do |format|
       if @item.save
