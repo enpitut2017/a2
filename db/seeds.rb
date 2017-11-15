@@ -34,7 +34,7 @@ Item.create(
 
   誰か買ってくれませんか？",
   :genre_id => "4",
-  :student_id => "201511234",
+  :student_id => "201511435",
   :department_id => "9"
 )
 
@@ -46,7 +46,7 @@ Item.create(
   :detail => "引っ越すので机あげます。
   車で家まで運びます！",
   :genre_id => "1",
-  :student_id => "201712345",
+  :student_id => "201511454",
   :department_id => "4"
 )
 
@@ -57,7 +57,7 @@ Item.create(
   :price => "380",
   :detail => "冷蔵庫もういらないのですが、車がないのでご了承ください。",
   :genre_id => "2",
-  :student_id => "201258483",
+  :student_id => "201511433",
   :department_id => "18"
 )
 
@@ -68,6 +68,6 @@ Item.create(
   :price => "1480",
   :detail => "そんなにエクストリームしてません",
   :genre_id => "5",
-  :student_id => "201712345",
+  :student_id => "201511457",
   :department_id => "20"
 )
