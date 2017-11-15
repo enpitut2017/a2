@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<%= item_path(@item) %>
+<%= params %>
+<%= if params[:item]
+params[:item][:student_id]
+end %>
+<%= form_for @item, url: auth_item_path(@item), method: 'post' do |f|%>
+<%= f.text_field :student_id %>
+<%= f.submit %>
+<% end %>
+
+
+
+
+<%= link_to '商品一覧に戻る', items_path %>

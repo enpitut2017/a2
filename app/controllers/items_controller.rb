@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :auth, :edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
@@ -19,6 +19,11 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+  end
+
+  # POST /items/1/auth
+  def auth
+    logger.debug('aaaaa')
   end
 
   # POST /items
