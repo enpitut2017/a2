@@ -33,6 +33,29 @@
     <td><%= @item.department.name %></td>
   </tr>
 </table>
+
+<p>
+  <strong>コメント:</strong></p>
+  <% comments = Comment.where(item_id: @item.id ) %>
+  <% comments.each do |comment| %>
+      <%= comment.comment_body   %>
+      </p>
+  <% end %>
+ 
+ 
+ </p>
+ <strong>コメント入力</strong></p>
+ <%= form_tag("/items/comment") do %>
+    <form>
+      <div class="form-group">
+        <textarea name="comment_body" class="form-control" ></textarea>
+        <%= hidden_field_tag 'item_id', @item.id %>
+      </div><!--form-group-->
+      <button type="submit">コメント</button>
+    <% end %>
+ 
+
+
 <!-- <p>
   <strong>Name:</strong>
   <%= @item.name %>
