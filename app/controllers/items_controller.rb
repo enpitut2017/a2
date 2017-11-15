@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+      @to_mail.item_id = @item.id
   end
 
   # GET /items/new

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'mail_page/home'
+  get 'mail_page/done'
+
   resources :users
   resources :items
   root 'items#index'
