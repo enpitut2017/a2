@@ -61,19 +61,7 @@
     <% end %>
 
 
-    <%= form_with(model: Comment.new, local: true) do |form| %>
-      <div class="field">
-         <%= form.label :comment_body,"コメント入力" %>
-         <%= form.text_field :comment_body, id: :comment_comment_body %>
-         <%= hidden_field_tag 'item_id', @item.id %>
-
-       </div>
-
-       <div class="actions">
-         <%= form.submit %>
-       </div>
-      <% end %>
-
+    
 
 
 
