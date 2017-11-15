@@ -27,14 +27,19 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
-      body = "出品が完了しました。
+      body = @item.student_id.to_s + "様
+
+      出品が完了しました。
+
+      ↓商品詳細ページはコチラ↓
+      https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
 
       このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
       心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
       ==================================
        enPiT2017 tsuku.byebuy@gmail.com
-         チームA1 ムードメーカー  小島 直
+       チームA1 ムードメーカー  小島 直
       ==================================
       "
 
@@ -56,6 +61,27 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    if @item.save
+      email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
+      body = @item.student_id.to_s + "様
+
+      商品の編集が完了しました。
+
+      ↓商品詳細ページはコチラ↓
+      https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+
+      このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+      心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+      ==================================
+       enPiT2017 tsuku.byebuy@gmail.com
+       チームA1 ムードメーカー  小島 直
+      ==================================
+      "
+
+      print email
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
+    end
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
