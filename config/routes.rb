@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
+
   get 'comments/new'
 
   get 'comments/create'
 
 post "items/comment" => "items#comment"
+
+  get 'mail_page/home'
+  get 'mail_page/done'
+
 
   resources :users
 

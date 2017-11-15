@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
       @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id])
       @comment.save
       redirect_to :action => "show", :id => @comment.item_id
+      @to_mail.item_id = @item.id
   end
 
 

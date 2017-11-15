@@ -112,3 +112,12 @@
 
 <%= link_to '商品を編集する', edit_item_path(@item) %> |
 <%= link_to '商品一覧に戻る', items_path %>
+
+<br><br>
+
+<%= form_tag('../mail_page/home', method: "get") do %>
+
+  <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
+
+  <%= submit_tag('出品者に連絡する') %>
+<% end %>
