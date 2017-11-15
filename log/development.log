@@ -1540,3 +1540,781 @@ Processing by ItemsController#index as HTML
 Completed 200 OK in 111ms (Views: 94.5ms | ActiveRecord: 3.9ms)
 
 
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateItems (20171013082728)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image" varchar, "price" integer, "detail" varchar, "student_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171013082728"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartments (20171018034852)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171018034852"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGenres (20171018034916)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "genres" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171018034916"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePlaces (20171018034928)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "places" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171018034928"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddDepartmentToItems (20171018040021)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "items" ADD "department_id" integer[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_items_on_department_id" ON "items" ("department_id")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171018040021"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddPlacesToItems (20171018040744)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "items" ADD "place_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_items_on_place_id" ON "items" ("place_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171018040744"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddGenresToItems (20171018040809)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "items" ADD "genre_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_place_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_place_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_items_on_genre_id" ON "items" ("genre_id")[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171018040809"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-11-15 04:24:12.899947"], ["updated_at", "2017-11-15 04:24:12.899947"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_place_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_place_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_place_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_place_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "﻿人文学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "﻿人文学類"], ["created_at", "2017-11-15 04:24:25.523375"], ["updated_at", "2017-11-15 04:24:25.523375"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "比較文化学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "比較文化学類"], ["created_at", "2017-11-15 04:24:25.531259"], ["updated_at", "2017-11-15 04:24:25.531259"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "日本語・日本文化学類"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "日本語・日本文化学類"], ["created_at", "2017-11-15 04:24:25.538207"], ["updated_at", "2017-11-15 04:24:25.538207"]]
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "社会学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "社会学類"], ["created_at", "2017-11-15 04:24:25.551725"], ["updated_at", "2017-11-15 04:24:25.551725"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "国際総合学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "国際総合学類"], ["created_at", "2017-11-15 04:24:25.559074"], ["updated_at", "2017-11-15 04:24:25.559074"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "教育学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "教育学類"], ["created_at", "2017-11-15 04:24:25.565724"], ["updated_at", "2017-11-15 04:24:25.565724"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "心理学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "心理学類"], ["created_at", "2017-11-15 04:24:25.572548"], ["updated_at", "2017-11-15 04:24:25.572548"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "障害科学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "障害科学類"], ["created_at", "2017-11-15 04:24:25.579199"], ["updated_at", "2017-11-15 04:24:25.579199"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "生物学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "生物学類"], ["created_at", "2017-11-15 04:24:25.585414"], ["updated_at", "2017-11-15 04:24:25.585414"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "生物資源学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "生物資源学類"], ["created_at", "2017-11-15 04:24:25.592433"], ["updated_at", "2017-11-15 04:24:25.592433"]]
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "地球学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "地球学類"], ["created_at", "2017-11-15 04:24:25.606272"], ["updated_at", "2017-11-15 04:24:25.606272"]]
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "数学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "数学類"], ["created_at", "2017-11-15 04:24:25.620434"], ["updated_at", "2017-11-15 04:24:25.620434"]]
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "物理学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "物理学類"], ["created_at", "2017-11-15 04:24:25.635412"], ["updated_at", "2017-11-15 04:24:25.635412"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "化学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "化学類"], ["created_at", "2017-11-15 04:24:25.646693"], ["updated_at", "2017-11-15 04:24:25.646693"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "応用理工学類"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "応用理工学類"], ["created_at", "2017-11-15 04:24:25.653731"], ["updated_at", "2017-11-15 04:24:25.653731"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "工学システム学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "工学システム学類"], ["created_at", "2017-11-15 04:24:25.660632"], ["updated_at", "2017-11-15 04:24:25.660632"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "社会工学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "社会工学類"], ["created_at", "2017-11-15 04:24:25.667891"], ["updated_at", "2017-11-15 04:24:25.667891"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "情報科学類"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "情報科学類"], ["created_at", "2017-11-15 04:24:25.674899"], ["updated_at", "2017-11-15 04:24:25.674899"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "情報メディア創成学類"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "情報メディア創成学類"], ["created_at", "2017-11-15 04:24:25.681662"], ["updated_at", "2017-11-15 04:24:25.681662"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "知識情報・図書館学類"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "知識情報・図書館学類"], ["created_at", "2017-11-15 04:24:25.688359"], ["updated_at", "2017-11-15 04:24:25.688359"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "医学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "医学類"], ["created_at", "2017-11-15 04:24:25.695149"], ["updated_at", "2017-11-15 04:24:25.695149"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "看護学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "看護学類"], ["created_at", "2017-11-15 04:24:25.701563"], ["updated_at", "2017-11-15 04:24:25.701563"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "医療科学類"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "医療科学類"], ["created_at", "2017-11-15 04:24:25.708379"], ["updated_at", "2017-11-15 04:24:25.708379"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "体育専門学群"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "体育専門学群"], ["created_at", "2017-11-15 04:24:25.714884"], ["updated_at", "2017-11-15 04:24:25.714884"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "芸術専門学群"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "芸術専門学群"], ["created_at", "2017-11-15 04:24:25.721867"], ["updated_at", "2017-11-15 04:24:25.721867"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "その他"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "その他"], ["created_at", "2017-11-15 04:24:25.728978"], ["updated_at", "2017-11-15 04:24:25.728978"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春日宿舎"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春日宿舎"], ["created_at", "2017-11-15 04:24:25.750124"], ["updated_at", "2017-11-15 04:24:25.750124"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "追越宿舎"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "追越宿舎"], ["created_at", "2017-11-15 04:24:25.758577"], ["updated_at", "2017-11-15 04:24:25.758577"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "平砂宿舎"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "平砂宿舎"], ["created_at", "2017-11-15 04:24:25.765080"], ["updated_at", "2017-11-15 04:24:25.765080"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "一の矢宿舎"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "一の矢宿舎"], ["created_at", "2017-11-15 04:24:25.771738"], ["updated_at", "2017-11-15 04:24:25.771738"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春2セブン（つくば北大通り店）"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春2セブン（つくば北大通り店）"], ["created_at", "2017-11-15 04:24:25.778511"], ["updated_at", "2017-11-15 04:24:25.778511"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春3ローソン（つくば春日三丁目店）"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春3ローソン（つくば春日三丁目店）"], ["created_at", "2017-11-15 04:24:25.784928"], ["updated_at", "2017-11-15 04:24:25.784928"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春4ローソン（つくば春日四丁目店）"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春4ローソン（つくば春日四丁目店）"], ["created_at", "2017-11-15 04:24:25.791685"], ["updated_at", "2017-11-15 04:24:25.791685"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春4ファミマ（つくば春日四丁目店）"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春4ファミマ（つくば春日四丁目店）"], ["created_at", "2017-11-15 04:24:25.798412"], ["updated_at", "2017-11-15 04:24:25.798412"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "春4セブン（つくば春日四丁目店）"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "春4セブン（つくば春日四丁目店）"], ["created_at", "2017-11-15 04:24:25.805055"], ["updated_at", "2017-11-15 04:24:25.805055"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天1ファミマ（つくば天久保一丁目店）"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "天1ファミマ（つくば天久保一丁目店）"], ["created_at", "2017-11-15 04:24:25.812171"], ["updated_at", "2017-11-15 04:24:25.812171"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天1セブン（つくば松見公園店）"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "天1セブン（つくば松見公園店）"], ["created_at", "2017-11-15 04:24:25.818838"], ["updated_at", "2017-11-15 04:24:25.818838"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "100ロー（筑波大学前店）"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "100ロー（筑波大学前店）"], ["created_at", "2017-11-15 04:24:25.825535"], ["updated_at", "2017-11-15 04:24:25.825535"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天3ローソン（つくば天久保三丁目店）"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "天3ローソン（つくば天久保三丁目店）"], ["created_at", "2017-11-15 04:24:25.832338"], ["updated_at", "2017-11-15 04:24:25.832338"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天3セブン（つくば平塚店）"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "天3セブン（つくば平塚店）"], ["created_at", "2017-11-15 04:24:25.839172"], ["updated_at", "2017-11-15 04:24:25.839172"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天3ミニップ（つくば天久保店）"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "天3ミニップ（つくば天久保店）"], ["created_at", "2017-11-15 04:24:25.845708"], ["updated_at", "2017-11-15 04:24:25.845708"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.5ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "天4セブン（つくば天久保四丁目店）"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "天4セブン（つくば天久保四丁目店）"], ["created_at", "2017-11-15 04:24:25.852061"], ["updated_at", "2017-11-15 04:24:25.852061"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "桜ローソン（つくば桜二丁目店）"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "桜ローソン（つくば桜二丁目店）"], ["created_at", "2017-11-15 04:24:25.859971"], ["updated_at", "2017-11-15 04:24:25.859971"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."name" = ? LIMIT ?[0m  [["name", "その他"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "places" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "その他"], ["created_at", "2017-11-15 04:24:25.866940"], ["updated_at", "2017-11-15 04:24:25.866940"]]
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "家具"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "家具"], ["created_at", "2017-11-15 04:24:25.890530"], ["updated_at", "2017-11-15 04:24:25.890530"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "家電"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "家電"], ["created_at", "2017-11-15 04:24:25.897599"], ["updated_at", "2017-11-15 04:24:25.897599"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "小物・雑貨"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "小物・雑貨"], ["created_at", "2017-11-15 04:24:25.904429"], ["updated_at", "2017-11-15 04:24:25.904429"]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "教科書"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "教科書"], ["created_at", "2017-11-15 04:24:25.912055"], ["updated_at", "2017-11-15 04:24:25.912055"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "自転車"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "自転車"], ["created_at", "2017-11-15 04:24:25.919014"], ["updated_at", "2017-11-15 04:24:25.919014"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = ? LIMIT ?[0m  [["name", "その他"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "その他"], ["created_at", "2017-11-15 04:24:25.925127"], ["updated_at", "2017-11-15 04:24:25.925127"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.5ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "線形代数"], ["image", "linear.png"], ["price", 990], ["detail", "線形代数の教科書です。大事なところには線が引いてあります。\n\n  誰か買ってくれませんか？"], ["student_id", 201511234], ["created_at", "2017-11-15 04:24:25.952081"], ["updated_at", "2017-11-15 04:24:25.952081"], ["department_id", 9], ["place_id", 2], ["genre_id", 4]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "木の机"], ["image", "table.png"], ["price", 1300], ["detail", "引っ越すので机あげます。\n  車で家まで運びます！"], ["student_id", 201712345], ["created_at", "2017-11-15 04:24:25.960860"], ["updated_at", "2017-11-15 04:24:25.960860"], ["department_id", 4], ["place_id", 5], ["genre_id", 1]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "冷蔵庫"], ["image", "reizouko.png"], ["price", 380], ["detail", "冷蔵庫もういらないのですが、車がないのでご了承ください。"], ["student_id", 201258483], ["created_at", "2017-11-15 04:24:25.967018"], ["updated_at", "2017-11-15 04:24:25.967018"], ["department_id", 18], ["place_id", 8], ["genre_id", 2]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "items" ("name", "image", "price", "detail", "student_id", "created_at", "updated_at", "department_id", "place_id", "genre_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "赤い自転車"], ["image", "bike.png"], ["price", 1480], ["detail", "そんなにエクストリームしてません"], ["student_id", 201712345], ["created_at", "2017-11-15 04:24:25.973752"], ["updated_at", "2017-11-15 04:24:25.973752"], ["department_id", 20], ["place_id", 9], ["genre_id", 5]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 10.0.2.2 at 2017-11-15 04:24:35 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.3ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  Rendered items/index.html.erb within layouts/application (711.7ms)
+Completed 200 OK in 891ms (Views: 826.9ms | ActiveRecord: 29.6ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-11-15 04:24:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered items/show.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 122ms (Views: 105.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-11-15 04:24:43 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (2.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  Rendered items/index.html.erb within layouts/application (58.6ms)
+Completed 200 OK in 155ms (Views: 127.9ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-11-15 04:37:25 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.4) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.4) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20171115043132)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment_body" varchar, "item_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171115043132"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_genre_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_place_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_place_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_items_on_department_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_items_on_department_id' AND type='index'
+[0m
+Started GET "/items" for 10.0.2.2 at 2017-11-15 04:37:58 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  Rendered items/index.html.erb within layouts/application (371.7ms)
+Completed 200 OK in 568ms (Views: 494.2ms | ActiveRecord: 28.8ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-11-15 04:38:01 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."item_id" = ?[0m  [["item_id", 1]]
+  Rendered items/show.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 154ms (Views: 88.8ms | ActiveRecord: 11.5ms)
+
+
+Started POST "/items/comment" for 10.0.2.2 at 2017-11-15 04:38:04 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#comment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gnjiQYg8RddqLLrtKILc3bNKf0q3vzwMVsHFwcosD1Xq4eOiJhgzJpULz2lzjGJzfBKsAVcc8PC0f8I9tZaoUg==", "comment_body"=>"fdsaf", "item_id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (3.7ms)[0m  [1m[32mINSERT INTO "comments" ("comment_body", "item_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_body", "fdsaf"], ["item_id", 1], ["created_at", "2017-11-15 04:38:04.146491"], ["updated_at", "2017-11-15 04:38:04.146491"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/items/1
+Completed 302 Found in 17ms (ActiveRecord: 8.1ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-11-15 04:38:04 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (0.6ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mComment Load (2.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."item_id" = ?[0m  [["item_id", 1]]
+  Rendered items/show.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 120ms (Views: 99.5ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/items/comment" for 10.0.2.2 at 2017-11-15 04:38:06 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#comment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cMAP5EGea23FUrcDRh5no+UdhT54ZO9AfHCjq9PedQcKiHrXmtF9MgpIrcK9l2rHJUcYQEyC+8FijtAIEYoxEg==", "comment_body"=>"did", "item_id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "comments" ("comment_body", "item_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_body", "did"], ["item_id", 1], ["created_at", "2017-11-15 04:38:06.437813"], ["updated_at", "2017-11-15 04:38:06.437813"]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/items/1
+Completed 302 Found in 29ms (ActiveRecord: 8.2ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-11-15 04:38:06 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mComment Load (2.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."item_id" = ?[0m  [["item_id", 1]]
+  Rendered items/show.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 117ms (Views: 97.5ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-11-15 04:38:08 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."item_id" = ?[0m  [["item_id", 1]]
+  Rendered items/show.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 127ms (Views: 103.3ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-11-15 04:38:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.7ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.8ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.5ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.4ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  Rendered items/index.html.erb within layouts/application (54.9ms)
+Completed 200 OK in 161ms (Views: 130.5ms | ActiveRecord: 18.8ms)
+
+
+Started GET "/items/2" for 10.0.2.2 at 2017-11-15 04:38:11 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.0ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."item_id" = ?[0m  [["item_id", 2]]
+  Rendered items/show.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 123ms (Views: 103.9ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-11-15 04:38:13 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.9ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (1.3ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.3ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  Rendered items/index.html.erb within layouts/application (55.3ms)
+Completed 200 OK in 154ms (Views: 121.7ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-11-15 04:38:14 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.3ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."item_id" = ?[0m  [["item_id", 1]]
+  Rendered items/show.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 124ms (Views: 104.9ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/items/3" for 10.0.2.2 at 2017-11-15 04:38:57 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."item_id" = ?[0m  [["item_id", 3]]
+  Rendered items/show.html.erb within layouts/application (326.8ms)
+Completed 200 OK in 595ms (Views: 465.0ms | ActiveRecord: 19.9ms)
+
+
+Started POST "/items/comment" for 10.0.2.2 at 2017-11-15 04:39:04 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#comment as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KZCOKfgmqgKOB5OgQUrI2g5ZQMCD5lwlmNZrvNd2rrlT2PsaI2m8XUEdiWG6w8W+zgPdvrcASKSGKBgfFSLqrA==", "comment_body"=>"3", "item_id"=>"3"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "comments" ("comment_body", "item_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["comment_body", "3"], ["item_id", 3], ["created_at", "2017-11-15 04:39:04.437832"], ["updated_at", "2017-11-15 04:39:04.437832"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/items/3
+Completed 302 Found in 23ms (ActiveRecord: 9.2ms)
+
+
+Started GET "/items/3" for 10.0.2.2 at 2017-11-15 04:39:04 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."item_id" = ?[0m  [["item_id", 3]]
+  Rendered items/show.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 130ms (Views: 109.8ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-11-15 04:39:05 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mPlace Load (0.7ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.9ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.0ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.8ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  Rendered items/index.html.erb within layouts/application (55.1ms)
+Completed 200 OK in 163ms (Views: 137.6ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/items/1" for 10.0.2.2 at 2017-11-15 04:39:08 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering items/show.html.erb within layouts/application
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."item_id" = ?[0m  [["item_id", 1]]
+  Rendered items/show.html.erb within layouts/application (20.9ms)
+Completed 200 OK in 123ms (Views: 103.9ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/items" for 10.0.2.2 at 2017-11-15 04:39:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ItemsController#index as HTML
+  Rendering items/index.html.erb within layouts/application
+  [1m[36mDepartment Load (1.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT "places".* FROM "places"[0m
+  [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.1ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.1ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPlace Load (1.2ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.9ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPlace Load (0.8ms)[0m  [1m[34mSELECT  "places".* FROM "places" WHERE "places"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mDepartment Load (1.2ms)[0m  [1m[34mSELECT  "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  Rendered items/index.html.erb within layouts/application (52.7ms)
+Completed 200 OK in 159ms (Views: 130.4ms | ActiveRecord: 16.2ms)
+
+

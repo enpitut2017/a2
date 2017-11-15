@@ -10,6 +10,16 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    @item = Item.find(params[:id])
+    @comments = @item.comments.all
+    @comment = @item.comments.build
+ 
+  end
+ 
+  def comment
+      @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id])
+      @comment.save
+      redirect_to :action => "show", :id => @comment.item_id
   end
 
   # GET /items/new
