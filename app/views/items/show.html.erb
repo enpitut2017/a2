@@ -43,25 +43,37 @@
 <p>
   <strong>コメント:</strong></p>
   <% comments = Comment.where(item_id: @item.id ) %>
-  <% comments.each do |comment| %> r
-      <%= comment.comment_body   %> t
-      <%= comment.item_id %> y
-      <%= @item.id %>
+  <% comments.each do |comment| %>
+      <%= comment.comment_body   %>
       </p>
   <% end %>
+
+
 </p>
+<strong>コメント入力</strong></p>
+<%= form_tag("/items/comment") do %>
+    <form>
+      <div class="form-group">
+        <textarea name="comment_body" class="form-control" ></textarea>
+        <%= hidden_field_tag 'item_id', @item.id %>
+      </div><!--form-group-->
+      <button type="submit">コメント</button>
+    <% end %>
 
 
-<%= form_with(model: Comment.new, local: true) do |form| %>
-  <div class="field">
-    <%= form.label :comment_body, "コメント入力" %>
-    <%= form.text_area :comment_body, id: :comment_comment_body, item_id: @item.id, :size=>"40x10"%>
-  </div>
+    <%= form_with(model: Comment.new, local: true) do |form| %>
+      <div class="field">
+         <%= form.label :comment_body,"コメント入力" %>
+         <%= form.text_field :comment_body, id: :comment_comment_body %>
+         <%= hidden_field_tag 'item_id', @item.id %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+       </div>
+
+       <div class="actions">
+         <%= form.submit %>
+       </div>
+      <% end %>
+
 
 
 

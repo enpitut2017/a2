@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
+
+
+
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id])
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to Item.find(comment_params[:item_id]), notice: 'Item was successfully created.' }
+        format.html { render :create, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -17,4 +20,8 @@ class CommentsController < ApplicationController
       params.require(:comment).permit( :item_id, :comment_body)
   end
 
+
+
+  def new
+  end
 end

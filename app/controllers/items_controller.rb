@@ -16,6 +16,12 @@ class ItemsController < ApplicationController
 
   end
 
+  def comment
+      @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id])
+      @comment.save
+      redirect_to :action => "show", :id => @comment.item_id
+  end
+
 
 
 
