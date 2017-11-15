@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+
   get 'comments/new'
 
   get 'comments/create'
 
 post "items/comment" => "items#comment"
+
+  resources :users
 
   resources :items
   resources :comments

@@ -2,7 +2,6 @@
 
 <h1>商品一覧</h1>
 
-
 <!--検索機能-->
 
 <form name="search_form" method="get">
@@ -98,11 +97,11 @@
   </tr>
   <tr>
     <td class="cell_label">価格</td>
-    <td><%= item.price %></td>
+    <td><%= item.price %> 円</td>
   </tr>
   <tr>
     <td class="cell_label">地域</td>
-    <td><%= item.place_id %></td>
+    <td><%= item.place.name %></td>
   </tr>
   <!-- <tr>
     <td><%= item.detail %></td>
@@ -121,4 +120,4 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to '新しく商品を追加する', new_item_path %>
