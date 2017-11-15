@@ -1,0 +1,12 @@
+<h1>出品者に連絡</h1>
+
+<%= form_tag('../mail_page/done', method: "get") do %>
+学籍番号<br>
+  <%= text_field :mail, :student_id %><br><br>
+内容<br>
+  <%= text_area :mail, :content, :size => "50x10" %> <br><br>
+  <%= hidden_field :to_mail, :student_id, :value => params[:to_mail][:student_id] %>
+  <%= submit_tag('送信') %>
+<% end %>
+<br><br>
+<%= link_to '戻る', :back %>
