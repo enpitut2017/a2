@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
-<p>
-  <strong>名前:</strong>
-
 <table class="item_table_show" border="1">
   <tr>
     <td rowspan="8" width="30%"><%= image_tag('no_image.png') %></td>
@@ -37,87 +33,45 @@
     <td><%= @item.department.name %></td>
   </tr>
 </table>
-
 <!-- <p>
   <strong>Name:</strong>
->>>>>>> development
   <%= @item.name %>
 </p>
 
 <p>
-  <strong>場所:</strong>
+  <strong>Place:</strong>
   <%= @item.place_id %>
 </p>
 
 <p>
-  <strong>画像:</strong>
+  <strong>Image:</strong>
   <%= @item.image %>
 </p>
 
 <p>
-  <strong>価格:</strong>
+  <strong>Price:</strong>
   <%= @item.price %>
 </p>
 
 <p>
-  <strong>詳細:</strong>
+  <strong>Detail:</strong>
   <%= @item.detail %>
 </p>
 
 <p>
-  <strong>ジャンル:</strong>
+  <strong>Genre:</strong>
   <%= @item.genre_id %>
 </p>
 
 <p>
-  <strong>出品者の学籍番号:</strong>
+  <strong>Student:</strong>
   <%= @item.student_id %>
 </p>
 
 <p>
-  <strong>学類:</strong>
+  <strong>Department:</strong>
   <%= @item.department_id %>
 </p> -->
 
-
-<p>
-  <strong>コメント:</strong></p>
-  <% comments = Comment.where(item_id: @item.id ) %>
-  <% comments.each do |comment| %>
-      <%= comment.comment_body   %>
-      </p>
-  <% end %>
-
-
-</p>
-<strong>コメント入力</strong></p>
-<%= form_tag("/items/comment") do %>
-    <form>
-      <div class="form-group">
-        <textarea name="comment_body" class="form-control" ></textarea>
-        <%= hidden_field_tag 'item_id', @item.id %>
-      </div><!--form-group-->
-      <button type="submit">コメント</button>
-    <% end %>
-
-
-
-
-
-
-
-
-
-
-
 <%= link_to '商品を編集する', edit_item_path(@item) %> |
 <%= link_to '商品一覧に戻る', items_path %>
-
-<br><br>
-
-<%= form_tag('../mail_page/home', method: "get") do %>
-
-  <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
-
-  <%= submit_tag('出品者に連絡する') %>
-<% end %>
