@@ -1,5 +1,14 @@
-<h1>商品の追加</h1>
+<h1><%= link_to 'つくByeBuy', items_path %></h1>
+
+<div class="header_tab">
+    <div id="tab">
+      <%= link_to '商品一覧', items_path %>
+      <%= link_to '出品', new_item_path %>
+    </div>
+</div>
+
+<h2>出品フォーム</h2>
 
 <%= render 'form', item: @item %>
 
-<%= link_to '商品一覧に戻る', items_path %>
+<%= link_to '商品一覧に戻る', items_path, :class => "red_line"  %>

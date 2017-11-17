@@ -1,4 +1,13 @@
-<h1>出品者に連絡</h1>
+<h1><%= link_to 'つくByeBuy', items_path %></h1>
+
+<div class="header_tab">
+    <div id="tab">
+      <%= link_to '商品一覧', items_path %>
+      <%= link_to '出品', new_item_path %>
+    </div>
+</div>
+
+<h2>出品者に連絡</h2>
 
 <%= form_tag('../mail_page/done', method: "get") do %>
 学籍番号<br>
@@ -9,4 +18,4 @@
   <%= submit_tag('送信') %>
 <% end %>
 <br><br>
-<%= link_to '戻る', :back %>
+<%= link_to '戻る', :back, :class => "red_line"  %>

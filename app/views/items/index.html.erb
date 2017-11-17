@@ -1,38 +1,48 @@
 <p id="notice"><%= notice %></p>
+<div id="index_top"></div>
+<h1><%= link_to 'つくByeBuy', items_path %></h1>
 
-<h1>商品一覧</h1>
+
+<div class="header_tab">
+    <div id="tab">
+      <%= link_to '商品一覧', items_path %>
+      <%= link_to '出品', new_item_path %>
+    </div>
+</div>
 
 <!--検索機能-->
 
 <form name="search_form" method="get">
-  <strong>フリーワード検索</strong><br>
-  <input type="text" name="freeword_select" size="40">
-
-  <strong>絞り込み・並び替え</strong><br>
-  学類：
-  <% @departments = Department.all %>
-  <select name="department_select">
-    <option value="0" selected="selected">指定しない</option>
-    <% @departments.each do |dep| %>
-        <option value="<%= dep.id %>"><%= dep.name %></option>
-    <% end %>
-  </select>
-  ジャンル：
-  <% @genres = Genre.all %>
-  <select name="genre_select">
-    <option value="0" selected="selected">指定しない</option>
-    <% @genres.each do |gen| %>
-      <option value="<%= gen.id %>"><%= gen.name %></option>
-    <% end %>
-  </select>
-  場所：
-  <% @places = Place.all %>
-  <select name="place_select">
-    <option value="0" selected="selected">指定しない</option>
-    <% @places.each do |pla| %>
-      <option value="<%= pla.id %>"><%= pla.name %></option>
-    <% end %>
-  </select> <br>
+  <div class="search_form">
+    学類：
+    <% @departments = Department.all %>
+    <select name="department_select">
+      <option value="0" selected="selected">指定しない</option>
+      <% @departments.each do |dep| %>
+          <option value="<%= dep.id %>"><%= dep.name %></option>
+      <% end %>
+    </select>
+    ジャンル：
+    <% @genres = Genre.all %>
+    <select name="genre_select">
+      <option value="0" selected="selected">指定しない</option>
+      <% @genres.each do |gen| %>
+        <option value="<%= gen.id %>"><%= gen.name %></option>
+      <% end %>
+    </select>
+    場所：
+    <% @places = Place.all %>
+    <select name="place_select">
+      <option value="0" selected="selected">指定しない</option>
+      <% @places.each do |pla| %>
+        <option value="<%= pla.id %>"><%= pla.name %></option>
+      <% end %>
+    </select>
+    <br><br>
+    <strong>フリーワード検索</strong><br>
+    <input type="text" name="freeword_select" size="40">
+      <input type="submit" value="検索">
+    </div><br>
 
 <% if params["freeword_select"] != "" && params["freeword_select"] != nil %>
   <% @items = @items.where("name like(?)", "%#{params['freeword_select']}%") %>
@@ -47,45 +57,9 @@
   <% @items = @items.where(place_id: params["place_select"]) %>
 <% end %>
 
-  <input type="submit" value="検索">
 </form>
 
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>名前</th>
-      <th>場所</th>
-      <th>画像パス</th>
-      <th>価格</th>
-      <th>詳細</th>
-      <th>ジャンル</th>
-      <th>出品者</th>
-      <th>学類</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.place.name %></td>
-        <td><%= item.image %></td>
-        <td><%= item.price %></td>
-        <td><%= item.detail %></td>
-        <td><%= item.genre.name %></td>
-        <td><%= item.student_id %></td>
-        <td><%= item.department.name %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
--->
-
+検索結果：<%= @items.length %>件の商品
 <% @items.each do |item| %>
 <table class="item_table" border="1">
   <tr>
@@ -103,21 +77,9 @@
     <td class="cell_label">地域</td>
     <td><%= item.place.name %></td>
   </tr>
-  <!-- <tr>
-    <td><%= item.detail %></td>
-  </tr>
-  <tr>
-    <td><%= item.genre_id %></td>
-  </tr>
-  <tr>
-    <td><%= item.student_id %></td>
-  </tr>
-  <tr>
-    <td><%= item.department_id %></td>
-  </tr> -->
 </table>
 <% end %>
 
 <br>
 
-<%= link_to '新しく商品を追加する', new_item_path %>
+<a href="#index_top" class="red_line">ページ上部へ</a>
