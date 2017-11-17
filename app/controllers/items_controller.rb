@@ -49,6 +49,9 @@ class ItemsController < ApplicationController
 
       出品が完了しました。
 
+      編集用パスワードは " + @item.pass.to_s + " です。
+      商品の情報編集・販売完了・出品取り消し等に必要なので大事に保存してください。
+
       商品名:" + @item.name.to_s + "
 
       ↓商品詳細ページはコチラ↓
