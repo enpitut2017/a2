@@ -41,7 +41,6 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      from = "[つくByeBuy運営局]"
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       body = @item.student_id.to_s + "様
 
@@ -61,8 +60,7 @@ class ItemsController < ApplicationController
       ==================================
       "
 
-      print email
-      ActionMailer::Base.mail(from: from, to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
+      ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
     end
 
     respond_to do |format|
@@ -80,7 +78,6 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     if @item.save
-      from = "[つくByeBuy運営局]"
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       body = @item.student_id.to_s + "様
 
@@ -100,8 +97,7 @@ class ItemsController < ApplicationController
       ==================================
       "
 
-      print email
-      ActionMailer::Base.mail(from: from, to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
+      ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
     end
     respond_to do |format|
       if @item.update(item_params)
@@ -117,7 +113,6 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    from = "[つくByeBuy運営局]"
     email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
     body = @item.student_id.to_s + "様
 
@@ -134,8 +129,7 @@ class ItemsController < ApplicationController
     ==================================
     "
 
-    print email
-    ActionMailer::Base.mail(from: from, to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
+    ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
