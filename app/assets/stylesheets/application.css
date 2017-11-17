@@ -59,10 +59,12 @@ a.red_line::after {
   transition: .3s;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
+  margin-bottom: 2px;
 }
 a.red_line:hover::after {
   width: 100%;
   background-color: #ff5500;
+  margin-bottom: 2px;
 }
 
 /*ヘッダータブ*/

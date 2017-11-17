@@ -59,6 +59,29 @@
 
 </form>
 
+<%
+@dep = "指定しない"
+@gen = "指定しない"
+@pla = "指定しない"
+@key = "指定しない"
+
+if params["department_select"] != "0"
+  @dep = @departments[params["department_select"].to_i - 1].name
+end
+if params["genre_select"] != "0"
+  @gen = @genres[params["genre_select"].to_i - 1].name
+end
+if params["genre_select"] != "0"
+  @pla = @places[params["place_select"].to_i - 1].name
+end
+if params["genre_select"] != ""
+  @key = params["freeword_select"]
+end
+%>
+
+検索条件：
+<学類><%= @dep %>, <ジャンル><%= @gen %>, <場所><%= @pla %> <br>
+<キーワード><%= @key %><br>
 検索結果：<%= @items.length %>件の商品
 <% @items.each do |item| %>
 <table class="item_table" border="1">
