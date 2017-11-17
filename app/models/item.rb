@@ -3,7 +3,6 @@ class Item < ApplicationRecord
   belongs_to :genre, optional: true
   belongs_to :place, optional: true
   belongs_to :department, optional: true
-  has_many :comments
 
 	validate :name_error
 	validate :place_id_error
