@@ -2,7 +2,6 @@
 
 
 <p>
-  <strong>名前:</strong>
 
 <table class="item_table_show" border="1">
   <tr>
@@ -83,8 +82,16 @@
 <p>
   <strong>コメント:</strong></p>
   <% comments = Comment.where(item_id: @item.id ) %>
+  <% num = 1 %>
   <% comments.each do |comment| %>
-      <%= comment.comment_body   %>
+      <%= num %>.
+      <%= comment.comment_body %>
+      <% comments.each do |rep| %>
+        <% if rep.comment_body.start_with?(">>#{num}") %>
+          <p>&emsp;&emsp;&emsp;⇒<%= rep.comment_body.slice(3..-1) %></p>
+        <% end %>
+      <% end %>
+      <% num = num+1 %>
       </p>
   <% end %>
 
@@ -99,16 +106,6 @@
       </div><!--form-group-->
       <button type="submit">コメント</button>
     <% end %>
-
-
-
-
-
-
-
-
-
-
 
 <%= link_to '商品を編集する', edit_item_path(@item) %> |
 <%= link_to '商品一覧に戻る', items_path %>
