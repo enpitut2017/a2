@@ -79,21 +79,23 @@
 </p> -->
 
 
-<p>
-  <strong>コメント:</strong></p>
-  <% comments = Comment.where(item_id: @item.id ) %>
-  <% num = 1 %>
-  <% comments.each do |comment| %>
+<p><strong>コメント:</strong></p>
+<% comments = Comment.where(item_id: @item.id ) %>
+<% num = 1 %>
+<% comments.each do |comment| %>
+  <% if comment.comment_body.start_with?(">>") %>
+  <% else %>
       <%= num %>.
       <%= comment.comment_body %>
       <% comments.each do |rep| %>
-        <% if rep.comment_body.start_with?(">>#{num}") %>
-          <p>&emsp;&emsp;&emsp;⇒<%= rep.comment_body.slice(3..-1) %></p>
-        <% end %>
+          <% if rep.comment_body.start_with?(">>#{num}") %>
+              <p>&emsp;&emsp;&emsp;⇒<%= rep.comment_body.slice(3..-1) %></p>
+          <% end %>
       <% end %>
       <% num = num+1 %>
       </p>
   <% end %>
+<% end %>
 
 
 </p>
