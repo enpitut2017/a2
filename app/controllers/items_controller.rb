@@ -40,6 +40,8 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    num = ('0'..'9').to_a
+    @item.pass = Array.new(4){num[rand(num.size)]}.join
     if @item.save
       from = "[つくByeBuy運営局]"
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
