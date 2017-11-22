@@ -1,7 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= link_to 'つくByeBuy', items_path %></h1>
 
+
+<div class="header_tab">
+    <div id="tab">
+      <%= link_to '商品一覧', items_path %>
+      <%= link_to '出品', new_item_path %>
+      <%= link_to 'お問い合わせ', '../contact_page/home' %>
+    </div>
+</div>
 <p>
+
 
 <table class="item_table_show" border="1">
   <tr>
@@ -37,47 +47,6 @@
   </tr>
 </table>
 
-<!-- <p>
-  <strong>Name:</strong>
->>>>>>> development
-  <%= @item.name %>
-</p>
-
-<p>
-  <strong>場所:</strong>
-  <%= @item.place_id %>
-</p>
-
-<p>
-  <strong>画像:</strong>
-  <%= @item.image %>
-</p>
-
-<p>
-  <strong>価格:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
-  <strong>詳細:</strong>
-  <%= @item.detail %>
-</p>
-
-<p>
-  <strong>ジャンル:</strong>
-  <%= @item.genre_id %>
-</p>
-
-<p>
-  <strong>出品者の学籍番号:</strong>
-  <%= @item.student_id %>
-</p>
-
-<p>
-  <strong>学類:</strong>
-  <%= @item.department_id %>
-</p> -->
-
 
 <p><strong>コメント:</strong></p>
 <% comments = Comment.where(item_id: @item.id ) %>
@@ -97,9 +66,9 @@
   <% end %>
 <% end %>
 
-
 </p>
-<strong>コメント入力</strong></p>
+<p>
+<strong>コメント入力</strong>
 <%= form_tag("/items/comment") do %>
     <form>
       <div class="form-group">
@@ -108,9 +77,12 @@
       </div><!--form-group-->
       <button type="submit">コメント</button>
     <% end %>
+</p>
 
-<%= link_to '商品を編集する', edit_item_path(@item) %> |
-<%= link_to '商品一覧に戻る', items_path %>
+
+<%= link_to '商品を編集する', edit_item_path(@item), :class => "red_line" %> |
+<%= link_to '商品一覧に戻る', items_path, :class => "red_line"  %>
+
 
 <br><br>
 
