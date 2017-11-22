@@ -21,6 +21,29 @@ class ItemsController < ApplicationController
       @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id])
       @comment.save
       redirect_to :action => "show", :id => @comment.item_id
+      if @comment.save
+        @item = Item.find(params[:item_id])
+        email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
+        body = @item.student_id.to_s + "様
+
+        出品した商品に新しくコメントが届きました。
+        以下のリンクから返信フォームをご利用ください。
+
+        https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+        商品名:" + @item.name.to_s + "
+
+
+        このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+        心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+        ==================================
+         enPiT2017 tsuku.byebuy@gmail.com
+         チームA1 ムードメーカー  小島 直
+        ==================================
+        "
+
+        ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
+      end
   end
 
 
