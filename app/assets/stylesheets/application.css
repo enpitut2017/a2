@@ -36,6 +36,11 @@ h1 a:link{
   color: white;
 }
 
+h2{
+  margin: 32px 0px;
+  font-size: 2em;
+}
+
 /*リンク*/
 a.red_line {
   position: relative;
@@ -140,4 +145,55 @@ img{
   height: auto;
   text-align:center;
   vertical-align: middle;
+}
+
+
+/*詳細表示*/
+.item_table_show{
+  margin: 10px auto 60px auto;
+}
+
+.item_table_show .item_cell{
+  padding: 20px 10px;
+  vertical-align: top;
+}
+
+.item_name{
+  font-size: 2.4em;
+  font-weight: bold;
+}
+
+.item_price{
+  font-size: 1.8em;
+  text-align: right;
+  margin: 80px 20px 30px 20px;
+}
+
+.value{
+  color: red;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.item_place{
+  font-size: 1.6em;
+  text-align: right;
+  margin: 12px 20px;
+}
+
+.item_genre{
+  font-size: 1.2em;
+  color: #aaaaaa;
+  text-align: right;
+  margin: 0px 20px;
+}
+
+.item_detail{
+  padding: 20px 200px 60px 12px;
+}
+
+.to_mail_button{
+  vertical-align: bottom;
+  text-align: right;
+  margin: 12px 20px;
 }
