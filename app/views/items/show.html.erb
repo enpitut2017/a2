@@ -2,6 +2,7 @@
 
 <h1><%= link_to 'つくByeBuy', items_path %></h1>
 
+
 <div class="header_tab">
     <div id="tab">
       <%= link_to '商品一覧', items_path %>
@@ -9,6 +10,8 @@
       <%= link_to 'お問い合わせ', '../contact_page/home' %>
     </div>
 </div>
+<p>
+
 
 <table class="item_table_show" border="1">
   <tr>
@@ -45,14 +48,24 @@
 </table>
 
 
-<p>
-  <strong>コメント:</strong>
-  <% comments = Comment.where(item_id: @item.id ) %>
-  <% comments.each do |comment| %>
-  <p>
+<p><strong>コメント:</strong></p>
+<% comments = Comment.where(item_id: @item.id ) %>
+<% num = 1 %>
+<% comments.each do |comment| %>
+  <% if comment.comment_body.start_with?(">>") %>
+  <% else %>
+      <%= num %>.
       <%= comment.comment_body %>
-  </p>
+      <% comments.each do |rep| %>
+          <% if rep.comment_body.start_with?(">>#{num}") %>
+              <p>&emsp;&emsp;&emsp;⇒<%= rep.comment_body.slice(3..-1) %></p>
+          <% end %>
+      <% end %>
+      <% num = num+1 %>
+      </p>
   <% end %>
+<% end %>
+
 </p>
 <p>
 <strong>コメント入力</strong>
@@ -67,16 +80,9 @@
 </p>
 
 
-
-
-
-
-
-
-
-
 <%= link_to '商品を編集する', edit_item_path(@item), :class => "red_line" %> |
 <%= link_to '商品一覧に戻る', items_path, :class => "red_line"  %>
+
 
 <br><br>
 

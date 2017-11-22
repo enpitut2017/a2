@@ -40,12 +40,16 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    num = ('0'..'9').to_a
+    @item.pass = Array.new(4){num[rand(num.size)]}.join
     if @item.save
-      from = "[つくByeBuy運営局]"
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       body = @item.student_id.to_s + "様
 
       出品が完了しました。
+
+      編集用パスワードは " + @item.pass.to_s + " です。
+      商品の情報編集・販売完了・出品取り消し等に必要なので大事に保存してください。
 
       商品名:" + @item.name.to_s + "
 
@@ -61,8 +65,7 @@ class ItemsController < ApplicationController
       ==================================
       "
 
-      print email
-      ActionMailer::Base.mail(from: from, to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
+      ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
     end
 
     respond_to do |format|
@@ -80,7 +83,6 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     if @item.save
-      from = "[つくByeBuy運営局]"
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       body = @item.student_id.to_s + "様
 
@@ -100,8 +102,7 @@ class ItemsController < ApplicationController
       ==================================
       "
 
-      print email
-      ActionMailer::Base.mail(from: from, to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
+      ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
     end
     respond_to do |format|
       if @item.update(item_params)
@@ -117,7 +118,6 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    from = "[つくByeBuy運営局]"
     email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
     body = @item.student_id.to_s + "様
 
@@ -134,8 +134,7 @@ class ItemsController < ApplicationController
     ==================================
     "
 
-    print email
-    ActionMailer::Base.mail(from: from, to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
+    ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
