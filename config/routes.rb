@@ -10,6 +10,8 @@ post "items/comment" => "items#comment"
   get 'mail_page/home'
   get 'mail_page/done'
 
+  post "items/:id" => "items#show"
+
 
   resources :users
 

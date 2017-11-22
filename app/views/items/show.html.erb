@@ -83,18 +83,33 @@
 <p>
   <strong>コメント:</strong></p>
   <% comments = Comment.where(item_id: @item.id ) %>
+  <% num = 1 %>
   <% comments.each do |comment| %>
+      <%= num %>.
       <%= comment.comment_body   %>
+      <% @choice = ">>" + num.to_s %>
+      <%= form_tag :url => { :action => "show", :id => @item.id } do %>
+        <%= hidden_field_tag 'choice_send', @choice %>
+        <button type="submit">返信</button>
+      <% end %>
+      <% @choice = "" %>
+      <% num=num+1 %>
       </p>
   <% end %>
 
 
 </p>
+
+<%  %>
+
+
+<% choice_c = params['choice_send']%>
+
 <strong>コメント入力</strong></p>
 <%= form_tag("/items/comment") do %>
     <form>
       <div class="form-group">
-        <textarea name="comment_body" class="form-control" ></textarea>
+        <textarea name="comment_body" class="form-control" rows="4" cols="40"><%= choice_c %></textarea>
         <%= hidden_field_tag 'item_id', @item.id %>
       </div><!--form-group-->
       <button type="submit">コメント</button>
