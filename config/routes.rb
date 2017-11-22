@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'contact_page/home'
+
+  get 'contact_page/done'
+
   get 'comments/new'
 
   get 'comments/create'

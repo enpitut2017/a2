@@ -7,6 +7,7 @@
     <div id="tab">
       <%= link_to '商品一覧', items_path %>
       <%= link_to '出品', new_item_path %>
+      <%= link_to 'お問い合わせ', '../contact_page/home' %>
     </div>
 </div>
 
@@ -65,24 +66,23 @@
 @pla = "指定しない"
 @key = "指定しない"
 
-if params["department_select"] != "0"
+if params["department_select"] != "0" && params["department_select"] != nil
   @dep = @departments[params["department_select"].to_i - 1].name
 end
-if params["genre_select"] != "0"
+if params["genre_select"] != "0" && params["genre_select"] != nil
   @gen = @genres[params["genre_select"].to_i - 1].name
 end
-if params["genre_select"] != "0"
+if params["place_select"] != "0" && params["place_select"] != nil
   @pla = @places[params["place_select"].to_i - 1].name
 end
-if params["genre_select"] != ""
+if params["freeword_select"] != "" && params["freeword_select"] != nil
   @key = params["freeword_select"]
 end
 %>
 
-検索条件：
-<学類><%= @dep %>, <ジャンル><%= @gen %>, <場所><%= @pla %> <br>
-<キーワード><%= @key %><br>
-検索結果：<%= @items.length %>件の商品
+検索条件：【学類：<%= @dep %>】【ジャンル：<%= @gen %>】【場所：<%= @pla %>】<br>
+【キーワード：<%= @key %>】<br><br>
+検索結果：<span class="match_num"><%= @items.length %></span>件の商品
 <% @items.each do |item| %>
 <table class="item_table" border="1">
   <tr>

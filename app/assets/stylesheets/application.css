@@ -114,6 +114,12 @@ a.red_line:hover::after {
   border: solid 1px #000000;
 }
 
+/*検索結果件数*/
+.match_num{
+  color: red;
+  font-size: 1.6em;
+}
+
 
 /*一覧表示*/
 table.item_table{
