@@ -19,11 +19,12 @@ class ItemsController < ApplicationController
 
   def comment
       @item = Item.find(params[:item_id])
-      @password = params[:password]
-      if @password == @item.student_id then
-        judge = 1
+      password = params[:password]
+
+      if password == @item.image then
+        judge = "1"
       else
-        judge = 0
+        judge = "0"
       end
 
       @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)

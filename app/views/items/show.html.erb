@@ -52,7 +52,11 @@
       <%= comment.comment_body %>
       <% comments.each do |rep| %>
           <% if rep.reply.to_i == num %>
+            <% if rep.judge == "0" %>
               <p>⇨<%= rep.comment_body %></p>
+            <% else %>
+              <font color = "darkorange"><p>出品者の返信<br>⇨<%= rep.comment_body %></p></font>
+            <% end %>
           <% end %>
       <% end %>
       <% r_comment2 = "への返信" %>
@@ -85,15 +89,14 @@
 
 <p id="com"></p>
 
-<strong>コメント入力</strong></p>
-
+<strong>コメント入力</strong><br>
+<b><%= return_comment %><b>
 <%= form_tag("/items/comment") do %>
     <form>
       <div class="form-group">
 
-        <b><%= return_comment %><b></br>
         <textarea name="comment_body" class="form-control" rows="6" cols="60"></textarea>
-        <br>出品者はパスワードを入力してください。
+        <br>出品者はパスワードを入力してください。<br>
         <textarea name="password" class="form-control" ></textarea>
 
 
