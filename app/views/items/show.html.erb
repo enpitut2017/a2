@@ -55,10 +55,12 @@
               <p>&emsp;&emsp;&emsp;⇒<%= rep.comment_body.slice(3..-1) %></p>
           <% end %>
       <% end %>
-
+      <% r_comment2 = "への返信" %>
       <% @choice = ">>" + num.to_s %>
+      <% @r_comment = num.to_s + r_comment2 %>
       <%= form_tag :url => { :action => "show", :id => @item.id } do %>
         <%= hidden_field_tag 'choice_send', @choice %>
+        <%= hidden_field_tag 'return_send', @r_comment %>
         <button type="submit">返信</button>
       <% end %>
 
@@ -72,6 +74,7 @@
 <p>
 
 <% choice_c = params['choice_send']%>
+<% return_comment = params['return_send']%>
 
 <strong>コメント入力</strong></p>
 
@@ -79,9 +82,11 @@
     <form>
       <div class="form-group">
 
-        <textarea name="comment_body" class="form-control" rows="6" cols="60"><%= choice_c %></textarea>
+        <b><%= return_comment %><b></br>
+        <textarea name="comment_body" class="form-control" rows="6" cols="60"></textarea>
 
         <%= hidden_field_tag 'item_id', @item.id %>
+        <%= hidden_field_tag 'choice_c', choice_c %>
       </div><!--form-group-->
       <button type="submit" class="color_btn">コメント</button>
     <% end %>
