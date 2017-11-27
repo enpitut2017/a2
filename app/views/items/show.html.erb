@@ -84,6 +84,8 @@
 
         <b><%= return_comment %><b></br>
         <textarea name="comment_body" class="form-control" rows="6" cols="60"></textarea>
+        出品者はパスワードを入力してください。
+        <textarea name="password" class="form-control" ></textarea>
 
         <%= hidden_field_tag 'item_id', @item.id %>
         <%= hidden_field_tag 'choice_c', choice_c %>

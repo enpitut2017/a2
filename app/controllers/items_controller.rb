@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
   end
 
   def comment
-      @return = params[:choice_c] + params[:comment_body]
+      @return = params[:choice_c] + params[:password] + params[:comment_body]
       @comment = Comment.new(comment_body: @return, item_id: params[:item_id])
       @comment.save
       redirect_to :action => "show", :id => @comment.item_id
