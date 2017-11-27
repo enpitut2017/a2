@@ -18,8 +18,15 @@ class ItemsController < ApplicationController
   end
 
   def comment
-      @return = params[:choice_c] + params[:password] + params[:comment_body]
-      @comment = Comment.new(comment_body: @return, item_id: params[:item_id])
+      @item = Item.find(params[:item_id])
+      @password = params[:password]
+      if @password == @item.student_id then
+        judge = 1
+      else
+        judge = 0
+      end
+
+      @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
       @comment.save
       redirect_to :action => "show", :id => @comment.item_id, :anchor => 'com'
       # if @comment.save
