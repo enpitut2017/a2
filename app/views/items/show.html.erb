@@ -57,7 +57,7 @@
       <% end %>
 
       <% @choice = ">>" + num.to_s %>
-      <%= form_tag :url => { :action => "show", :id => @item.id } do %>
+<%= form_tag :url => { :action => "show", :id => @item.id } do %>
         <%= hidden_field_tag 'choice_send', @choice %>
         <button type="submit">返信</button>
       <% end %>
@@ -73,6 +73,8 @@
 
 <% choice_c = params['choice_send']%>
 
+<p id="com"></p>
+
 <strong>コメント入力</strong></p>
 
 <%= form_tag("/items/comment") do %>
@@ -85,9 +87,7 @@
       </div><!--form-group-->
       <button type="submit">コメント</button>
     <% end %>
-</p>
-
-
+  </p>
 <%= link_to '商品を編集する', edit_item_path(@item), :class => "red_line" %> |
 <%= link_to '商品一覧に戻る', items_path, :class => "red_line"  %>
 
