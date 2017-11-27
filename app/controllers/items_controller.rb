@@ -18,14 +18,15 @@ class ItemsController < ApplicationController
   end
 
   def comment
-      @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id])
+      @return = params[:choice_c] + params[:comment_body]
+      @comment = Comment.new(comment_body: @return, item_id: params[:item_id])
       @comment.save
       redirect_to :action => "show", :id => @comment.item_id
       # if @comment.save
       #   @item = Item.find(params[:item_id])
       #   email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       #   body = @item.student_id.to_s + "様
-      # 
+      #
       #   出品した商品に新しくコメントが届きました。
       #   以下のリンクから返信フォームをご利用ください。
       #
