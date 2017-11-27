@@ -36,9 +36,14 @@ h1 a:link{
   color: white;
 }
 
+/*ページのタイトル*/
 h2{
-  margin: 32px 0px;
+  padding: 10px 20px 10px 40px;
+  margin: 10px 0px 40px -40px;
   font-size: 2em;
+  background-color: #dd5500;
+  color: #ffffee;
+  display: inline-block;
 }
 
 /*リンク*/
@@ -197,4 +202,54 @@ img{
   vertical-align: bottom;
   text-align: right;
   margin: 12px 20px;
+}
+
+/*ボタン*/
+.color_btn {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: white;
+    border: solid 2px #dd5500;
+    background-color: #dd5500;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+a.color_btn{
+  color: white;
+}
+
+.color_btn:hover {
+    background: white;
+    color: #dd5500;
+}
+
+
+/*ボタンの配置*/
+.bottom_button{
+  margin-top: 60px;
+}
+
+.actions{
+  margin-top: 20px;
+}
+
+
+/*select*/
+select {
+	width: auto;
+	padding: 0px 32px 0px 6px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #999;
+	background: #eee;
+	background: url(arrow.png) right 50% no-repeat, -webkit-linear-gradient(top, #fff 0%,#efebe1 100%);
+	background: url(arrow.png) right 50% no-repeat, linear-gradient(to bottom, #fff 0%,#efebe1 100%);
+	background-size: 20px, 100%;
+}
+
+.contact_address{
+  margin: 20px 0px;
 }
