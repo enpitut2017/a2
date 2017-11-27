@@ -27,7 +27,7 @@
   <tr>
     <td colspan="2">
       <div class="item_detail"><%= @item.detail %></div>
-      <div class="to_mail_button"><%= submit_tag('出品者に連絡する') %></div>
+      <div class="to_mail_button"><%= submit_tag('出品者に連絡する', :class => "color_btn") %></div>
     </td>
   </tr>
   <!-- <tr>
@@ -83,14 +83,14 @@
 
         <%= hidden_field_tag 'item_id', @item.id %>
       </div><!--form-group-->
-      <button type="submit">コメント</button>
+      <button type="submit" class="color_btn">コメント</button>
     <% end %>
 </p>
 
-
-<%= link_to '商品を編集する', edit_item_path(@item), :class => "red_line" %> |
-<%= link_to '商品一覧に戻る', items_path, :class => "red_line"  %>
-
+<div class="bottom_button">
+<%= link_to '商品を編集する', edit_item_path(@item), :class => "color_btn" %>
+<%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
+</div>
 
 <br><br>
 
