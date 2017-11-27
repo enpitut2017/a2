@@ -151,6 +151,7 @@ img{
 /*詳細表示*/
 .item_table_show{
   margin: 10px auto 60px auto;
+  border-collapse: collapse;
 }
 
 .item_table_show .item_cell{
