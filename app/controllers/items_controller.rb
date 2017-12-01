@@ -18,8 +18,18 @@ class ItemsController < ApplicationController
   end
 
   def comment
-      @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id])
+      @item = Item.find(params[:item_id])
+      password = params[:password]
+
+      if password == @item.image then
+        judge = "1"
+      else
+        judge = "0"
+      end
+
+      @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
       @comment.save
+
       redirect_to :action => "show", :id => @comment.item_id
       if @comment.save
         @item = Item.find(params[:item_id])
@@ -44,6 +54,7 @@ class ItemsController < ApplicationController
 
         ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
       end
+
   end
 
 

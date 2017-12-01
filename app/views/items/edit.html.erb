@@ -12,5 +12,7 @@
 
 <%= render 'form', item: @item %>
 
-<%= link_to '商品のページに戻る', @item, :class => "red_line"  %> |
-<%= link_to '商品一覧に戻る', items_path, :class => "red_line"  %>
+<div class="bottom_button">
+<%= link_to '商品のページに戻る', @item, :class => "color_btn"  %>
+<%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
+</div>
