@@ -41,29 +41,47 @@
 <%=  %>
 </table>
 
-<p><strong>コメント</strong></p>
-
+<h2>コメント</h2>
+<br>
 <% comments = Comment.where(item_id: @item.id ) %>
 <% num = 1 %>
 <% comments.each do |comment| %>
   <!--  出品者のコメントか判定  -->
   <% if comment.reply == "0" %>
+
       <% if comment.judge == "1" %>
+      <span class="comment_seller">
+        <span class="comment_question">
           <%= num %>.
-          <font color = "darkorange">[出品者のコメント]
-              <%= comment.comment_body %>
+          [出品者のコメント]
+                  <%= comment.comment_body %>
           </font>
+        </span>
+      </span>
       <% else %>
+        <span class="comment_question">
           <%= num %>.
           <%= comment.comment_body %>
+        </span>
       <% end %>
+
       <!--  コメントにリプライを生やす  -->
       <% comments.each do |rep| %>
           <% if rep.reply.to_i == num %>
               <% if rep.judge == "0" %>
-                  <p>&emsp;&emsp;&emsp;⇨<%= rep.comment_body %></p>
+
+                  <p>&emsp;&emsp;&emsp;⇨
+                    <span class="comment_answer">
+                    <%= rep.comment_body %>
+                  </span>
+                  </p>
+                </div>
               <% else %>
-                  <font color = "darkorange"><p>&emsp;&emsp;&emsp;⇨[出品者の返信]<%= rep.comment_body %></p></font>
+                  <span class="comment_seller"><p>
+                    &emsp;&emsp;&emsp;⇨
+                      <span class="comment_answer">[出品者の返信]<%= rep.comment_body %>
+                      </span>
+                    </p></span>
               <% end %>
           <% end %>
       <% end %>
@@ -97,6 +115,7 @@
 
 <p id="com"></p>
 
+<div class="comment_form">
 <strong>コメント入力</strong><br>
 <b><%= return_comment %><b>
 <%= form_tag("/items/comment") do %>
@@ -114,7 +133,7 @@
       </div><!--form-group-->
       <button type="submit" class="color_btn">コメント</button>
     <% end %>
-
+</div>
 </p>
 
 <div class="bottom_button">
