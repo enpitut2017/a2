@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:item_id])
       password = params[:password]
 
-      if password == @item.image then
+      if password == @item.pass then
         judge = "1"
       else
         judge = "0"
