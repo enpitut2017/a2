@@ -23,8 +23,10 @@ class ItemsController < ApplicationController
 
       if password == @item.pass then
         judge = "1"
-      else
+      elsif password == "" then
         judge = "0"
+      else
+        judge = "2"
       end
 
       @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
