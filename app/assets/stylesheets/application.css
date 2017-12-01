@@ -209,10 +209,39 @@ img{
   margin: 12px 20px;
 }
 
+.comment_question{
+  border: solid #efead0;
+  background-color: #fffae0;
+  border-radius: 8px;
+  padding: 4px;
+  display: inline-block;
+}
+
+.comment_answer{
+  border: solid #efead0;
+  background-color: #fffae0;
+  border-radius: 8px;
+  padding: 4px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.comment_seller{
+  color: darkotange;
+}
+
+.comment_form{
+  background-color: #fffcee;
+  border: solid #dddddd 1px;
+  padding: 24px 10px;
+  display: inline-block;
+}
+
 /*ボタン*/
 .color_btn {
     display: inline-block;
     padding: 0.3em 1em;
+    margin: 16px 0px 8px 0px;
     text-decoration: none;
     color: white;
     border: solid 2px #dd5500;
