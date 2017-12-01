@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
 
       redirect_to :action => "show", :id => @comment.item_id
       if @comment.save
+        if @comment.judge == "0"
         @item = Item.find(params[:item_id])
         email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
         body = @item.student_id.to_s + "様
@@ -54,7 +55,7 @@ class ItemsController < ApplicationController
 
         ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
       end
-
+    end
   end
 
 
