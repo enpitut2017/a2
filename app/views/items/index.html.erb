@@ -29,16 +29,18 @@
       <% @genres.each do |gen| %>
         <option value="<%= gen.id %>"><%= gen.name %></option>
       <% end %>
-    </select>
-    場所：
+    </select><br>
+    場所<br>
+
     <% @places = Place.all %>
-    <select name="place_select">
-      <option value="0" selected="selected">指定しない</option>
-      <% @places.each do |pla| %>
-        <option value="<%= pla.id %>"><%= pla.name %></option>
-      <% end %>
-    </select>
-    <br><br>
+    <% @places.each do |pla| %>
+    <span class="place_checkbox_item">
+      <%= check_box 'place_check', pla.id, {}, true, false %>
+      <%= pla.name %>　
+    </span>
+    <% end %>
+
+    <br>
     <strong>フリーワード検索</strong><br>
     <input type="text" name="freeword_select" size="40">
       <input type="submit" value="検索" class="color_btn">
@@ -53,8 +55,16 @@
 <% if params["genre_select"].to_i > 0 %>
   <% @items = @items.where(genre_id: params["genre_select"]) %>
 <% end %>
-<% if params["place_select"].to_i > 0 %>
-  <% @items = @items.where(place_id: params["place_select"]) %>
+<% if params["place_check"] != nil %>
+  <% @place_check_id = [] %>
+  <% for i in 1..@places.length %>
+    <% if params["place_check"][i.to_s] %>
+    <% @place_check_id << i %>
+    <% end %>
+  <% end %>
+  <% @items = @items.where(place_id: @place_check_id) %>
+<% else%>
+  <% @place_check_id = [] %>
 <% end %>
 
 </form>
@@ -71,15 +81,23 @@ end
 if params["genre_select"] != "0" && params["genre_select"] != nil
   @gen = @genres[params["genre_select"].to_i - 1].name
 end
-if params["place_select"] != "0" && params["place_select"] != nil
-  @pla = @places[params["place_select"].to_i - 1].name
+
+if @place_check_id.length > 0
+  @pla = @places[@place_check_id[0] - 1].name
+  for i in 1..@place_check_id.length-1
+    @pla = @pla + ", " + @places[@place_check_id[i]-1].name
+  end
 end
+
 if params["freeword_select"] != "" && params["freeword_select"] != nil
   @key = params["freeword_select"]
 end
 %>
 
-検索条件：【学類：<%= @dep %>】【ジャンル：<%= @gen %>】【場所：<%= @pla %>】<br>
+<b>検索条件</b><br>
+【学類：<%= @dep %>】<br>
+【ジャンル：<%= @gen %>】<br>
+【場所：<%= @pla %>】<br>
 【キーワード：<%= @key %>】<br><br>
 検索結果：<span class="match_num"><%= @items.length %></span>件の商品
 <% @items.each do |item| %>
