@@ -124,6 +124,11 @@ a.red_line:hover::after {
   border: solid 1px #000000;
 }
 
+.place_checkbox_item{
+  font-weight: normal;
+  display: inline-block;
+}
+
 /*検索結果件数*/
 .match_num{
   color: red;
