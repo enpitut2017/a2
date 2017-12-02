@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><% notice %></p>
 
 <h1><%= link_to 'つくByeBuy', items_path %></h1>
+
 
 
 <div class="header_tab">
@@ -98,6 +99,9 @@
 <p id="com"></p>
 
 <strong>コメント入力</strong><br>
+
+<%= notice %>
+
 <b><%= return_comment %><b>
 <%= form_tag("/items/comment") do %>
     <form>
