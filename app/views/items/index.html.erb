@@ -103,7 +103,8 @@ end
 <% @items.each do |item| %>
 <table class="item_table" border="1">
   <tr>
-    <td rowspan="4" width="180"> <%= link_to image_tag('no_image.png', { :alt => 'no_image'}), item %></td>
+    <td rowspan="4" width="180"><%= image_tag item.image.url if item.image? %></td>
+    <!-- <td rowspan="4" width="180"> <%= link_to image_tag('no_image.png', { :alt => 'no_image'}), item %></td> -->
   </tr>
   <tr>
     <td class="cell_label">商品名</td>

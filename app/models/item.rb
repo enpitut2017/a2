@@ -1,13 +1,15 @@
 class Item < ApplicationRecord
-  
+
   belongs_to :genre, optional: true
   belongs_to :place, optional: true
   belongs_to :department, optional: true
   has_many :comments
 
+  mount_uploader :image, PictureUploader
+
 	validate :name_error
 	validate :place_id_error
-	validate :image_error
+	# validate :image_error
 	validate :price_error
 	validate :detail_error
 	validate :genre_id_error
@@ -28,12 +30,12 @@ class Item < ApplicationRecord
           end
         end
 
-	def image_error
-          #画像が空の時にエラーメッセージを追加する
-          if image.empty?
-            errors[:base] << "画像の欄は空白のまま送信できません"
-          end
-        end
+	# def image_error
+  #         #画像が空の時にエラーメッセージを追加する
+  #         if image.empty?
+  #           errors[:base] << "画像の欄は空白のまま送信できません"
+  #         end
+  #       end
 
 	def price_error
           #価格が空の時にエラーメッセージを追加する
