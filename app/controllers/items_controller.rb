@@ -115,7 +115,7 @@ end
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: '商品が登録されました。' }
+        format.html { redirect_to @item}
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -154,7 +154,7 @@ if password == @item.pass
     end
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to @item }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -188,7 +188,7 @@ end
     ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to items_url }
       format.json { head :no_content }
     end
   end
