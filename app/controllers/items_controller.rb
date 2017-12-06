@@ -117,6 +117,9 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+password = params[:item][:confirm]
+if password == @item.pass
+
     if @item.save
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       body = @item.student_id.to_s + "様
@@ -148,6 +151,9 @@ class ItemsController < ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+else
+       redirect_to :action => "edit", :id => @item.id
+end
   end
 
   # DELETE /items/1
