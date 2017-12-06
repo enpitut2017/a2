@@ -12,6 +12,8 @@
 </div>
 
 <!--検索機能-->
+<button class="toggle_button" data-toggle-id="search">検索・絞り込み</button>
+<div class="toggle_container" data-toggle-id="search">
 <form name="search_form" method="get">
   <div class="search_form">
     学類：
@@ -30,16 +32,16 @@
         <option value="<%= gen.id %>"><%= gen.name %></option>
       <% end %>
     </select><br>
-    場所<br>
+    <span class="toggle_button" data-toggle-id="place">場所</span>
+    <div class="toggle_container" data-toggle-id="place">
 
-    <% @places = Place.all %>
-    <% @places.each do |pla| %>
-    <span class="place_checkbox_item">
-      <%= check_box 'place_check', pla.id, {}, true, false %>
-      <%= pla.name %>　
-    </span>
-    <% end %>
-
+      <% @places = Place.all %>
+      <% @places.each do |pla| %>
+      <span class="place_checkbox_item">
+        <label><%= check_box 'place_check', pla.id, {}, true, false %><%= pla.name %></label>
+      </span>
+      <% end %>
+    </div>
     <br>
     <strong>フリーワード検索</strong><br>
     <input type="text" name="freeword_select" size="40">
@@ -68,6 +70,7 @@
 <% end %>
 
 </form>
+</div>
 
 <%
 @dep = "指定しない"
@@ -93,6 +96,8 @@ if params["freeword_select"] != "" && params["freeword_select"] != nil
   @key = params["freeword_select"]
 end
 %>
+
+<br>
 
 <b>検索条件</b><br>
 【学類：<%= @dep %>】<br>

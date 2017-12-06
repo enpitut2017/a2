@@ -85,8 +85,21 @@ end
   # POST /items.json
   def create
     @item = Item.new(item_params)
-    num = ('0'..'9').to_a
-    @item.pass = Array.new(4){num[rand(num.size)]}.join
+    items = Item
+    pass_check = "0"
+    id_i = 1
+        while id_i <= Item.last.id do
+      @it = Item.find(id_i)
+      if @it.student_id == @item.student_id
+        @item.pass = @it.pass
+        pass_check = "1"
+      end
+      id_i += 1
+    end
+    if pass_check == "0"
+      num = ('0'..'9').to_a
+      @item.pass = Array.new(4){num[rand(num.size)]}.join
+    end
     if @item.save
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       body = @item.student_id.to_s + "様
