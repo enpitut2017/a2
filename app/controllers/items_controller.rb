@@ -20,15 +20,25 @@ class ItemsController < ApplicationController
   def comment
       @item = Item.find(params[:item_id])
       password = params[:password]
+      judge = "3"
 
       if password == @item.pass then
         judge = "1"
-      else
+      elsif password == "" then
         judge = "0"
+      else
+        judge = "2"
+        flash[:notice] = "※※※パスワードが間違っています。"
+        redirect_to action:  "show", id: params[:item_id]
+
+
       end
 
+
+      if judge == "1"  || judge == "0" then
       @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
       @comment.save
+
 
       redirect_to :action => "show", :id => @comment.item_id
       if @comment.save
@@ -57,7 +67,7 @@ class ItemsController < ApplicationController
       end
     end
   end
-
+end
 
 
 
@@ -105,7 +115,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: '商品が登録されました。' }
+        format.html { redirect_to @item}
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -117,6 +127,9 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+password = params[:item][:confirm]
+if password == @item.pass
+
     if @item.save
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       body = @item.student_id.to_s + "様
@@ -141,13 +154,16 @@ class ItemsController < ApplicationController
     end
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to @item }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+else
+       redirect_to :action => "edit", :id => @item.id
+end
   end
 
   # DELETE /items/1
@@ -172,7 +188,7 @@ class ItemsController < ApplicationController
     ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to items_url }
       format.json { head :no_content }
     end
   end

@@ -37,6 +37,11 @@ gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# 追加
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
 group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'byebug',  '9.0.6', platform: :mri

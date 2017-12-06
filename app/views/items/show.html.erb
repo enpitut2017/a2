@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><% notice %></p> -->
 
 <h1><%= link_to 'つくByeBuy', items_path %></h1>
+
 
 
 <div class="header_tab">
@@ -16,7 +17,7 @@
 <h2>商品の詳細</h2>
 <table class="item_table_show" border="1">
   <tr>
-    <td width="30%"><%= image_tag('no_image.png') %></td>
+    <td width="30%"><%= image_tag @item.image.url if @item.image? %></td>
     <td class="item_cell">
       <div class="item_name"><%= @item.name %></div>
       <div class="item_price"><span class="value"><%= @item.price %></span> 円</div>
@@ -27,7 +28,10 @@
   <tr>
     <td colspan="2">
       <div class="item_detail"><%= @item.detail %></div>
+      <%= form_tag('../mail_page/home', method: "get") do %>
+      <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
       <div class="to_mail_button"><%= submit_tag('出品者に連絡する', :class => "color_btn") %></div>
+      <% end %>
     </td>
   </tr>
   <!-- <tr>
@@ -117,6 +121,9 @@
 
 <div class="comment_form">
 <strong>コメント入力</strong><br>
+
+<%= notice %>
+
 <b><%= return_comment %><b>
 <%= form_tag("/items/comment") do %>
     <form>
@@ -142,10 +149,3 @@
 </div>
 
 <br><br>
-
-<%= form_tag('../mail_page/home', method: "get") do %>
-
-<%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
-
-
-<% end %>
