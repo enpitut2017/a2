@@ -28,7 +28,10 @@
   <tr>
     <td colspan="2">
       <div class="item_detail"><%= @item.detail %></div>
+      <%= form_tag('../mail_page/home', method: "get") do %>
+      <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
       <div class="to_mail_button"><%= submit_tag('出品者に連絡する', :class => "color_btn") %></div>
+      <% end %>
     </td>
   </tr>
   <!-- <tr>
@@ -146,10 +149,3 @@
 </div>
 
 <br><br>
-
-<%= form_tag('../mail_page/home', method: "get") do %>
-
-<%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
-
-
-<% end %>
