@@ -20,15 +20,25 @@ class ItemsController < ApplicationController
   def comment
       @item = Item.find(params[:item_id])
       password = params[:password]
+      judge = "3"
 
       if password == @item.pass then
         judge = "1"
-      else
+      elsif password == "" then
         judge = "0"
+      else
+        judge = "2"
+        flash[:notice] = "※※※パスワードが間違っています。"
+        redirect_to action:  "show", id: params[:item_id]
+
+
       end
 
+
+      if judge == "1"  || judge == "0" then
       @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
       @comment.save
+
 
       redirect_to :action => "show", :id => @comment.item_id
       if @comment.save
