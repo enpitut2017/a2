@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><% notice %></p> -->
 
 <h1><%= link_to 'つくByeBuy', items_path %></h1>
+
 
 
 <div class="header_tab">
@@ -16,7 +17,7 @@
 <h2>商品の詳細</h2>
 <table class="item_table_show" border="1">
   <tr>
-    <td width="30%"><%= image_tag('no_image.png') %></td>
+    <td width="30%"><%= image_tag @item.image.url if @item.image? %></td>
     <td class="item_cell">
       <div class="item_name"><%= @item.name %></div>
       <div class="item_price"><span class="value"><%= @item.price %></span> 円</div>
@@ -27,7 +28,10 @@
   <tr>
     <td colspan="2">
       <div class="item_detail"><%= @item.detail %></div>
+      <%= form_tag('../mail_page/home', method: "get") do %>
+      <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
       <div class="to_mail_button"><%= submit_tag('出品者に連絡する', :class => "color_btn") %></div>
+      <% end %>
     </td>
   </tr>
   <!-- <tr>
@@ -41,29 +45,47 @@
 <%=  %>
 </table>
 
-<p><strong>コメント</strong></p>
-
+<h2>コメント</h2>
+<br>
 <% comments = Comment.where(item_id: @item.id ) %>
 <% num = 1 %>
 <% comments.each do |comment| %>
   <!--  出品者のコメントか判定  -->
   <% if comment.reply == "0" %>
+
       <% if comment.judge == "1" %>
+      <span class="comment_seller">
+        <span class="comment_question">
           <%= num %>.
-          <font color = "darkorange">[出品者のコメント]
-              <%= comment.comment_body %>
+          [出品者のコメント]
+                  <%= comment.comment_body %>
           </font>
+        </span>
+      </span>
       <% else %>
+        <span class="comment_question">
           <%= num %>.
           <%= comment.comment_body %>
+        </span>
       <% end %>
+
       <!--  コメントにリプライを生やす  -->
       <% comments.each do |rep| %>
           <% if rep.reply.to_i == num %>
               <% if rep.judge == "0" %>
-                  <p>&emsp;&emsp;&emsp;⇨<%= rep.comment_body %></p>
+
+                  <p>&emsp;&emsp;&emsp;⇨
+                    <span class="comment_answer">
+                    <%= rep.comment_body %>
+                  </span>
+                  </p>
+                </div>
               <% else %>
-                  <font color = "darkorange"><p>&emsp;&emsp;&emsp;⇨[出品者の返信]<%= rep.comment_body %></p></font>
+                  <span class="comment_seller"><p>
+                    &emsp;&emsp;&emsp;⇨
+                      <span class="comment_answer">[出品者の返信]<%= rep.comment_body %>
+                      </span>
+                    </p></span>
               <% end %>
           <% end %>
       <% end %>
@@ -97,7 +119,11 @@
 
 <p id="com"></p>
 
+<div class="comment_form">
 <strong>コメント入力</strong><br>
+
+<%= notice %>
+
 <b><%= return_comment %><b>
 <%= form_tag("/items/comment") do %>
     <form>
@@ -114,7 +140,7 @@
       </div><!--form-group-->
       <button type="submit" class="color_btn">コメント</button>
     <% end %>
-
+</div>
 </p>
 
 <div class="bottom_button">
@@ -123,10 +149,3 @@
 </div>
 
 <br><br>
-
-<%= form_tag('../mail_page/home', method: "get") do %>
-
-<%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
-
-
-<% end %>
