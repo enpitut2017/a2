@@ -79,7 +79,7 @@ a.red_line:hover::after {
 
 /*ヘッダータブ*/
 .header_tab{
-  background-color: #ffeecc;
+  background-color: #fffae0;
   font-weight: bold;
   color: #555555;
   padding: 0px 30px;
@@ -107,7 +107,7 @@ a.red_line:hover::after {
     color:#555555;
     font-weight:bold;
     font-size:16px;
-    background: #ffeecc;
+    background: #fffae0;
     padding: 0px 12px;
 }
 #tab a:hover{
@@ -223,11 +223,11 @@ img{
   border-radius: 8px;
   padding: 4px;
   display: inline-block;
-  font-weight: bold;
 }
 
 .comment_seller{
-  color: darkotange;
+  color: #ff5500;
+  font-weight: bold;
 }
 
 .comment_form{
