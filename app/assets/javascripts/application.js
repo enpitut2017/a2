@@ -12,4 +12,13 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
 //= require_tree .
+
+$(function() {
+  $('.toggle_button').click(function() {
+    var id = $(this).attr('data-toggle-id');
+    var sel = '.toggle_container[data-toggle-id="' + id + '"]';
+    $(sel).slideToggle();
+  });
+});
