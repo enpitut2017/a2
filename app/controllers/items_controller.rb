@@ -182,6 +182,8 @@ end
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+password = params[:password]
+if @item.pass == password
     email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
     body = @item.student_id.to_s + "様
 
@@ -204,7 +206,11 @@ end
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
-  end
+else
+redirect_to :action => "show", :id => @item.id
+
+end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

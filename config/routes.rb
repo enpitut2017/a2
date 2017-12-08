@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   get 'comments/create'
 
+
 post "items/comment" => "items#comment"
+post "items/destroy" => "items#destroy"
 
   get 'mail_page/home'
   get 'mail_page/done'
