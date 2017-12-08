@@ -46,7 +46,34 @@
     <strong>フリーワード検索</strong><br>
     <input type="text" name="freeword_select" size="40">
       <input type="submit" value="検索" class="color_btn">
+
+    <!--ソート方法-->
+    <br><br>
+    並び替え：
+    <select name="sort_type">
+      <% slc0 = '' %>
+      <% slc1 = '' %>
+      <% if params["sort_type"] == '1' %>
+        <% slc1 = "selected='selected'" %>
+      <% else %>
+        <% slc0 = "selected='selected'" %>
+      <% end %>
+
+      <option value="0" <%= slc0 %> >新しい順に表示</option>
+      <option value="1" <%= slc1 %> >価格順に表示</option>
+    </select>
+
     </div><br>
+
+  <% @sort_str = "" %>
+  <% if params["sort_type"] == '0' || params["sort_type"] == nil%>
+    <% @items = Item.order('created_at DESC').all %>
+    <% @sort_str = "新しい順に表示" %>
+  <% elsif params["sort_type"] == '1' %>
+    <% @items = Item.order('price ASC').all %>
+    <% @sort_str = "価格順に表示" %>
+  <% end %>
+
 
 <% if params["freeword_select"] != "" && params["freeword_select"] != nil %>
   <% @items = @items.where("name like(?)", "%#{params['freeword_select']}%") %>
@@ -97,9 +124,11 @@ if params["freeword_select"] != "" && params["freeword_select"] != nil
 end
 %>
 
+
+
 <br>
 
-<b>検索条件</b><br>
+<b>検索条件</b>：<%= @sort_str %><br>
 【学類：<%= @dep %>】<br>
 【ジャンル：<%= @gen %>】<br>
 【場所：<%= @pla %>】<br>

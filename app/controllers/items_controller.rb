@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.order('created_at DESC').all
   end
 
   # GET /items/1
@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:item_id])
       password = params[:password]
       judge = "3"
+      c_error = "0"
 
       if password == @item.pass then
         judge = "1"
@@ -29,16 +30,28 @@ class ItemsController < ApplicationController
       else
         judge = "2"
         flash[:notice] = "※※※パスワードが間違っています。"
-        redirect_to action:  "show", id: params[:item_id]
-
-
       end
 
+      if params[:comment_body].empty?
+        c_error = "0"
+        flash[:notice] = "※※※空欄のままでは送信できません。"
+      else
+        c_error = "1"
+      end
 
-      if judge == "1"  || judge == "0" then
-      @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
-      @comment.save
+      if judge == "2" || c_error == "0" then
+        if params[:choice_c] != "0" then
+          flash[:choice_c] = params[:choice_c]
+          flash[:return_comment] = params[:choice_c].to_s + "への返信"
+          flash[:null] = "1"
+        end
+        redirect_to action:  "show", id: params[:item_id]
+      end
 
+      if (judge == "1"  || judge == "0") && c_error == "1" then
+
+        @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
+        @comment.save
 
       redirect_to :action => "show", :id => @comment.item_id, :anchor => 'com'
       if @comment.save
@@ -63,7 +76,7 @@ class ItemsController < ApplicationController
         ==================================
         "
 
-        ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
+        ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
       end
     end
   end
@@ -123,7 +136,7 @@ end
       ==================================
       "
 
-      ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
     end
 
     respond_to do |format|
@@ -143,37 +156,40 @@ end
 password = params[:item][:confirm]
 if password == @item.pass
 
-    if @item.save
-      email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
-      body = @item.student_id.to_s + "様
-
-      商品の編集が完了しました。
-
-      商品名:" + @item.name.to_s + "
-
-      ↓商品詳細ページはコチラ↓
-      https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
-
-      このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-      心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
-
-      ==================================
-       enPiT2017 tsuku.byebuy@gmail.com
-       チームA1 ムードメーカー  小島 直
-      ==================================
-      "
-
-      ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
-    end
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item }
         format.json { render :show, status: :ok, location: @item }
+
+        if @item.save
+          email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
+          body = @item.student_id.to_s + "様
+
+          商品の編集が完了しました。
+
+          商品名:" + @item.name.to_s + "
+
+          ↓商品詳細ページはコチラ↓
+          https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+
+          このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+          心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+          ==================================
+           enPiT2017 tsuku.byebuy@gmail.com
+           チームA1 ムードメーカー  小島 直
+          ==================================
+          "
+
+          ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
+        end
+
       else
         format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+
 else
        redirect_to :action => "edit", :id => @item.id
 end
@@ -200,7 +216,7 @@ if @item.pass == password
     ==================================
     "
 
-    ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
+    ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url }
