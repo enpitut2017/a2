@@ -9,6 +9,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="header">
+      <header>
+        <h1><%= link_to 'つくByeBuy', items_path %></h1>
+      </header>
+      <div id="nav">
+        <nav>
+          <ul>
+            <li><%= link_to '商品一覧', items_path %></li>
+            <li><%= link_to '出品', new_item_path %></li>
+            <li><%= link_to 'お問い合わせ', '../contact_page/home' %></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
