@@ -57,10 +57,10 @@ class ItemsController < ApplicationController
         このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
         心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
-        ==================================
-         enPiT2017 tsuku.byebuy@gmail.com
-         チームA1 ムードメーカー  小島 直
-        ==================================
+            ==========================
+                enPiT2017 チームA1
+              tsuku.byebuy@gmail.com
+            ==========================
         "
 
         ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
@@ -117,10 +117,10 @@ end
       このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
       心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
-      ==================================
-       enPiT2017 tsuku.byebuy@gmail.com
-       チームA1 ムードメーカー  小島 直
-      ==================================
+          ==========================
+              enPiT2017 チームA1
+            tsuku.byebuy@gmail.com
+          ==========================
       "
 
       ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
@@ -162,10 +162,10 @@ if password == @item.pass
           このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
           心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
-          ==================================
-           enPiT2017 tsuku.byebuy@gmail.com
-           チームA1 ムードメーカー  小島 直
-          ==================================
+              ==========================
+                  enPiT2017 チームA1
+                tsuku.byebuy@gmail.com
+              ==========================
           "
 
           ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
@@ -195,10 +195,10 @@ end
     このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
     心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
-    ==================================
-     enPiT2017 tsuku.byebuy@gmail.com
-     チームA1 ムードメーカー  小島 直
-    ==================================
+    ==========================
+        enPiT2017 チームA1
+      tsuku.byebuy@gmail.com
+    ==========================
     "
 
     ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
