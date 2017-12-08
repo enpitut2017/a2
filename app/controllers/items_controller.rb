@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
         ==================================
         "
 
-        ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
+        ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
       end
     end
   end
@@ -123,7 +123,7 @@ end
       ==================================
       "
 
-      ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
     end
 
     respond_to do |format|
@@ -163,7 +163,7 @@ if password == @item.pass
       ==================================
       "
 
-      ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
     end
     respond_to do |format|
       if @item.update(item_params)
@@ -198,7 +198,7 @@ end
     ==================================
     "
 
-    ActionMailer::Base.mail(from: "[つくByeBuy運営局]", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
+    ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url }
