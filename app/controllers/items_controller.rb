@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.order('created_at DESC').all
   end
 
   # GET /items/1
@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:item_id])
       password = params[:password]
       judge = "3"
+      c_error = "0"
 
       if password == @item.pass then
         judge = "1"
@@ -29,18 +30,30 @@ class ItemsController < ApplicationController
       else
         judge = "2"
         flash[:notice] = "※※※パスワードが間違っています。"
-        redirect_to action:  "show", id: params[:item_id]
-
-
       end
 
+      if params[:comment_body].empty?
+        c_error = "0"
+        flash[:notice] = "※※※空欄のままでは送信できません。"
+      else
+        c_error = "1"
+      end
 
-      if judge == "1"  || judge == "0" then
-      @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
-      @comment.save
+      if judge == "2" || c_error == "0" then
+        if params[:choice_c] != "0" then
+          flash[:choice_c] = params[:choice_c]
+          flash[:return_comment] = params[:choice_c].to_s + "への返信"
+          flash[:null] = "1"
+        end
+        redirect_to action:  "show", id: params[:item_id]
+      end
 
+      if (judge == "1"  || judge == "0") && c_error == "1" then
 
-      redirect_to :action => "show", :id => @comment.item_id
+        @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
+        @comment.save
+
+      redirect_to :action => "show", :id => @comment.item_id, :anchor => 'com'
       if @comment.save
         if @comment.judge == "0"
         @item = Item.find(params[:item_id])
@@ -57,10 +70,10 @@ class ItemsController < ApplicationController
         このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
         心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
-        ==================================
-         enPiT2017 tsuku.byebuy@gmail.com
-         チームA1 ムードメーカー  小島 直
-        ==================================
+            ==========================
+                enPiT2017 チームA1
+              tsuku.byebuy@gmail.com
+            ==========================
         "
 
         ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
@@ -117,10 +130,10 @@ end
       このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
       心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
-      ==================================
-       enPiT2017 tsuku.byebuy@gmail.com
-       チームA1 ムードメーカー  小島 直
-      ==================================
+          ==========================
+              enPiT2017 チームA1
+            tsuku.byebuy@gmail.com
+          ==========================
       "
 
       ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
@@ -162,10 +175,10 @@ if password == @item.pass
           このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
           心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
-          ==================================
-           enPiT2017 tsuku.byebuy@gmail.com
-           チームA1 ムードメーカー  小島 直
-          ==================================
+              ==========================
+                  enPiT2017 チームA1
+                tsuku.byebuy@gmail.com
+              ==========================
           "
 
           ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
@@ -185,6 +198,8 @@ end
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+password = params[:password]
+if @item.pass == password
     email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
     body = @item.student_id.to_s + "様
 
@@ -195,10 +210,10 @@ end
     このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
     心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
-    ==================================
-     enPiT2017 tsuku.byebuy@gmail.com
-     チームA1 ムードメーカー  小島 直
-    ==================================
+    ==========================
+        enPiT2017 チームA1
+      tsuku.byebuy@gmail.com
+    ==========================
     "
 
     ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
@@ -207,7 +222,11 @@ end
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
-  end
+else
+redirect_to :action => "show", :id => @item.id
+
+end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
