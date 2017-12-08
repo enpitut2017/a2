@@ -23,7 +23,9 @@
 
   <div class="field">
     <%= form.label :image, "画像" %>
+    <%= image_tag @item.image.thumb.url if @item.image? %>
     <%= form.file_field :image, id: :item_image %>
+    <%= form.hidden_field :image_cache %>
   </div>
 
   <div class="field">
@@ -50,7 +52,7 @@
     <%= form.label :department_id, "学類" %>
     <%= form.collection_select :department_id, Department.all, :id, :name ,:department_id => 1 %>
   </div>
- 
+
   <div class="actions">
     <%= form.submit "登録", :class => "color_btn"%>
   </div>

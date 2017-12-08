@@ -214,6 +214,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :place_id, :image, :price, :detail, :genre_id, :student_id, :department_id)
+      params.require(:item).permit(:name, :place_id, :image, :image_cache, :price, :detail, :genre_id, :student_id, :department_id)
     end
 end
