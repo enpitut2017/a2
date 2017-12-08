@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:item_id])
       password = params[:password]
       judge = "3"
+      c_error = "0"
 
       if password == @item.pass then
         judge = "1"
@@ -29,18 +30,30 @@ class ItemsController < ApplicationController
       else
         judge = "2"
         flash[:notice] = "※※※パスワードが間違っています。"
-        redirect_to action:  "show", id: params[:item_id]
-
-
       end
 
+      if params[:comment_body].empty?
+        c_error = "0"
+        flash[:notice] = "※※※空欄のままでは送信できません。"
+      else
+        c_error = "1"
+      end
 
-      if judge == "1"  || judge == "0" then
-      @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
-      @comment.save
+      if judge == "2" || c_error == "0" then
+        if params[:choice_c] != "0" then
+          flash[:choice_c] = params[:choice_c]
+          flash[:return_comment] = params[:choice_c].to_s + "への返信"
+          flash[:null] = "1"
+        end
+        redirect_to action:  "show", id: params[:item_id]
+      end
 
+      if (judge == "1"  || judge == "0") && c_error == "1" then
 
-      redirect_to :action => "show", :id => @comment.item_id
+        @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
+        @comment.save
+
+        redirect_to :action => "show", :id => @comment.item_id
       if @comment.save
         if @comment.judge == "0"
         @item = Item.find(params[:item_id])
