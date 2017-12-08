@@ -30,7 +30,7 @@
       <div class="item_detail"><%= @item.detail %></div>
       <%= form_tag('../mail_page/home', method: "get") do %>
       <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
-      <div class="to_mail_button"><%= submit_tag('出品者に連絡する', :class => "color_btn") %></div>
+      <div class="to_mail_button"><%= submit_tag('取引開始', :class => "color_btn") %></div>
       <% end %>
     </td>
   </tr>
@@ -146,6 +146,19 @@
 <div class="bottom_button">
 <%= link_to '商品を編集する', edit_item_path(@item), :class => "color_btn" %>
 <%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
+</div>
+<div>
+
+<%= form_tag("/items/destroy") do %>
+  <form>
+    <%= password_field_tag 'password' %>
+    <%= hidden_field_tag 'id', @item.id %>
+    <button type="submit">商品取引終了</button>
+  </form>
+<% end %>
+
+
+
 </div>
 
 <br><br>
