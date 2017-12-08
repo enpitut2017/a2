@@ -287,3 +287,158 @@ select {
 .contact_address{
   margin: 20px 0px;
 }
+
+
+
+/*商品登録ページの説明*/
+.label_name{
+  font-weight: bold;
+}
+.explain_name {
+      display: none;
+      width: 200px;
+      position: absolute;
+      top: 10;
+      left: 200px;
+      padding: 10px;
+      margin-top: -10px;
+      border-radius: 5px;
+      background: #fffae0;
+      color: #333333;
+}
+.label_name:hover + .explain_name {
+      display: block;
+}
+
+.label_place{
+  font-weight: bold;
+}
+.explain_place {
+      display: none;
+      width: 200px;
+      position: absolute;
+      top: 10;
+      left: 300px;
+      padding: 10px;
+      margin-top: -10px;
+      border-radius: 5px;
+      background: #fffae0;
+      color: #333333;
+}
+.label_place:hover + .explain_place {
+      display: block;
+}
+
+.label_image{
+  font-weight: bold;
+}
+.explain_image {
+      display: none;
+      width: 200px;
+      position: absolute;
+      top: 10;
+      left: 250px;
+      padding: 10px;
+      margin-top: -10px;
+      border-radius: 5px;
+      background: #fffae0;
+      color: #333333;
+}
+.label_image:hover + .explain_image {
+      display: block;
+}
+
+.label_price{
+  font-weight: bold;
+}
+.explain_price {
+      display: none;
+      width: 200px;
+      position: absolute;
+      top: 10;
+      left: 200px;
+      padding: 10px;
+      margin-top: -10px;
+      border-radius: 5px;
+      background: #fffae0;
+      color: #333333;
+}
+.label_price:hover + .explain_price {
+      display: block;
+}
+
+.label_detail{
+  font-weight: bold;
+}
+.explain_detail {
+      display: none;
+      width: 200px;
+      position: absolute;
+      top: 10;
+      left: 320px;
+      padding: 10px;
+      margin-top: -10px;
+      border-radius: 5px;
+      background: #fffae0;
+      color: #333333;
+}
+.label_detail:hover + .explain_detail {
+      display: block;
+}
+
+.label_genre{
+  font-weight: bold;
+}
+.explain_genre {
+      display: none;
+      width: 250px;
+      position: absolute;
+      top: 10;
+      left: 160px;
+      padding: 10px;
+      margin-top: -10px;
+      border-radius: 5px;
+      background: #fffae0;
+      color: #333333;
+}
+.label_genre:hover + .explain_genre {
+      display: block;
+}
+
+.label_student_id{
+  font-weight: bold;
+}
+.explain_student_id {
+      display: none;
+      width: 250px;
+      position: absolute;
+      top: 10;
+      left: 200px;
+      padding: 10px;
+      margin-top: -10px;
+      border-radius: 5px;
+      background: #fffae0;
+      color: #333333;
+}
+.label_student_id:hover + .explain_student_id {
+      display: block;
+}
+
+.label_department{
+  font-weight: bold;
+}
+.explain_department {
+      display: none;
+      width: 250px;
+      position: absolute;
+      top: 10;
+      left: 200px;
+      padding: 10px;
+      margin-top: -10px;
+      border-radius: 5px;
+      background: #fffae0;
+      color: #333333;
+}
+.label_department:hover + .explain_department {
+      display: block;
+}
