@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
       @comment.save
 
 
-      redirect_to :action => "show", :id => @comment.item_id
+      redirect_to :action => "show", :id => @comment.item_id, :anchor => 'com'
       if @comment.save
         if @comment.judge == "0"
         @item = Item.find(params[:item_id])
