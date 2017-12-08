@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
         @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
         @comment.save
 
-        redirect_to :action => "show", :id => @comment.item_id
+      redirect_to :action => "show", :id => @comment.item_id, :anchor => 'com'
       if @comment.save
         if @comment.judge == "0"
         @item = Item.find(params[:item_id])
