@@ -43,14 +43,14 @@
 
   <div class="field">
     <%= form.label :student_id, "学籍番号" %>
-    <%= form.number_field :student_id, id: :item_student_id %>
+    <%= form.number_field :student_id, id: :item_student_id, :placeholder => "例) 201512345" %>
   </div>
 
   <div class="field">
     <%= form.label :department_id, "学類" %>
     <%= form.collection_select :department_id, Department.all, :id, :name ,:department_id => 1 %>
   </div>
- 
+
   <div class="actions">
     <%= form.submit "登録", :class => "color_btn"%>
   </div>
