@@ -9,6 +9,7 @@ class Item < ApplicationRecord
 
 	validate :name_error
 	validate :place_id_error
+  # 画像を必ず必要とするとき
 	# validate :image_error
 	validate :price_error
 	validate :detail_error
@@ -30,10 +31,11 @@ class Item < ApplicationRecord
           end
         end
 
+  # 画像を必ず必要とするとき
 	# def image_error
   #         #画像が空の時にエラーメッセージを追加する
-  #         if image.empty?
-  #           errors[:base] << "画像の欄は空白のまま送信できません"
+  #         if image.file.nil?
+  #           errors[:base] << "画像を追加してください"
   #         end
   #       end
 
