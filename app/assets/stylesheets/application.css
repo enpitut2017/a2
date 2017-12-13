@@ -32,6 +32,20 @@ p, ol, ul, td {
   line-height: 1.7;
 }
 
+input, textarea, select, button {
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体";
+  font-size: 16px;
+}
+
+td, th {
+  padding: 0.5rem;
+}
+
+td.img {
+  padding: 0;
+  width: 50%;
+}
+
 div#header {
   background-color: var(--red-color);
   margin: 0;
@@ -174,8 +188,7 @@ table.item_table{
   margin-bottom: 20px;
 }
 
-td.cell_label{
-  font-weight: bold;
+th.cell_label{
   width: 4em;
   border-right: hidden;
 }
@@ -184,7 +197,7 @@ img{
   width: 100%;
   height: auto;
   text-align:center;
-  vertical-align: middle;
+  vertical-align: bottom;
 }
 
 

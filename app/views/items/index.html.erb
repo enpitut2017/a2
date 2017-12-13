@@ -125,24 +125,24 @@ end
 <% @items.each do |item| %>
 <table class="item_table" border="1">
   <tr>
-    <td rowspan="4" width="180">
+    <td class="img" rowspan="4">
       <% if item.image? %>
-        <%= image_tag item.image.url %>
+        <%= link_to item do %><%= image_tag item.image.url %><% end %>
       <% else %>
-        <%= image_tag 'no_image.png' %>
+        <%= link_to item do %><%= image_tag 'no_image.png' %><% end %>
       <% end %>
     </td>
   </tr>
   <tr>
-    <td class="cell_label">商品名</td>
+    <th class="cell_label">商品名</th>
     <td><%= link_to item.name, item %></td>
   </tr>
   <tr>
-    <td class="cell_label">価格</td>
+    <th class="cell_label">価格</th>
     <td><%= item.price %> 円</td>
   </tr>
   <tr>
-    <td class="cell_label">地域</td>
+    <th class="cell_label">地域</th>
     <td><%= item.place.name %></td>
   </tr>
 </table>
