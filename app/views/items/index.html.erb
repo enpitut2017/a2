@@ -1,66 +1,87 @@
-
+<h2>商品一覧</h2>
 <!--検索機能-->
-<button class="toggle_button" data-toggle-id="search">検索・絞り込み</button>
-<div class="toggle_container" data-toggle-id="search">
-<form name="search_form" method="get">
-  <div class="search_form">
-    学類：
-    <% @departments = Department.all %>
-    <select name="department_select">
-      <option value="0" selected="selected">指定しない</option>
-      <% @departments.each do |dep| %>
-          <option value="<%= dep.id %>"><%= dep.name %></option>
-      <% end %>
-    </select>
-    ジャンル：
-    <% @genres = Genre.all %>
-    <select name="genre_select">
-      <option value="0" selected="selected">指定しない</option>
-      <% @genres.each do |gen| %>
-        <option value="<%= gen.id %>"><%= gen.name %></option>
-      <% end %>
-    </select><br>
-    <span class="toggle_button" data-toggle-id="place">場所</span>
-    <div class="toggle_container" data-toggle-id="place">
+<div class="search">
+  <form name="search_form" method="get">
+    <table class="search_form">
+      <thead>
+        <tr>
+          <td colspan="2"><span class="toggle_button" data-toggle-id="search" style="display: block; width: 100%; text-align: center; font-weight: bold;">検索・絞り込み</a></td>
+        </tr>
+      </thead>
+      <tbody class="toggle_container" data-toggle-id="search">
+        <tr>
+          <th>フリーワード</th>
+          <td>
+            <input type="text" name="freeword_select" size="50" style="max-width: 90%;">
+          </td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td>
+            <% @genres = Genre.all %>
+            <select name="genre_select">
+              <option value="0" selected="selected">指定しない</option>
+              <% @genres.each do |gen| %>
+                <option value="<%= gen.id %>"><%= gen.name %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th>学類</th>
+          <td>
+            <% @departments = Department.all %>
+            <select name="department_select">
+              <option value="0" selected="selected">指定しない</option>
+              <% @departments.each do |dep| %>
+                <option value="<%= dep.id %>"><%= dep.name %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th>場所</th>
+          <td>
+            <% @places = Place.all %>
+            <% @places.each do |pla| %>
+              <span class="place_checkbox_item">
+                <label><%= check_box 'place_check', pla.id, {}, true, false %><%= pla.name %></label>
+              </span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>並び替え</th>
+          <td>
+            <select name="sort_type">
+              <% slc0 = '' %>
+              <% slc1 = '' %>
+              <% if params["sort_type"] == '1' %>
+                <% slc1 = "selected='selected'" %>
+              <% else %>
+                <% slc0 = "selected='selected'" %>
+              <% end %>
+              <option value="0" <%= slc0 %> >新しい順に表示</option>
+              <option value="1" <%= slc1 %> >価格順に表示</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center;"><input type="submit" value="検索" class="color_btn"></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
 
-      <% @places = Place.all %>
-      <% @places.each do |pla| %>
-      <span class="place_checkbox_item">
-        <label><%= check_box 'place_check', pla.id, {}, true, false %><%= pla.name %></label>
-      </span>
-      <% end %>
-    </div>
-    <br>
-    <strong>フリーワード検索</strong><br>
-    <input type="text" name="freeword_select" size="40">
-      <input type="submit" value="検索" class="color_btn">
-
-    <!--ソート方法-->
-    <br><br>
-    並び替え：
-    <select name="sort_type">
-      <% slc0 = '' %>
-      <% slc1 = '' %>
-      <% if params["sort_type"] == '1' %>
-        <% slc1 = "selected='selected'" %>
-      <% else %>
-        <% slc0 = "selected='selected'" %>
-      <% end %>
-
-      <option value="0" <%= slc0 %> >新しい順に表示</option>
-      <option value="1" <%= slc1 %> >価格順に表示</option>
-    </select>
-
-    </div><br>
-
-  <% @sort_str = "" %>
-  <% if params["sort_type"] == '0' || params["sort_type"] == nil%>
-    <% @items = Item.order('created_at DESC').all %>
-    <% @sort_str = "新しい順に表示" %>
-  <% elsif params["sort_type"] == '1' %>
-    <% @items = Item.order('price ASC').all %>
-    <% @sort_str = "価格順に表示" %>
-  <% end %>
+<% @sort_str = "" %>
+<% if params["sort_type"] == '0' || params["sort_type"] == nil%>
+  <% @items = Item.order('created_at DESC').all %>
+  <% @sort_str = "新しい順に表示" %>
+<% elsif params["sort_type"] == '1' %>
+  <% @items = Item.order('price ASC').all %>
+  <% @sort_str = "価格順に表示" %>
+<% end %>
 
 
 <% if params["freeword_select"] != "" && params["freeword_select"] != nil %>
@@ -84,9 +105,6 @@
   <% @place_check_id = [] %>
 <% end %>
 
-</form>
-</div>
-
 <%
 @dep = "指定しない"
 @gen = "指定しない"
@@ -103,7 +121,7 @@ end
 if @place_check_id.length > 0
   @pla = @places[@place_check_id[0] - 1].name
   for i in 1..@place_check_id.length-1
-    @pla = @pla + ", " + @places[@place_check_id[i]-1].name
+    @pla = @pla + "・" + @places[@place_check_id[i]-1].name
   end
 end
 
@@ -112,37 +130,33 @@ if params["freeword_select"] != "" && params["freeword_select"] != nil
 end
 %>
 
+<h3>現在の検索条件</h3>
+<p><span style="display: inline-block;">【並び替え：<strong><%= @sort_str %></strong>】</span><span style="display: inline-block;">【キーワード：<strong><%= @key %></strong>】</span><span style="display: inline-block;">【ジャンル：<strong><%= @gen %></strong>】</span><span style="display: inline-block;">【学類：<strong><%= @dep %></strong>】</span><span style="display: inline-block;">【場所：<strong><%= @pla %></strong>】</span></p>
 
+<h3>検索結果</h3>
+<p><span class="match_num"><%= @items.length %></span>件の商品</p>
 
-<br>
-
-<b>検索条件</b>：<%= @sort_str %><br>
-【学類：<%= @dep %>】<br>
-【ジャンル：<%= @gen %>】<br>
-【場所：<%= @pla %>】<br>
-【キーワード：<%= @key %>】<br><br>
-検索結果：<span class="match_num"><%= @items.length %></span>件の商品
 <% @items.each do |item| %>
 <table class="item_table" border="1">
   <tr>
-    <td rowspan="4" width="180">
+    <td class="img" rowspan="4">
       <% if item.image? %>
-        <%= image_tag item.image.url %>
+        <%= link_to item do %><%= image_tag item.image.url %><% end %>
       <% else %>
-        <%= image_tag 'no_image.png' %>
+        <%= link_to item do %><%= image_tag 'no_image.png' %><% end %>
       <% end %>
     </td>
   </tr>
   <tr>
-    <td class="cell_label">商品名</td>
+    <th class="cell_label">商品名</th>
     <td><%= link_to item.name, item %></td>
   </tr>
   <tr>
-    <td class="cell_label">価格</td>
+    <th class="cell_label">価格</th>
     <td><%= item.price %> 円</td>
   </tr>
   <tr>
-    <td class="cell_label">地域</td>
+    <th class="cell_label">地域</th>
     <td><%= item.place.name %></td>
   </tr>
 </table>
