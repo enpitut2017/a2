@@ -23,4 +23,9 @@ $(function() {
     var sel = '.toggle_container[data-toggle-id="' + id + '"]';
     $(sel).toggle();
   });
+
+  $('.pagetop').click(function() {
+    $('html, body').animate({scrollTop: 0}, 'slow');
+    return false;
+  });
 });

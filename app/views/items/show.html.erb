@@ -1,7 +1,13 @@
 <h2>商品の詳細</h2>
 <table class="item_table_show" border="1">
   <tr>
-    <td width="30%"><%= image_tag @item.image.url if @item.image? %></td>
+    <td width="30%">
+      <% if @item.image? %>
+        <%= link_to @item do %><%= image_tag @item.image.url %><% end %>
+      <% else %>
+        <%= link_to @item do %><%= image_tag 'no_image.png' %><% end %>
+      <% end %>
+    </td>
     <td class="item_cell">
       <div class="item_name"><%= @item.name %></div>
       <div class="item_price"><span class="value"><%= @item.price %></span> 円</div>
