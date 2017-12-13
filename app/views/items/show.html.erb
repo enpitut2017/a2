@@ -156,6 +156,7 @@
 
 <p id="des"></p>
 <font color = "red"><%= flash[:pass_destroy] %></font>
+商品の取引が終了したらこの欄にパスワードを入力して「商品取引終了」ボタンを押してください。
 <%= form_tag("/items/destroy") do %>
   <form>
     <%= password_field_tag 'password' %>
