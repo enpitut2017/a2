@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
           flash[:return_comment] = params[:choice_c].to_s + "への返信"
           flash[:null] = "1"
         end
-        redirect_to action:  "show", id: params[:item_id]
+        redirect_to action:  "show", id: params[:item_id], anchor: 'com'
       end
 
       if (judge == "1"  || judge == "0") && c_error == "1" then
