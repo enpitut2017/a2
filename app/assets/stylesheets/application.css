@@ -552,7 +552,6 @@ select {
 }
 
 .map_place_name {
-  border-bottom: solid 1px #ccbaaa;
   display: inline-block;
   margin: 3px 0px;
 }
