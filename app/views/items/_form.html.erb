@@ -23,7 +23,9 @@
 
   <div class="field">
     <%= form.label :image, "画像" %>
-    <%= image_tag @item.image.thumb.url if @item.image? %>
+    <div class="thumb">
+      <%= image_tag @item.image.thumb.url if @item.image? %>
+    </div>
     <%= form.file_field :image, id: :item_image %>
     <%= form.hidden_field :image_cache %>
   </div>
