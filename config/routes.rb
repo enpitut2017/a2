@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
 
-  get 'contact_page/home'
+  get 'contact' => 'static_pages#contact'
 
-  get 'contact_page/done'
+  get 'usage' => 'static_pages#usage'
 
   get 'comments/new'
 
