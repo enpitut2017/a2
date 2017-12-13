@@ -121,9 +121,12 @@ main {
 
 /*ページのタイトル*/
 h2{
-  padding: 10px 20px 10px 40px;
-  margin: 10px 0px 40px -40px;
-  font-size: 2em;
+  font-size: 1.5em;
+  margin-left: -100vw;
+  padding-left: 100vw;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   background-color: var(--red-color);
   color: #ffffee;
   display: inline-block;
@@ -162,7 +165,7 @@ a.red_line:hover::after {
 
 /*検索フォーム*/
 .search_form{
-  padding: 1.2em 1.5em;
+  padding: 0.5em;
   margin: 2em 0;
   font-weight: bold;
   border: solid 1px #000000;
@@ -179,6 +182,24 @@ a.red_line:hover::after {
   font-size: 1.6em;
 }
 
+table.search_form td, table.search_form th {
+  vertical-align: top;
+}
+
+table.search_form th {
+  width: 7em;
+  text-align: right;
+}
+
+table.search_form label input[type="checkbox"] {
+  margin-left: 1em;
+}
+
+table.search_form input[type="submit"] {
+  letter-spacing: 2em;
+  padding: 0.5em;
+  padding-left: 2.5em;
+}
 
 /*一覧表示*/
 table.item_table{
