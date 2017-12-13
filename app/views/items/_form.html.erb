@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+
+
   <div class="field">
     <%= form.label :name, "商品名" %>
     <%= form.text_field :name, id: :item_name %>
@@ -55,6 +57,8 @@
     <%= form.collection_select :department_id, Department.all, :id, :name ,:department_id => 1 %>
   </div>
 
+<p id="upd"></p>
+<font color = "red"><%= notice %></font>
   <div class="field">
     <%= form.label :confirm, "パスワード" %>
     <%= form.password_field :confirm %>
