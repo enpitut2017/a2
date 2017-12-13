@@ -118,6 +118,14 @@ main {
   padding: 1rem;
 }
 
+.toggle_button {
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.toggle_button:hover {
+  border: 1px solid black;
+}
 
 /*ページのタイトル*/
 h2{
@@ -163,14 +171,6 @@ a.red_line:hover::after {
   margin-bottom: 2px;
 }
 
-/*検索フォーム*/
-.search_form{
-  padding: 0.5em;
-  margin: 2em 0;
-  font-weight: bold;
-  border: solid 1px #000000;
-}
-
 .place_checkbox_item{
   font-weight: normal;
   display: inline-block;
@@ -180,6 +180,12 @@ a.red_line:hover::after {
 .match_num{
   color: red;
   font-size: 1.6em;
+}
+
+/*検索フォーム*/
+table.search_form {
+  border: solid 1px #000000;
+  width: 100%;
 }
 
 table.search_form td, table.search_form th {

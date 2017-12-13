@@ -1,10 +1,14 @@
 <h2>商品一覧</h2>
 <!--検索機能-->
 <div class="search">
-  <button class="toggle_button" data-toggle-id="search">検索・絞り込み</button>
-  <div class="toggle_container" data-toggle-id="search">
-    <form name="search_form" method="get">
-      <table class="search_form">
+  <form name="search_form" method="get">
+    <table class="search_form">
+      <thead>
+        <tr>
+          <td colspan="2"><span class="toggle_button" data-toggle-id="search" style="display: block; width: 100%; text-align: center; font-weight: bold;">検索・絞り込み</a></td>
+        </tr>
+      </thead>
+      <tbody class="toggle_container" data-toggle-id="search">
         <tr>
           <th>フリーワード</th>
           <td>
@@ -65,9 +69,9 @@
         <tr>
           <td colspan="2" style="text-align: center;"><input type="submit" value="検索" class="color_btn"></td>
         </tr>
-      </table>
-    </form>
-  </div>
+      </tbody>
+    </table>
+  </form>
 </div>
 
 <% @sort_str = "" %>
