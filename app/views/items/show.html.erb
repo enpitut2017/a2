@@ -133,7 +133,7 @@
 <% end %>
 
 <b><%= return_comment %><b>
-<%= notice %>
+<font color = "red"><%= notice %></font>
 <%= form_tag("/items/comment") do %>
     <form>
       <div class="form-group">
@@ -158,6 +158,8 @@
 </div>
 <div>
 
+<p id="des"></p>
+<font color = "red"><%= flash[:pass_destroy] %></font>
 <%= form_tag("/items/destroy") do %>
   <form>
     <%= password_field_tag 'password' %>
