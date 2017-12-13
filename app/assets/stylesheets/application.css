@@ -41,11 +41,6 @@ td, th {
   padding: 0.5rem;
 }
 
-td.img {
-  padding: 0;
-  width: 50%;
-}
-
 div#header {
   background-color: var(--red-color);
   margin: 0;
@@ -218,6 +213,19 @@ table.item_table{
   border-collapse: collapse;
   margin-top: 30px;
   margin-bottom: 20px;
+}
+
+table.item_table td.img {
+  padding: 0;
+  width: 40%;
+}
+
+table.item_table td.img a img {
+  transition: 0.2s;
+}
+
+table.item_table td.img a:hover img {
+  transform: scale(1.5);
 }
 
 th.cell_label{
