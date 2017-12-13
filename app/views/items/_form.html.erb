@@ -25,7 +25,7 @@
     <%= form.label :image, "画像" %>
     <div class="thumb">
       <% if @item.image? %>
-        <%= image_tag @item.image.thumb.url %>
+        <%= image_tag @item.image.url %>
       <% else %>
         <%= image_tag 'no_image.png' %>
       <% end %>
