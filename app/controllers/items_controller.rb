@@ -102,10 +102,12 @@ end
     pass_check = "0"
     id_i = 1
         while id_i <= Item.last.id do
-      @it = Item.find(id_i)
-      if @it.student_id == @item.student_id
-        @item.pass = @it.pass
-        pass_check = "1"
+      @it = Item.find_by(:id => id_i)
+      if @it != nil
+        if @it.student_id == @item.student_id
+          @item.pass = @it.pass
+          pass_check = "1"
+        end
       end
       id_i += 1
     end
