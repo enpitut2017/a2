@@ -539,3 +539,24 @@ select {
 .thumb {
   width: 100px;
 }
+
+.map {
+  margin: 10px 0px;
+  width: 40%;
+  float: left;
+}
+
+.map_places {
+  display: inline-block;
+  margin: 8px 0px 0px 20px;
+}
+
+.map_place_name {
+  border-bottom: solid 1px #ccbaaa;
+  display: inline-block;
+  margin: 3px 0px;
+}
+
+.clear_float {
+  clear:both;
+}

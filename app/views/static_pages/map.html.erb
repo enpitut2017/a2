@@ -1,0 +1,18 @@
+<h2>地図を確認</h2>
+<br>
+<div class="map">
+<%= image_tag 'tsukuba_map.png' %>
+</div>
+
+<% @places = Place.all %>
+
+<div class="map_places">
+<% @places.each do |place| %>
+  <% if place != @places[@places.length-1] %>
+      <span class="map_place_name">
+        (<%= place.id %>)　<%= place.name %>
+      </span><br>
+  <% end %>
+<% end %>
+</div>
+<div class="clear_float"></div>
