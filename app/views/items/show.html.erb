@@ -27,9 +27,10 @@
   </tr>
   <tr>
     <td colspan="2">
-      <div class="item_detail"><%= @item.detail %></div>
+      <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
       <%= form_tag('../mail_page/home', method: "get") do %>
       <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
+      <%= hidden_field :to_mail, :item_id, :value => @item.id %>
       <div class="to_mail_button"><%= submit_tag('取引開始', :class => "color_btn") %></div>
       <% end %>
     </td>
@@ -58,14 +59,14 @@
         <span class="comment_question">
           <%= num %>.
           [出品者のコメント]
-                  <%= comment.comment_body %>
+                  <%= simple_format(h(comment.comment_body)) %>
           </font>
         </span>
       </span>
       <% else %>
         <span class="comment_question">
           <%= num %>.
-          <%= comment.comment_body %>
+          <%= simple_format(h(comment.comment_body)) %>
         </span>
       <% end %>
 
@@ -75,16 +76,33 @@
               <% if rep.judge == "0" %>
 
                   <p>&emsp;&emsp;&emsp;⇨
-                    <span class="comment_answer">
-                    <%= rep.comment_body %>
-                  </span>
+                    <!-- 一行のとき -->
+                    <% if rep.comment_body.sub(/[\r\n]*\z/, "").sub(/\A[\r\n]*/, "").index("\n") == nil %>
+                      <span class="comment_answer_one_line">
+                        <%= rep.comment_body %>
+                      </span>
+                    <!-- 改行が含まれているとき -->
+                    <% else %>
+                      <div class="comment_answer_multi_lines">
+                        <%= simple_format(h(rep.comment_body)) %>
+                      </div>
+                    <% end %>
                   </p>
                 </div>
               <% else %>
                   <span class="comment_seller"><p>
                     &emsp;&emsp;&emsp;⇨
-                      <span class="comment_answer">[出品者の返信]<%= rep.comment_body %>
+                    <!-- 一行のとき -->
+                    <% if rep.comment_body.sub(/[\r\n]*\z/, "").sub(/\A[\r\n]*/, "").index("\n") == nil %>
+                      <span class="comment_answer_one_line">
+                        [出品者の返信]<%= rep.comment_body %>
                       </span>
+                    <!-- 改行が含まれているとき -->
+                    <% else %>
+                      <div class="comment_answer_multi_lines">
+                        [出品者の返信]<%= simple_format(h(rep.comment_body)) %>
+                      </div>
+                    <% end %>
                     </p></span>
               <% end %>
           <% end %>
@@ -127,7 +145,7 @@
 <% end %>
 
 <b><%= return_comment %><b>
-<%= notice %>
+<font color = "red"><%= notice %></font>
 <%= form_tag("/items/comment") do %>
     <form>
       <div class="form-group">
@@ -152,6 +170,8 @@
 </div>
 <div>
 
+<p id="des"></p>
+<font color = "red"><%= flash[:pass_destroy] %></font>
 <%= form_tag("/items/destroy") do %>
   <form>
     <%= password_field_tag 'password' %>

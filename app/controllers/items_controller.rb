@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
           flash[:return_comment] = params[:choice_c].to_s + "への返信"
           flash[:null] = "1"
         end
-        redirect_to action:  "show", id: params[:item_id]
+        redirect_to action:  "show", id: params[:item_id], anchor: 'com'
       end
 
       if (judge == "1"  || judge == "0") && c_error == "1" then
@@ -190,8 +190,9 @@ if password == @item.pass
       end
     end
 
-else
-       redirect_to :action => "edit", :id => @item.id
+    else
+      flash[:notice] = "※※※パスワードが間違っています。"
+      redirect_to :action => "edit", :id => @item.id,:anchor => 'upd'
 end
   end
 
@@ -223,7 +224,8 @@ if @item.pass == password
       format.json { head :no_content }
     end
 else
-redirect_to :action => "show", :id => @item.id
+  flash[:pass_destroy] = "※※※パスワードが間違っています。"
+  redirect_to :action => "show", :id => @item.id,:anchor => 'des'
 
 end
 end

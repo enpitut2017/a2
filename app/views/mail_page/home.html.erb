@@ -16,6 +16,7 @@
 内容<br>
   <%= text_area :mail, :content, :size => "50x10" %> <br><br>
   <%= hidden_field :to_mail, :student_id, :value => params[:to_mail][:student_id] %>
+  <%= hidden_field :to_mail, :item_id, :value => params[:to_mail][:item_id] %>
   <%= submit_tag('送信') %>
 <% end %>
 <br><br>

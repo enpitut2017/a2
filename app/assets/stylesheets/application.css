@@ -12,29 +12,97 @@
  *
  *= require_tree .
  *= require_self
- */
+*/
 
-/*タイトル*/
-h1 {
+:root {
+  --page-width: 1000px;
+}
+
+body {
+  margin: 0;
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体";
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+p, ol, ul, td {
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体";
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+div#header {
   background-color: #dd5500;
-  padding: 30px;
-  margin-left: -30px;
-  margin-top: -30px;
-  width: 100%;
+  margin: 0;
 }
-h1 a:hover{
-  text-decoration:none;
+
+header {
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  padding-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+header h1 a {
   color: white;
+  text-decoration: none;
+}
+
+header h1 a:visited {
+  color: white;
+}
+
+header h1 a:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+div#nav {
+  background-color: #fffae0;
+}
+
+div#header nav {
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+div#header nav ul {
+  display: table;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+div#header nav ul li {
+  display: table-cell;
+}
+
+div#header nav ul li a {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+div#header nav ul li a:visited {
+  color: black;
+}
+
+div#header nav ul li a:hover {
   background-color: #dd5500;
-}
-h1 a:visited{
-  text-decoration:none;
   color: white;
 }
-h1 a:link{
-  text-decoration:none;
-  color: white;
+
+main {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 1rem;
 }
+
 
 /*ページのタイトル*/
 h2{
@@ -217,11 +285,20 @@ img{
   display: inline-block;
 }
 
-.comment_answer{
+.comment_answer_one_line{
   border: solid #efead0;
   background-color: #fffae0;
   border-radius: 8px;
   padding: 4px;
+  display: inline-block;
+}
+
+.comment_answer_multi_lines{
+  border: solid #efead0;
+  background-color: #fffae0;
+  border-radius: 8px;
+  padding: 4px;
+  margin: -2.5em 0em 0em 4.3em;
   display: inline-block;
 }
 
@@ -441,4 +518,8 @@ select {
 }
 .label_department:hover + .explain_department {
       display: block;
+}
+
+.thumb {
+  width: 100px;
 }
