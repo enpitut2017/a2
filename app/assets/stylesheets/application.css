@@ -510,3 +510,7 @@ select {
 .label_department:hover + .explain_department {
       display: block;
 }
+
+.thumb {
+  width: 100px;
+}
