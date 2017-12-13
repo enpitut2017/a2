@@ -47,13 +47,5 @@ https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
 ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]閲覧者からの連絡", body:body).deliver
 %>
 
-  <!-- <% ActionMailer::Base.mail(
-    from: "sg5td9uo@idcf.kke.com",
-    to: "s" + params[:to_mail][:student_id].slice(2,7) + "@u.tsukuba.ac.jp",
-    subject: "[つくByeBuy] 閲覧者からの連絡",
-    body: params[:mail][:student_id] + " さんから連絡がありました。\n\n"+ @item.name + params[:mail][:content]
- ).deliver %> -->
-
-
  <%= link_to '商品一覧に戻る', items_path, :class => "red_line"  %>
 <% end %>
