@@ -129,7 +129,7 @@ main {
 
 /*ページのタイトル*/
 h2{
-  font-size: 1.5em;
+  font-size: 1.5rem;
   margin-left: -100vw;
   padding-left: 100vw;
   padding-right: 1em;
@@ -138,6 +138,11 @@ h2{
   background-color: var(--red-color);
   color: #ffffee;
   display: inline-block;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5em;
 }
 
 /*リンク*/

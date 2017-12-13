@@ -121,7 +121,7 @@ end
 if @place_check_id.length > 0
   @pla = @places[@place_check_id[0] - 1].name
   for i in 1..@place_check_id.length-1
-    @pla = @pla + ", " + @places[@place_check_id[i]-1].name
+    @pla = @pla + "・" + @places[@place_check_id[i]-1].name
   end
 end
 
@@ -130,13 +130,12 @@ if params["freeword_select"] != "" && params["freeword_select"] != nil
 end
 %>
 
+<h3>現在の検索条件</h3>
+<p><span style="display: inline-block;">【並び替え：<strong><%= @sort_str %></strong>】</span><span style="display: inline-block;">【キーワード：<strong><%= @key %></strong>】</span><span style="display: inline-block;">【ジャンル：<strong><%= @gen %></strong>】</span><span style="display: inline-block;">【学類：<strong><%= @dep %></strong>】</span><span style="display: inline-block;">【場所：<strong><%= @pla %></strong>】</span></p>
 
-<b>検索条件</b>：<%= @sort_str %><br>
-【学類：<%= @dep %>】<br>
-【ジャンル：<%= @gen %>】<br>
-【場所：<%= @pla %>】<br>
-【キーワード：<%= @key %>】<br><br>
-検索結果：<span class="match_num"><%= @items.length %></span>件の商品
+<h3>検索結果</h3>
+<p><span class="match_num"><%= @items.length %></span>件の商品</p>
+
 <% @items.each do |item| %>
 <table class="item_table" border="1">
   <tr>
