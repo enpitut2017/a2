@@ -16,6 +16,7 @@
 
 :root {
   --page-width: 1000px;
+  --red-color: #dd5500;
 }
 
 body {
@@ -32,7 +33,7 @@ p, ol, ul, td {
 }
 
 div#header {
-  background-color: #dd5500;
+  background-color: var(--red-color);
   margin: 0;
 }
 
@@ -93,7 +94,7 @@ div#header nav ul li a:visited {
 }
 
 div#header nav ul li a:hover {
-  background-color: #dd5500;
+  background-color: var(--red-color);
   color: white;
 }
 
@@ -109,7 +110,7 @@ h2{
   padding: 10px 20px 10px 40px;
   margin: 10px 0px 40px -40px;
   font-size: 2em;
-  background-color: #dd5500;
+  background-color: var(--red-color);
   color: #ffffee;
   display: inline-block;
 }
@@ -144,45 +145,6 @@ a.red_line:hover::after {
   background-color: #ff5500;
   margin-bottom: 2px;
 }
-
-/*ヘッダータブ*/
-.header_tab{
-  background-color: #fffae0;
-  font-weight: bold;
-  color: #555555;
-  padding: 0px 30px;
-  margin-left: -30px;
-  margin-top: -20px;
-  margin-bottom: 20px;
-  width: 100%;
-  height: 36px;
-  position:relative;
-}
-
-.header_tab #tab{
-    position: absolute;
-    top:0px;
-    left:0px;
-}
-.header_tab #tab a{
-    float: left;
-    height: 36px;
-    line-height: 36px;
-    text-align: center;
-    width: 100px;
-    display: block;
-    text-decoration:none;
-    color:#555555;
-    font-weight:bold;
-    font-size:16px;
-    background: #fffae0;
-    padding: 0px 12px;
-}
-#tab a:hover{
-    background:#dd5500;
-    color:#fff;
-}
-
 
 /*検索フォーム*/
 .search_form{
@@ -321,10 +283,11 @@ img{
     margin: 16px 0px 8px 0px;
     text-decoration: none;
     color: white;
-    border: solid 2px #dd5500;
-    background-color: #dd5500;
+    border: solid 2px var(--red-color);
+    background-color: var(--red-color);
     border-radius: 3px;
     transition: .4s;
+    cursor: pointer;
 }
 
 a.color_btn{
@@ -333,7 +296,7 @@ a.color_btn{
 
 .color_btn:hover {
     background: white;
-    color: #dd5500;
+    color: var(--red-color);
 }
 
 
