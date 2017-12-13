@@ -1,13 +1,3 @@
-<h1><%= link_to 'つくByeBuy', items_path %></h1>
-
-<div class="header_tab">
-    <div id="tab">
-      <%= link_to '商品一覧', items_path %>
-      <%= link_to '出品', new_item_path %>
-      <%= link_to 'お問い合わせ', '../contact_page/home' %>
-    </div>
-</div>
-
 <h2>出品者に連絡</h2>
 
 <%= form_tag('../mail_page/done', method: "get") do %>
