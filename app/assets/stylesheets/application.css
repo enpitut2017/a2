@@ -591,3 +591,71 @@ a.color_btn{
 .label_pass:hover + .explain_pass {
     display: block;
 }
+
+.mail_explain{
+  display: none;
+  width: 220px;
+  position: absolute;
+  top: 10;
+  left: 850px;
+  padding: 10px;
+  margin-top: -10px;
+  border-radius: 5px;
+  background: #fffae0;
+  color: #333333;
+  font-weight: bold;
+}
+.to_mail_button:hover + .mail_explain {
+    display: block;
+}
+
+.des_ex{
+  display: none;
+  width: 400px;
+  position: absolute;
+  top: 10;
+  left: 650px;
+  padding: 10px;
+  margin-top: -50px;
+  border-radius: 5px;
+  background: #fffae0;
+  color: #333333;
+  font-weight: bold;
+}
+.des_:hover + .des_ex {
+    display: block;
+}
+
+.comment_explain{
+  display: none;
+  width: 400px;
+  position: absolute;
+  top: 10;
+  left: 450px;
+  padding: 10px;
+  margin-top: -350px;
+  border-radius: 5px;
+  background: #fffae0;
+  color: #333333;
+  font-weight: bold;
+}
+.comment_main:hover + .comment_explain {
+    display: block;
+}
+
+.comment_explain2{
+  display: none;
+  width: 400px;
+  position: absolute;
+  top: 10;
+  left: 650px;
+  padding: 10px;
+  margin-top: -100px;
+  border-radius: 5px;
+  background: #fffae0;
+  color: #333333;
+  font-weight: bold;
+}
+.comment_form:hover + .comment_explain2 {
+    display: block;
+}
