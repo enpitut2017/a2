@@ -289,7 +289,7 @@ table.item_table_show td.item_cell {
   text-align: right;
 }
 
-.item_genre{
+.item_genre, .item_dep{
   font-size: 1.2em;
   color: #aaaaaa;
   text-align: right;

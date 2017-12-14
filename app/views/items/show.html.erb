@@ -13,6 +13,7 @@
       <div class="item_price"><span class="value"><%= @item.price %></span> 円</div>
       <div class="item_place"><%= @item.place.name %></div>
       <div class="item_genre"><%= @item.genre.name %></div>
+      <div class="item_dep"><%= @item.department.name %></div>
   </td>
   </tr>
   <tr>
@@ -25,15 +26,6 @@
       <% end %>
     </td>
   </tr>
-  <!-- <tr>
-    <td class="cell_label_show">学籍番号</td>
-    <td><%= @item.student_id %></td>
-  </tr>
-  <tr>
-    <td class="cell_label_show">学類</td>
-    <td><%= @item.department.name %></td>
-  </tr> -->
-<%=  %>
 </table>
 
 <h2>コメント</h2>
