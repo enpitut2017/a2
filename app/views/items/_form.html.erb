@@ -66,7 +66,8 @@
 <p id="upd"></p>
 <font color = "red"><%= notice %></font>
   <div class="field">
-    <%= form.label :confirm, "パスワード" %>
+    <%= form.label :confirm, "パスワード", :class=>"label_pass" %>
+    <div class="explain_pass">メールの中のパスワードを確認してください。</div>
     <%= form.password_field :confirm %>
   </div>
 
