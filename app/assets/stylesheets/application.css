@@ -312,11 +312,6 @@ div.comment {
   padding-right: 0.5em;
 }
 
-div.seller {
-  color: #ff5500;
-  font-weight: bold;
-}
-
 div.comment.seller {
   background-color: #e0fefa;
 }
@@ -332,6 +327,8 @@ div.comment div.comment_num {
 
 div.comment div.seller {
   background-color: #e0fefa;
+  color: #ff5500;
+  font-weight: bold;
 }
 
 div.comment div.buyer {
@@ -354,36 +351,6 @@ div.comment > div.comment_body {
 
 div.comment_reply {
   margin-left: 4em;
-}
-
-.comment_question{
-  border: solid #efead0;
-  background-color: #fffae0;
-  border-radius: 8px;
-  padding: 4px;
-  display: inline-block;
-}
-
-.comment_answer_one_line{
-  border: solid #efead0;
-  background-color: #fffae0;
-  border-radius: 8px;
-  padding: 4px;
-  display: inline-block;
-}
-
-.comment_answer_multi_lines{
-  border: solid #efead0;
-  background-color: #fffae0;
-  border-radius: 8px;
-  padding: 4px;
-  margin: -2.5em 0em 0em 4.3em;
-  display: inline-block;
-}
-
-.comment_seller{
-  color: #ff5500;
-  font-weight: bold;
 }
 
 .comment_form{
