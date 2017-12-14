@@ -23,13 +23,13 @@ body {
   margin: 0;
   font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体";
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.3;
 }
 
 p, ol, ul, td {
   font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体";
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.3;
 }
 
 input, textarea, select, button {
@@ -242,54 +242,118 @@ img{
 
 
 /*詳細表示*/
-.item_table_show{
-  margin: 10px auto 60px auto;
+table.item_table_show{
+  width: 100%;
   border-collapse: collapse;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
-.item_table_show .item_cell{
-  padding: 20px 10px;
+table.item_table_show td.img {
+  padding: 0;
+  width: 40%;
+}
+
+table.item_table_show td.img img {
+  transition: 0.2s;
+}
+
+table.item_table_show td.img img:hover {
+  transform: scale(1.5);
+}
+
+table.item_table_show td.item_cell {
+  padding: 1rem;
   vertical-align: top;
 }
 
 .item_name{
-  font-size: 2.4em;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
 .item_price{
-  font-size: 1.8em;
+  font-size: 1.5rem;
   text-align: right;
-  margin: 80px 20px 30px 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .value{
   color: red;
-  font-size: 1.8em;
+  font-size: 3rem;
   font-weight: bold;
 }
 
 .item_place{
   font-size: 1.6em;
   text-align: right;
-  margin: 12px 20px;
 }
 
-.item_genre{
+.item_genre, .item_dep{
   font-size: 1.2em;
   color: #aaaaaa;
   text-align: right;
-  margin: 0px 20px;
 }
 
-.item_detail{
-  padding: 20px 200px 60px 12px;
+table.item_table_show td.detail_cell {
+  padding: 1rem;
 }
 
 .to_mail_button{
-  vertical-align: bottom;
   text-align: right;
-  margin: 12px 20px;
+}
+
+/*コメント*/
+div.comment {
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  margin-bottom: 1em;
+  padding-right: 0.5em;
+}
+
+div.seller {
+  color: #ff5500;
+  font-weight: bold;
+}
+
+div.comment.seller {
+  background-color: #e0fefa;
+}
+
+div.comment.buyer {
+  background-color: #fffae0;
+}
+
+div.comment div.comment_num {
+  padding-top: 1em;
+  padding-left: 1em;
+}
+
+div.comment div.seller {
+  background-color: #e0fefa;
+}
+
+div.comment div.buyer {
+  background-color: #fffae0;
+}
+
+div.comment_body {
+  padding: 0.5em;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  margin-bottom: 0.5em;
+}
+
+div.comment > div.comment_body {
+  border: none;
+  margin-left: 0.5em;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+div.comment_reply {
+  margin-left: 4em;
 }
 
 .comment_question{
@@ -364,7 +428,7 @@ a.color_btn{
 
 
 /*select*/
-select {
+/*select {
 	width: auto;
 	padding: 0px 32px 0px 6px;
 	-webkit-appearance: none;
@@ -375,7 +439,7 @@ select {
 	background: url(arrow.png) right 50% no-repeat, -webkit-linear-gradient(top, #fff 0%,#efebe1 100%);
 	background: url(arrow.png) right 50% no-repeat, linear-gradient(to bottom, #fff 0%,#efebe1 100%);
 	background-size: 20px, 100%;
-}
+}*/
 
 .contact_address{
   margin: 20px 0px;
