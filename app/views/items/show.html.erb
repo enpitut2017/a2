@@ -1,5 +1,6 @@
 <h2>商品の詳細</h2>
 <table class="item_table_show" border="1">
+
   <tr>
     <td class="img">
       <% if @item.image? %>
@@ -14,8 +15,9 @@
       <div class="item_place"><%= @item.place.name %></div>
       <div class="item_genre"><%= @item.genre.name %></div>
       <div class="item_dep"><%= @item.department.name %></div>
-  </td>
+    </td>
   </tr>
+
   <tr>
     <td class="detail_cell" colspan="2">
       <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
@@ -27,14 +29,12 @@
       <% end %>
     </td>
   </tr>
+
 </table>
 
 　
-<h2 class="comment_main">コメント</h2>
-　　　　
-<p class="comment_explain">
-<%= image_tag 'comment_explain1.png' %>
-</p>
+<h2 class="comment_main">コメント</h2>　　　　
+<p class="comment_explain"><%= image_tag 'comment_explain1.png' %></p>
 <br>
 <% comments = Comment.where(item_id: @item.id ) %>
 <% num = 1 %>
@@ -88,58 +88,44 @@
   </p>
   <% end %>
 <% end %>
-
 </p>
+
 <p>
 <% if params['choice_send'].nil? %>
-    <% choice_c = 0; %>
+  <% choice_c = 0; %>
 <% else %>
-<% choice_c = params['choice_send']%>
-<% choice_c %>
+  <% choice_c = params['choice_send']%>
+  <% choice_c %>
 <% end %>
 
-
-
-    <% return_comment = params['return_send']%>
+<% return_comment = params['return_send']%>
 
 <p id="com"></p>
 <div class="comment_form">
-<h3 class="comment_f">コメント入力</h3>
-<div class="comment_explain2">出品者はパスワードを入力します。その他の利用者はパスワード欄は空欄のまま送信してください。
-</div>
+  <h3 class="comment_f">コメント入力</h3>
+    <div class="comment_explain2">出品者はパスワードを入力します。その他の利用者はパスワード欄は空欄のまま送信してください。</div>
+      <% if flash[:null] == "1" %>
+        <% return_comment = flash[:return_comment] %>
+        <% choice_c = flash[:choice_c] %>
+      <% end %>
 
-<% if flash[:null] == "1" %>
-  <% return_comment = flash[:return_comment] %>
-  <% choice_c = flash[:choice_c] %>
-<% end %>
+      <b><%= return_comment %><b>
+      <font color = "red"><%= notice %></font>
+      <%= form_tag ("/items/comment") do %>
+      <form>
+        <div class="form-group">
+          <textarea name="comment_body" class="form-control" rows="3" cols="50"></textarea>
+          <p>出品者はパスワードを入力してください。</p>
 
+          <%= password_field_tag 'password' %>
 
-<b><%= return_comment %><b>
-<font color = "red"><%= notice %></font>
-<%= form_tag ("/items/comment") do %>
-<form>
-<p><strong><%= return_comment %></strong></p>
-<p style="color: red;"><%= notice %></p>
-<%= form_tag("/items/comment") do %>
+          <%= hidden_field_tag 'item_id', @item.id %>
+          <%= hidden_field_tag 'choice_c', choice_c %>
+        </div><!--form-group-->
 
-      <div class="form-group">
-        <textarea name="comment_body" class="form-control" rows="3" cols="50"></textarea>
-        <p>出品者はパスワードを入力してください。</p>
-
-        <%= password_field_tag 'password' %>
-
-        <%= hidden_field_tag 'item_id', @item.id %>
-        <%= hidden_field_tag 'choice_c', choice_c %>
-
-      </div><!--form-group-->
-
-
-      <button type="submit" class="color_btn">コメント</button>
-
+        <button type="submit" class="color_btn">コメント</button>
     <% end %>
 </div>
-
-
 </p>
 
 <div class="bottom_button">
@@ -162,4 +148,3 @@
 
 <% end %>
 </div>
-<% end %>
