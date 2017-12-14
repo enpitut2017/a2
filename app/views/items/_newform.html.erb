@@ -18,13 +18,15 @@
   </div>
 
   <div class="field">
-    <%= form.label :place_id, "地域", :class=>"label_place"  %>
+    <%= form.label :place_id, "地域", :class=>"label_place" %>
     <div class="explain_place">お住まいの場所に一番近い場所を選んでください。</div>
     <%= form.collection_select :place_id, Place.all, :id, :name ,:place_id => 1 %>
+    <br>
+    <%= link_to ">>地図で場所を確認する", '/map' %><br>
   </div>
 
   <div class="field">
-    <%= form.label :image, "画像", :class=>"label_image"  %>
+    <%= form.label :image, "画像", :class=>"label_image" %>
     <div class="explain_image">画像をアップロードしてください。JPEG, PNG形式に対応しています。</div>
     <%= form.file_field :image, id: :item_image %>
   </div>

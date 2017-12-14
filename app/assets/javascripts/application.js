@@ -16,9 +16,16 @@
 //= require_tree .
 
 $(function() {
+  $('.toggle_container').toggle();
+
   $('.toggle_button').click(function() {
     var id = $(this).attr('data-toggle-id');
     var sel = '.toggle_container[data-toggle-id="' + id + '"]';
-    $(sel).slideToggle();
+    $(sel).toggle();
+  });
+
+  $('.pagetop').click(function() {
+    $('html, body').animate({scrollTop: 0}, 'slow');
+    return false;
   });
 });
