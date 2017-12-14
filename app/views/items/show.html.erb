@@ -144,7 +144,7 @@
 
 <div class="comment_form">
 <h3 class="comment_f">コメント入力</h3>
-<div class="comment_explain2">・出品者はパスワードを入力してください。<br>・出品者以外は空欄で構いません。
+<div class="comment_explain2">出品者はパスワードを入力してください。
 </div>
 <% if flash[:null] == "1" %>
   <% return_comment = flash[:return_comment] %>
@@ -166,8 +166,7 @@
         <%= hidden_field_tag 'choice_c', choice_c %>
 
       </div><!--form-group-->
-      <div class="comment_explain2">出品者はパスワードを入力してください。<br>出品者以外は空欄で構いません。
-      </div>
+
       <button type="submit" class="color_btn">コメント</button>
     <% end %>
 </div>
@@ -188,7 +187,7 @@
     <%= password_field_tag 'password' %>
     <%= hidden_field_tag 'id', @item.id %>
     <button type="submit" class="des_">商品取引終了</button>
-    <div class="des_ex">商品の取引を終了（削除）のためにはパスワードが必要です。</div>
+    <div class="des_ex">商品の取引を終了（削除）する場合はパスワードを入力してください。</div>
   </form>
 
 
