@@ -574,3 +574,20 @@ a.color_btn{
 .clear_float {
   clear:both;
 }
+
+.explain_pass{
+  display: none;
+  width: 350px;
+  position: absolute;
+  top: 10;
+  left: 500px;
+  padding: 10px;
+  margin-top: -30px;
+  border-radius: 5px;
+  background: #fffae0;
+  color: #333333;
+  font-weight: bold;
+}
+.label_pass:hover + .explain_pass {
+    display: block;
+}
