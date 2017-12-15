@@ -18,7 +18,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :place_id, "地域", :class=>"label_place" %>
+    <%= form.label :place_id, "お住まいの場所に一番近い場所", :class=>"label_place" %>
     <div class="explain_place">お住まいの場所に一番近い場所を選んでください。</div>
     <%= form.collection_select :place_id, Place.all, :id, :name ,:place_id => 1 %>
     <br>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :image, "画像", :class=>"label_image" %>
+    <%= form.label :image, "商品画像", :class=>"label_image" %>
     <div class="explain_image">画像をアップロードしてください。JPEG, PNG形式に対応しています。</div>
     <%= form.file_field :image, id: :item_image %>
   </div>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :detail, "詳細", :class=>"label_detail" %>
+    <%= form.label :detail, "商品の状態、値下げの対応、運搬の対応など", :class=>"label_detail" %>
     <div class="explain_detail">商品の詳細情報を入力してください。
       商品の状態、値下げの対応、運搬の対応などを明記しておくと購入者の参考になります。</div>
     <%= form.text_area :detail, id: :item_detail, :size=>"40x10"%>

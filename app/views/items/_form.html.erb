@@ -19,12 +19,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :place_id, "地域" %>
+    <%= form.label :place_id, "お住いの場所に１番近い場所" %>
     <%= form.collection_select :place_id, Place.all, :id, :name ,:place_id => 1 %>
   </div>
 
   <div class="field">
-    <%= form.label :image, "画像" %>
+    <%= form.label :image, "商品画像" %>
     <div class="thumb">
       <% if @item.image? %>
         <%= image_tag @item.image.url %>
@@ -42,7 +42,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :detail, "詳細" %>
+    <%= form.label :detail, "商品の状態、値下げの対応、運搬の対応など" %>
     <%= form.text_area :detail, id: :item_detail, :size=>"40x10"%>
   </div>
 
