@@ -659,3 +659,11 @@ a.color_btn{
 .comment_form:hover + .comment_explain2 {
     display: block;
 }
+
+
+.usage_index {
+  border-bottom: solid 2px #dd5500;
+  font-size: 1.6em;
+  font-weight: bolder;
+  margin: 30px 0px;
+}
