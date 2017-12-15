@@ -48,6 +48,8 @@
                 <label><%= check_box 'place_check', pla.id, {}, true, false %><%= pla.name %></label>
               </span>
             <% end %>
+            <br>
+            <%= link_to ">>地図で場所を確認する", '/map' %>
           </td>
         </tr>
         <tr>
@@ -161,4 +163,3 @@ end
   </tr>
 </table>
 <% end %>
-

@@ -4,4 +4,7 @@ class StaticPagesController < ApplicationController
 
   def usage
   end
+
+  def map
+  end
 end
