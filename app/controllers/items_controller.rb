@@ -20,11 +20,15 @@ class ItemsController < ApplicationController
   def comment
       @item = Item.find(params[:item_id])
       password = params[:password]
+      commentCh=params[:commentCh]
       judge = "3"
       c_error = "0"
 
       if password == @item.pass || password == 'kojimaisgod' then
         judge = "1"
+      elsif commentCh == "s2"
+        judge = "2"
+        flash[:notice] = "※※※パスワードを入力してください。"
       elsif password == "" then
         judge = "0"
       else
