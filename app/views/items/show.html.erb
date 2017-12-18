@@ -31,7 +31,7 @@
 
 <h2 class="comment_main">コメント</h2>　　　　
 <p class="comment_explain">
-  <%= image_tag 'comment_explain1.png' %>
+  <% image_tag 'comment_explain1.png' %>
 ・出品者のコメントは区別できるようになっています。<br>
 ・返信の場合は返信ボタンを押してからコメント入力してください
 </p>
@@ -114,9 +114,14 @@
 <%= form_tag("/items/comment") do %>
       <div class="form-group">
         <textarea name="comment_body" class="form-control" rows="3" cols="50"></textarea>
-        <p>出品者はパスワードを入力してください。</p>
 
+        <label><input type="radio" name="commentCh" value="s1" onclick="commentChange1();" checked="checked" />利用者</label>
+        <label><input type="radio" name="commentCh" value="s2" onclick="commentChange1();" />出品者</label>
+
+        <div id="pass_check" style="display:none">
+        <p>パスワードを入力してください。</p>
         <%= password_field_tag 'password' %>
+        </div>
 
         <%= hidden_field_tag 'item_id', @item.id %>
         <%= hidden_field_tag 'choice_c', choice_c %>
@@ -125,7 +130,7 @@
       <button type="submit" class="color_btn">送信</button>
     <% end %>
 </div>
-<div class="comment_explain2">出品者は忘れずにパスワードの入力をお願いします。<br>ほかの利用者の方は空欄で構いません。</div>
+<div class="comment_explain2"></div>
 </p>
 
 <div class="bottom_button">

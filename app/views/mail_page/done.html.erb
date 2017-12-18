@@ -28,10 +28,10 @@ https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
 このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
 心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
 
-    ==========================
-        enPiT2017 チームA1
-      tsuku.byebuy@gmail.com
-    ==========================
+==========================
+    enPiT2017 チームA1
+  tsuku.byebuy@gmail.com
+==========================
 " %>
 <%
 ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]閲覧者からの連絡", body:body).deliver
