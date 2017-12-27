@@ -1,9 +1,4 @@
 <h2>地図を確認</h2>
-<br>
-<div class="map">
-<%= image_tag 'tsukuba_map.png' %>
-</div>
-
 <% @places = Place.all %>
 <%
 @map_url = [
@@ -27,15 +22,18 @@
   "https://goo.gl/maps/hCheXD3DybR2"
 ]
 %>
+<table class="map">
+  <tr>
+    <td class="map_cell"><%= image_tag 'tsukuba_map.png' %></td>
+    <td class="place_cell">
+      <p>
+        <% @places.each do |place| %>
+          <% if place != @places[@places.length-1] %>
+            <span class="map_num"> (<%= place.id %>)</span> <%= link_to place.name, @map_url[place.id], :target=>["_blank"] %><br>
+          <% end %>
+        <% end %>
+      </p>
+    </td>
+  </tr>
+</table>
 
-<div class="map_places">
-<% @places.each do |place| %>
-  <% if place != @places[@places.length-1] %>
-      <span class="map_place_name">
-        (<%= place.id %>)
-        <%= link_to place.name, @map_url[place.id], :target=>["_blank"] %>
-      </span><br>
-  <% end %>
-<% end %>
-</div>
-<div class="clear_float"></div>

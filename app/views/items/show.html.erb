@@ -1,33 +1,29 @@
 <h2>商品の詳細</h2>
-<table class="item_table_show" border="1">
-  <tr>
-    <td class="img">
-      <% if @item.image? %>
-        <%= image_tag @item.image.url %>
-      <% else %>
-        <%= image_tag 'no_image.png' %>
-      <% end %>
-    </td>
-    <td class="item_cell">
-      <div class="item_name"><%= @item.name %></div>
-      <div class="item_price"><span class="value"><%= @item.price %></span> 円</div>
-      <div class="item_place"><%= @item.place.name %></div>
-      <div class="item_genre"><%= @item.genre.name %></div>
-      <div class="item_dep"><%= @item.department.name %></div>
-  </td>
-  </tr>
-  <tr>
-    <td class="detail_cell" colspan="2">
-      <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
-      <%= form_tag('../mail_page/home', method: "get") do %>
+<div class="item_table_show">
+  <div class="img">
+    <% if @item.image? %>
+      <%= image_tag @item.image.url %>
+    <% else %>
+      <%= image_tag 'no_image.png' %>
+    <% end %>
+  </div>
+  <div class="item_cell">
+    <div class="item_name"><%= @item.name %></div>
+    <div class="item_price"><span class="value"><%= @item.price %></span> 円</div>
+    <div class="item_place"><%= @item.place.name %></div>
+    <div class="item_genre"><%= @item.genre.name %></div>
+    <div class="item_dep"><%= @item.department.name %></div>
+  </div>
+  <div class="detail_cell">
+    <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
+    <%= form_tag('../mail_page/home', method: "get") do %>
       <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
       <%= hidden_field :to_mail, :item_id, :value => @item.id %>
       <div class="to_mail_button"><%= submit_tag('取引開始', :class => "color_btn") %></div>
       <p class="mail_explain">出品者にメールが送れます。</p>
-      <% end %>
-    </td>
-  </tr>
-</table>
+    <% end %>
+  </div>
+</div>
 
 <h2 class="comment_main">コメント</h2>　　　　
 <p class="comment_explain">
@@ -113,7 +109,7 @@
 <p style="color: red;"><%= notice %></p>
 <%= form_tag("/items/comment") do %>
       <div class="form-group">
-        <textarea name="comment_body" class="form-control" rows="3" cols="50"></textarea>
+        <textarea name="comment_body" class="form-control" style="width: 18em; height: 3rem;"></textarea>
 
         <label><input type="radio" name="commentCh" value="s1" onclick="commentChange1();" checked="checked" />利用者</label>
         <label><input type="radio" name="commentCh" value="s2" onclick="commentChange1();" />出品者</label>
@@ -134,11 +130,14 @@
 </p>
 
 <div class="bottom_button">
-<%= link_to '商品を編集する', edit_item_path(@item), :class => "color_btn" %>
 <%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
 </div>
 
+
 <div class="bottom_button">
+<h2>出品者メニュー</h2>
+<br>
+<%= link_to '商品を編集する', edit_item_path(@item), :class => "color_btn" %>
 <p id="des"></p>
 <p style="color: red;"><%= flash[:pass_destroy] %></p>
 <p>商品の取引が終了したらこの欄にパスワードを入力して「商品取引終了」ボタンを押してください。</p>
