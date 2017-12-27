@@ -9,7 +9,7 @@
   </div>
   <div class="item_cell">
     <div class="item_name"><%= @item.name %></div>
-    <div class="item_price"><span class="value"><%= @item.price %></span> 円</div>
+    <div class="item_price"><span class="value"><%= number_with_delimiter(@item.price) %></span> 円</div>
     <div class="item_place"><%= @item.place.name %></div>
     <div class="item_genre"><%= @item.genre.name %></div>
     <div class="item_dep"><%= @item.department.name %></div>

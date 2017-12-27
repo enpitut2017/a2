@@ -740,7 +740,7 @@ div.item_table_show div.detail_cell {
   }
 
   div#header nav ul li a span.menu_text {
-    font-size: 1rem;
+    font-size: 14px;
   }
 
   table.search_form td,
