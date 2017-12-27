@@ -715,12 +715,16 @@ div.item_table_show div.detail_cell {
 }
 
 @media screen and (max-width: 480px) {
+  body, p, ol, ul, td, input, textarea, select, button {
+    font-size: 14px;
+  }
+  
   header h1 {
     font-size: 1.7rem;
     padding: 0.5rem;
     text-align: center;
   }
-  
+
   div#header nav ul li {
     text-align: center;
   }
@@ -795,4 +799,24 @@ div.item_table_show div.detail_cell {
   table.map td.map_cell {
     width: 100%;
   }
+
+  .item_name{
+    font-size: 2rem;
+  }
+  
+  .item_price{
+    font-size: 1.3rem;
+  }
+  
+  .value{
+    font-size: 2rem;
+  }
+  
+  .item_place{
+    font-size: 1.3em;
+  }
+  
+  .item_genre, .item_dep{
+    font-size: 1em;
+  }  
 }
