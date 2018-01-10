@@ -1,4 +1,5 @@
 <h2>商品の詳細</h2>
+<<<<<<< HEAD
 <table class="item_table_show" border="1">
   <tr>
     <td width="30%">
@@ -19,82 +20,75 @@
     <td colspan="2">
       <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
       <%= form_tag('../mail_page/home', method: "get") do %>
+=======
+<div class="item_table_show">
+  <div class="img">
+    <% if @item.image? %>
+      <%= image_tag @item.image.url %>
+    <% else %>
+      <%= image_tag 'no_image.png' %>
+    <% end %>
+  </div>
+  <div class="item_cell">
+    <div class="item_name"><%= @item.name %></div>
+    <div class="item_price"><span class="value"><%= number_with_delimiter(@item.price) %></span> 円</div>
+    <div class="item_place"><%= @item.place.name %></div>
+    <div class="item_genre"><%= @item.genre.name %></div>
+    <div class="item_dep"><%= @item.department.name %></div>
+  </div>
+  <div class="detail_cell">
+    <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
+    <%= form_tag('../mail_page/home', method: "get") do %>
+>>>>>>> 71557417bc26df1441c49ca3a055abb6312d79a3
       <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
       <%= hidden_field :to_mail, :item_id, :value => @item.id %>
       <div class="to_mail_button"><%= submit_tag('取引開始', :class => "color_btn") %></div>
-      <% end %>
-    </td>
-  </tr>
-  <!-- <tr>
-    <td class="cell_label_show">学籍番号</td>
-    <td><%= @item.student_id %></td>
-  </tr>
-  <tr>
-    <td class="cell_label_show">学類</td>
-    <td><%= @item.department.name %></td>
-  </tr> -->
-<%=  %>
-</table>
+      <p class="mail_explain">出品者にメールが送れます。</p>
+    <% end %>
+  </div>
+</div>
 
-<h2>コメント</h2>
-<br>
+<h2 class="comment_main">コメント</h2>　　　　
+<p class="comment_explain">
+  <% image_tag 'comment_explain1.png' %>
+・出品者のコメントは区別できるようになっています。<br>
+・返信の場合は返信ボタンを押してからコメント入力してください
+</p>
+
 <% comments = Comment.where(item_id: @item.id ) %>
 <% num = 1 %>
 <% comments.each do |comment| %>
   <!--  出品者のコメントか判定  -->
   <% if comment.reply == "0" %>
-
-      <% if comment.judge == "1" %>
-      <span class="comment_seller">
-        <span class="comment_question">
-          <%= num %>.
-          [出品者のコメント]
-                  <%= simple_format(h(comment.comment_body)) %>
-          </font>
-        </span>
-      </span>
-      <% else %>
-        <span class="comment_question">
-          <%= num %>.
+    <% if comment.judge == "1" %>
+      <div class="comment seller">
+        <div class="comment_num"><%= num %>.</div>
+        <div class="comment_body seller">
+          <p>[出品者のコメント]</p>
           <%= simple_format(h(comment.comment_body)) %>
-        </span>
-      <% end %>
-
+        </div>
+    <% else %>
+      <div class="comment buyer">
+        <div class="comment_num"><%= num %>.</div>
+        <div class="comment_body buyer">
+          <%= simple_format(h(comment.comment_body)) %>
+        </div>
+    <% end %>
       <!--  コメントにリプライを生やす  -->
       <% comments.each do |rep| %>
           <% if rep.reply.to_i == num %>
+            <div class="comment_reply">
               <% if rep.judge == "0" %>
-
-                  <p>&emsp;&emsp;&emsp;⇨
-                    <!-- 一行のとき -->
-                    <% if rep.comment_body.sub(/[\r\n]*\z/, "").sub(/\A[\r\n]*/, "").index("\n") == nil %>
-                      <span class="comment_answer_one_line">
-                        <%= rep.comment_body %>
-                      </span>
-                    <!-- 改行が含まれているとき -->
-                    <% else %>
-                      <div class="comment_answer_multi_lines">
-                        <%= simple_format(h(rep.comment_body)) %>
-                      </div>
-                    <% end %>
-                  </p>
+                <div class="comment_body buyer">
+                  <%= simple_format(h(rep.comment_body)) %>
                 </div>
               <% else %>
-                  <span class="comment_seller"><p>
-                    &emsp;&emsp;&emsp;⇨
-                    <!-- 一行のとき -->
-                    <% if rep.comment_body.sub(/[\r\n]*\z/, "").sub(/\A[\r\n]*/, "").index("\n") == nil %>
-                      <span class="comment_answer_one_line">
-                        [出品者の返信]<%= rep.comment_body %>
-                      </span>
-                    <!-- 改行が含まれているとき -->
-                    <% else %>
-                      <div class="comment_answer_multi_lines">
-                        [出品者の返信]<%= simple_format(h(rep.comment_body)) %>
-                      </div>
-                    <% end %>
-                    </p></span>
+                <div class="comment_body seller">
+                  <p>[出品者の返信]</p>
+                  <%= simple_format(h(rep.comment_body)) %>
+                </div>
               <% end %>
+            </div>
           <% end %>
       <% end %>
       <% r_comment2 = "への返信" %>
@@ -105,8 +99,10 @@
       <%= form_tag :url => { :action => "show", :id => @item.id } do %>
           <%= hidden_field_tag 'choice_send', @choice %>
           <%= hidden_field_tag 'return_send', @r_comment %>
-          <button type="submit">返信</button>
+          <button type="submit" class="color_btn" style="margin-left: 1em;">返信する</button>
       <% end %>
+    </div>
+
   <% num = num+1 %>
   </p>
   <% end %>
@@ -126,53 +122,55 @@
     <% return_comment = params['return_send']%>
 
 <p id="com"></p>
-
+<h3>コメントする</h3>
 <div class="comment_form">
-<strong>コメント入力</strong><br>
 <% if flash[:null] == "1" %>
   <% return_comment = flash[:return_comment] %>
   <% choice_c = flash[:choice_c] %>
 <% end %>
-
-<b><%= return_comment %><b>
-<font color = "red"><%= notice %></font>
+<p><strong><%= return_comment %></strong></p>
+<p style="color: red;"><%= notice %></p>
 <%= form_tag("/items/comment") do %>
-    <form>
       <div class="form-group">
+        <textarea name="comment_body" class="form-control" style="width: 18em; height: 3rem;"></textarea>
 
-        <textarea name="comment_body" class="form-control" rows="6" cols="60"></textarea>
-        <br>出品者はパスワードを入力してください。<br>
+        <label><input type="radio" name="commentCh" value="s1" onclick="commentChange1();" checked="checked" />利用者</label>
+        <label><input type="radio" name="commentCh" value="s2" onclick="commentChange1();" />出品者</label>
 
+        <div id="pass_check" style="display:none">
+        <p>パスワードを入力してください。</p>
         <%= password_field_tag 'password' %>
+        </div>
 
         <%= hidden_field_tag 'item_id', @item.id %>
         <%= hidden_field_tag 'choice_c', choice_c %>
 
       </div><!--form-group-->
-      <button type="submit" class="color_btn">コメント</button>
+      <button type="submit" class="color_btn">送信</button>
     <% end %>
 </div>
+<div class="comment_explain2"></div>
 </p>
 
 <div class="bottom_button">
-<%= link_to '商品を編集する', edit_item_path(@item), :class => "color_btn" %>
 <%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
 </div>
-<div>
 
+
+<div class="bottom_button">
+<h2>出品者メニュー</h2>
+<br>
+<%= link_to '商品を編集する', edit_item_path(@item), :class => "color_btn" %>
 <p id="des"></p>
-<font color = "red"><%= flash[:pass_destroy] %></font>
-商品の取引が終了したらこの欄にパスワードを入力して「商品取引終了」ボタンを押してください。
+<p style="color: red;"><%= flash[:pass_destroy] %></p>
+<p>商品の取引が終了したらこの欄にパスワードを入力して「商品取引終了」ボタンを押してください。</p>
+<div class="des_">
 <%= form_tag("/items/destroy") do %>
   <form>
     <%= password_field_tag 'password' %>
     <%= hidden_field_tag 'id', @item.id %>
-    <button type="submit">商品取引終了</button>
+    <button type="submit" class="color_btn">商品取引終了</button></div>
+    <div class="des_ex">パスワードを忘れた方は、最初のメールをご確認ください。</div>
   </form>
 <% end %>
-
-
-
 </div>
-
-<br><br>

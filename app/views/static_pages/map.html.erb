@@ -1,0 +1,39 @@
+<h2>地図を確認</h2>
+<% @places = Place.all %>
+<%
+@map_url = [
+  "https://goo.gl/maps/sALQGiMDY662", #筑波大
+  "https://goo.gl/maps/iAyEFJ99fNq",
+  "https://goo.gl/maps/xyFVPKx1JdQ2",
+  "https://goo.gl/maps/MR6AXmfn17x",
+  "https://goo.gl/maps/RegX253EkHs",
+  "https://goo.gl/maps/Ap5LXs2fxrK2",
+  "https://goo.gl/maps/jfMHRvCh8b62",
+  "https://goo.gl/maps/S2XnWXcW3NA2",
+  "https://goo.gl/maps/jf3khsNsxw62",
+  "https://goo.gl/maps/hFpa1gju82m",
+  "https://goo.gl/maps/iubDZESAHsH2",
+  "https://goo.gl/maps/WmcSRydc3gQ2",
+  "https://goo.gl/maps/eAXKD53AmxJ2",
+  "https://goo.gl/maps/s2Lf3GiKemM2",
+  "https://goo.gl/maps/y7KxzKuGyTJ2",
+  "https://goo.gl/maps/ekyUAnSWA1L2",
+  "https://goo.gl/maps/6EkcnaqnRj42",
+  "https://goo.gl/maps/hCheXD3DybR2"
+]
+%>
+<table class="map">
+  <tr>
+    <td class="map_cell"><%= image_tag 'tsukuba_map.png' %></td>
+    <td class="place_cell">
+      <p>
+        <% @places.each do |place| %>
+          <% if place != @places[@places.length-1] %>
+            <span class="map_num"> (<%= place.id %>)</span> <%= link_to place.name, @map_url[place.id], :target=>["_blank"] %><br>
+          <% end %>
+        <% end %>
+      </p>
+    </td>
+  </tr>
+</table>
+

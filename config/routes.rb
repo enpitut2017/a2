@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'map' => 'static_pages#map'
 
   get 'contact' => 'static_pages#contact'
 

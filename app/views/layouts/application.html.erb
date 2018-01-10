@@ -3,9 +3,10 @@
   <head>
     <title>つくByeBuy</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   </head>
 
   <body>
@@ -16,10 +17,11 @@
       <div id="nav">
         <nav>
           <ul>
-            <li><%= link_to '商品一覧', items_path %></li>
-            <li><%= link_to '出品', new_item_path %></li>
-            <li><%= link_to '使い方', '/usage' %></li>
-            <li><%= link_to 'お問い合わせ', '/contact' %></li>
+            <li><%= link_to items_path do %><i class="fas fa-list-ul"></i><span class="menu_text">商品一覧</span><% end %></li>
+            <li><%= link_to new_item_path do %><i class="fas fa-plus-circle"></i><span class="menu_text">出品</span><% end %></li>
+            <li><%= link_to '/usage' do %><i class="fas fa-question-circle"></i><span class="menu_text">使い方</span><% end %></li>
+            <li><%= link_to '/map' do %><i class="fas fa-map-marker-alt"></i><span class="menu_text">地図</span><% end %></li>
+            <li><%= link_to '/contact' do %><i class="fas fa-info-circle"></i><span class="menu_text">お問い合わせ</span><% end %></li>
           </ul>
         </nav>
       </div>

@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
 //= require_tree .
 
@@ -29,3 +28,19 @@ $(function() {
     return false;
   });
 });
+
+
+
+function commentChange1(){
+radio = document.getElementsByName('commentCh')
+if(radio[0].checked) {
+//フォーム
+document.getElementById('pass_check').style.display = "none";
+}else if(radio[1].checked) {
+//フォーム
+document.getElementById('pass_check').style.display = "";
+//document.getElementById('secondBox').style.display = "";
+}
+}
+//オンロードさせ、リロード時に選択を保持
+window.onload = entryChange1;
