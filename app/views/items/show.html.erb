@@ -1,26 +1,4 @@
 <h2>商品の詳細</h2>
-<<<<<<< HEAD
-<table class="item_table_show" border="1">
-  <tr>
-    <td width="30%">
-      <% if @item.image? %>
-        <%= link_to @item do %><%= image_tag @item.image.url %><% end %>
-      <% else %>
-        <%= link_to @item do %><%= image_tag 'no_image.png' %><% end %>
-      <% end %>
-    </td>
-    <td class="item_cell">
-      <div class="item_name"><%= @item.name %></div>
-      <div class="item_price"><span class="value"><%= @item.price %></span> 円</div>
-      <div class="item_place"><%= @item.place.name %></div>
-      <div class="item_genre"><%= @item.genre.name %></div>
-  </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
-      <%= form_tag('../mail_page/home', method: "get") do %>
-=======
 <div class="item_table_show">
   <div class="img">
     <% if @item.image? %>
@@ -39,7 +17,6 @@
   <div class="detail_cell">
     <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
     <%= form_tag('../mail_page/home', method: "get") do %>
->>>>>>> 71557417bc26df1441c49ca3a055abb6312d79a3
       <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
       <%= hidden_field :to_mail, :item_id, :value => @item.id %>
       <div class="to_mail_button"><%= submit_tag('取引開始', :class => "color_btn") %></div>
