@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
       judge = "3"
       c_error = "0"
 
-      if password == @item.pass || password == 'kojimaisgod' then
+      if password == @item.pass || password == ENV['MASTER_PASS'] then
         judge = "1"
       elsif commentCh == "s2"
         judge = "2"
@@ -161,7 +161,7 @@ https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
   # PATCH/PUT /items/1.json
   def update
 password = params[:item][:confirm]
-if password == @item.pass || password == 'kojimaisgod'
+if password == @item.pass || password == ENV['MASTER_PASS']
 
     respond_to do |format|
       if @item.update(item_params)
@@ -207,7 +207,7 @@ end
   # DELETE /items/1.json
   def destroy
 password = params[:password]
-if @item.pass == password || password == 'kojimaisgod'
+if @item.pass == password || password == ENV['MASTER_PASS']
     email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
     body = @item.student_id.to_s + "様
 
