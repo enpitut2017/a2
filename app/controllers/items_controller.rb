@@ -28,12 +28,13 @@ class ItemsController < ApplicationController
         judge = "1"
       elsif commentCh == "s2"
         judge = "2"
-        flash[:notice] = "※※※パスワードを入力してください。"
-      elsif password == "" then
+        if password == "" then
+          flash[:notice] = "※※※パスワードを入力してください。"
+        else
+          flash[:notice] = "※※※パスワードが間違っています。"
+        end
+      elsif commentCh == "s1" then
         judge = "0"
-      else
-        judge = "2"
-        flash[:notice] = "※※※パスワードが間違っています。"
       end
 
       if params[:comment_body].empty?
