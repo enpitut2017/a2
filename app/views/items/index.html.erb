@@ -148,6 +148,9 @@ end
     <% end %>
   </div>
   <div class="cell_label name">商品名</div>
+  <% if item.sold == 8181 %>
+    [Sold out]
+  <% end %>
   <div class="data_cell"><%= link_to item.name, item %></div>
   <div class="cell_label price">価格</div>
   <div class="data_cell"><%= number_with_delimiter(item.price) %> 円</div>

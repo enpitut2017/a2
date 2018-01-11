@@ -14,9 +14,17 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @comments = @item.comments.all
     @comment = @item.comments.build
-
+    if @item.sold == 8181
+      redirect_to action: "sold",id: @item.id
+    end
   end
-
+  
+  def sold
+    @item = Item.find(params[:id])
+    @comments = @item.comments.all
+    @comment = @item.comments.build
+  end
+  
   def comment
       @item = Item.find(params[:item_id])
       password = params[:password]
@@ -210,7 +218,7 @@ if @item.pass == password || password == ENV['MASTER_PASS']
     email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
     body = @item.student_id.to_s + "様
 
-出品の取り消しが完了しました。
+取引お疲れ様です。
 つくByeBuyのご利用、ありがとうございました。
 
 商品名:" + @item.name.to_s + "
@@ -225,11 +233,9 @@ if @item.pass == password || password == ENV['MASTER_PASS']
 "
 
     ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
-    @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :no_content }
-    end
+    @item.sold = 8181
+    @item.save
+    redirect_to :action => "index"
 else
   flash[:pass_destroy] = "※※※パスワードが間違っています。"
   redirect_to :action => "show", :id => @item.id,:anchor => 'des'
