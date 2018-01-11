@@ -714,11 +714,23 @@ div.item_table_show div.detail_cell {
   border-top: 1px solid black;
 }
 
+.date_time {
+  float: right;
+  margin: 4px 8px;
+  color: #aaaaaa;
+}
+
+.date_time2 {
+  float: right;
+  margin: 4px 0px;
+  color: #aaaaaa;
+}
+
 @media screen and (max-width: 480px) {
   body, p, ol, ul, td, input, textarea, select, button {
     font-size: 14px;
   }
-  
+
   header h1 {
     font-size: 1.7rem;
     padding: 0.5rem;
@@ -803,20 +815,20 @@ div.item_table_show div.detail_cell {
   .item_name{
     font-size: 2rem;
   }
-  
+
   .item_price{
     font-size: 1.3rem;
   }
-  
+
   .value{
     font-size: 2rem;
   }
-  
+
   .item_place{
     font-size: 1.3em;
   }
-  
+
   .item_genre, .item_dep{
     font-size: 1em;
-  }  
+  }
 }

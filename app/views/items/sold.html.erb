@@ -13,18 +13,10 @@
     <div class="item_place"><%= @item.place.name %></div>
     <div class="item_genre"><%= @item.genre.name %></div>
     <div class="item_dep"><%= @item.department.name %></div>
-    <div class="date_time2"><%= (@item.created_at).to_s.slice(0, 16) %></div>
   </div>
   <div class="detail_cell">
     <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
-
-    <%= form_tag('../mail_page/home', method: "post") do %>
-
-      <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
-      <%= hidden_field :to_mail, :item_id, :value => @item.id %>
-      <div class="to_mail_button"><%= submit_tag('取引開始', :class => "color_btn") %></div>
-      <p class="mail_explain">出品者にメールが送れます。</p>
-    <% end %>
+      <div class="to_mail_button"><%= submit_tag('Sold out', :class => "color_btn") %></div>
   </div>
 </div>
 
@@ -42,14 +34,14 @@
   <% if comment.reply == "0" %>
     <% if comment.judge == "1" %>
       <div class="comment seller">
-        <div class="comment_num"><%= num %>.<span class="date_time"><%= (comment.created_at).to_s.slice(0, 16) %></span></div>
+        <div class="comment_num"><%= num %>.</div>
         <div class="comment_body seller">
           <p>[出品者のコメント]</p>
           <%= simple_format(h(comment.comment_body)) %>
         </div>
     <% else %>
       <div class="comment buyer">
-        <div class="comment_num"><%= num %>.<span class="date_time"><%= (comment.created_at).to_s.slice(0, 16) %></span></div>
+        <div class="comment_num"><%= num %>.</div>
         <div class="comment_body buyer">
           <%= simple_format(h(comment.comment_body)) %>
         </div>
@@ -58,7 +50,6 @@
       <% comments.each do |rep| %>
           <% if rep.reply.to_i == num %>
             <div class="comment_reply">
-              <span class="date_time"><%= (rep.created_at).to_s.slice(0, 16) %></span>
               <% if rep.judge == "0" %>
                 <div class="comment_body buyer">
                   <%= simple_format(h(rep.comment_body)) %>
@@ -75,13 +66,6 @@
       <% r_comment2 = "への返信" %>
       <% @choice = num %>
       <% @r_comment = num.to_s + r_comment2 %>
-
-      <!--  返信ボタンフォーム  -->
-      <%= form_tag :url => { :action => "show", :id => @item.id } do %>
-          <%= hidden_field_tag 'choice_send', @choice %>
-          <%= hidden_field_tag 'return_send', @r_comment %>
-          <button type="submit" class="color_btn" style="margin-left: 1em;">返信する</button>
-      <% end %>
     </div>
 
   <% num = num+1 %>
@@ -111,7 +95,6 @@
 <% end %>
 <p><strong><%= return_comment %></strong></p>
 <p style="color: red;"><%= notice %></p>
-<%= form_tag("/items/comment") do %>
       <div class="form-group">
         <textarea name="comment_body" class="form-control" style="width: 18em; height: 3rem;"></textarea>
 
@@ -127,8 +110,7 @@
         <%= hidden_field_tag 'choice_c', choice_c %>
 
       </div><!--form-group-->
-      <button type="submit" class="color_btn">送信</button>
-    <% end %>
+      <button type="submit" class="color_btn">Sold out</button>
 </div>
 <div class="comment_explain2"></div>
 </p>
@@ -137,21 +119,3 @@
 <%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
 </div>
 
-
-<div class="bottom_button">
-<h2>出品者メニュー</h2>
-<br>
-<%= link_to '商品を編集する', edit_item_path(@item), :class => "color_btn" %>
-<p id="des"></p>
-<p style="color: red;"><%= flash[:pass_destroy] %></p>
-<p>商品の取引が終了したらこの欄にパスワードを入力して「商品取引終了」ボタンを押してください。</p>
-<div class="des_">
-<%= form_tag("/items/destroy") do %>
-  <form>
-    <%= password_field_tag 'password' %>
-    <%= hidden_field_tag 'id', @item.id %>
-    <button type="submit" class="color_btn">商品取引終了</button></div>
-    <div class="des_ex">パスワードを忘れた方は、最初のメールをご確認ください。</div>
-  </form>
-<% end %>
-</div>
