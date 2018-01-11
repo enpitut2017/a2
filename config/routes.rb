@@ -14,12 +14,14 @@ Rails.application.routes.draw do
 
 post "items/comment" => "items#comment"
 post "items/destroy" => "items#destroy"
+post "items/show" => "mail_page#home"
 
   get 'mail_page/home'
   get 'mail_page/done'
 
   post "items/:id" => "items#show"
   post "items/sold/:id" => "items#sold"
+  post "mail_page/home"
 
   resources :users
 
