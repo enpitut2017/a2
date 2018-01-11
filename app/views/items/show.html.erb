@@ -17,7 +17,9 @@
   </div>
   <div class="detail_cell">
     <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
-    <%= form_tag('../mail_page/home', method: "get") do %>
+
+    <%= form_tag('../mail_page/home', method: "post") do %>
+
       <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
       <%= hidden_field :to_mail, :item_id, :value => @item.id %>
       <div class="to_mail_button"><%= submit_tag('取引開始', :class => "color_btn") %></div>
