@@ -22,11 +22,42 @@
   "https://goo.gl/maps/hCheXD3DybR2"
 ]
 %>
+<script>
+  function toggle_check(i) {
+    if (window.opener && !window.opener.closed) {
+      var id = '#place_check_' + i;
+      window.opener.$(id).prop('checked', function(index, prop) {
+        return !prop;
+      });
+      window.open('about:blank','_self').close();
+    }
+  }
+</script>
+<map name="map">
+  <area shape="circle" coords="537,1189,37" href="javascript:toggle_check(1);" alt="1">
+  <area shape="circle" coords="522,947,37" href="javascript:toggle_check(2);" alt="2">
+  <area shape="circle" coords="471,815,37" href="javascript:toggle_check(3);" alt="3">
+  <area shape="circle" coords="320,121,37" href="javascript:toggle_check(4);" alt="4">
+  <area shape="circle" coords="291,1224,37" href="javascript:toggle_check(5);" alt="5">
+  <area shape="circle" coords="326,1088,37" href="javascript:toggle_check(6);" alt="6">
+  <area shape="circle" coords="330,902,37" href="javascript:toggle_check(7);" alt="7">
+  <area shape="circle" coords="394,809,37" href="javascript:toggle_check(8);" alt="8">
+  <area shape="circle" coords="329,763,37" href="javascript:toggle_check(9);" alt="9">
+  <area shape="circle" coords="664,937,37" href="javascript:toggle_check(10);" alt="10">
+  <area shape="circle" coords="570,951,37" href="javascript:toggle_check(11);" alt="11">
+  <area shape="circle" coords="547,865,37" href="javascript:toggle_check(12);" alt="12">
+  <area shape="circle" coords="546,564,37" href="javascript:toggle_check(13);" alt="13">
+  <area shape="circle" coords="495,515,37" href="javascript:toggle_check(14);" alt="14">
+  <area shape="circle" coords="342,555,37" href="javascript:toggle_check(15);" alt="15">
+  <area shape="circle" coords="623,565,37" href="javascript:toggle_check(16);" alt="16">
+  <area shape="circle" coords="667,344,37" href="javascript:toggle_check(17);" alt="17">
+</map>
 <table class="map">
   <tr>
-    <td class="map_cell"><%= image_tag 'tsukuba_map.png' %></td>
+    <td class="map_cell"><%= image_tag 'tsukuba_map.png', :usemap => 'map' %></td>
     <td class="place_cell">
       <p>
+        クリックするとGoogleマップが開きます。<br><br>
         <% @places.each do |place| %>
           <% if place != @places[@places.length-1] %>
             <span class="map_num"> (<%= place.id %>)</span> <%= link_to place.name, @map_url[place.id], :target=>["_blank"] %><br>
