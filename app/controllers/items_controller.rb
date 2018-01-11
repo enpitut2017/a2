@@ -116,15 +116,12 @@ class ItemsController < ApplicationController
 出品した商品に新しくコメントが届きました。
 以下のリンクから返信フォームをご利用ください。
 
-https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 商品名:" + @item.name.to_s + "
 コメント内容:" + @comment.comment_body.to_s + "
 
-このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
-
 ==========================
-    enPiT2017 チームA1
+      つくByeBuy運営
   tsuku.byebuy@gmail.com
 ==========================
 "
@@ -236,13 +233,10 @@ end
 商品名:" + @item.name.to_s + "
 
 ↓商品詳細ページはコチラ↓
-https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
-
-このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 
 ==========================
-    enPiT2017 チームA1
+      つくByeBuy運営
   tsuku.byebuy@gmail.com
 ==========================
 "
@@ -305,13 +299,10 @@ if password == @item.pass || password == ENV['MASTER_PASS']
 商品名:" + @item.name.to_s + "
 
 ↓商品詳細ページはコチラ↓
-https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
-
-このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 
 ==========================
-    enPiT2017 チームA1
+      つくByeBuy運営
   tsuku.byebuy@gmail.com
 ==========================
 "
@@ -363,11 +354,8 @@ if @item.pass == password || password == ENV['MASTER_PASS']
 
 商品名:" + @item.name.to_s + "
 
-このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
-
 ==========================
-    enPiT2017 チームA1
+      つくByeBuy運営
   tsuku.byebuy@gmail.com
 ==========================
 "
