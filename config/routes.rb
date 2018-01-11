@@ -13,9 +13,12 @@ Rails.application.routes.draw do
 
 post "items/comment" => "items#comment"
 post "items/destroy" => "items#destroy"
+post "items/done" => "items#done"
 
   get 'mail_page/home'
   get 'mail_page/done'
+  get 'mail_page/done2'
+  get 'mail_page/cancel'
 
   post "items/:id" => "items#show"
 
