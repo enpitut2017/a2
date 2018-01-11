@@ -66,6 +66,25 @@ class ItemsController < ApplicationController
         @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
         @comment.save
 
+        #log
+        log_file = File.open('./app/assets/log_file.txt', 'a')
+        log_file.puts "************************"
+        log_file.puts Time.current
+        log_file.puts "<コメント>"
+        log_file.puts "商品ID: " + params[:item_id].to_s
+        if commentCh == "s1" then
+          log_file.puts "[購入者のコメント]"
+        elsif commentCh == "s2" then
+          log_file.puts "[出品者のコメント]"
+        end
+        if params[:choice_c].to_s == "0" then
+          log_file.puts "[返信なし]"
+        else
+          log_file.puts "[" + params[:choice_c].to_s + "への返信]"
+        end
+        log_file.puts "コメント内容: " + params[:comment_body].to_s
+        log_file.close
+
       redirect_to :action => "show", :id => @comment.item_id, :anchor => 'com'
       if @comment.save
         if @comment.judge == "0"
@@ -127,6 +146,20 @@ end
 
   # GET /items/1/edit
   def edit
+    #log
+    log_file = File.open('./app/assets/log_file.txt', 'a')
+    log_file.puts "************************"
+    log_file.puts Time.current
+    log_file.puts "<商品編集完了>"
+    log_file.puts "商品ID: " + @item.id.to_s
+    log_file.puts "商品名: " + @item.name.to_s
+    log_file.puts "場所ID: " + @item.place_id.to_s
+    log_file.puts "商品画像: " + @item.image.url.to_s
+    log_file.puts "商品価格: " + @item.price.to_s
+    log_file.puts "商品詳細: " + @item.detail.to_s
+    log_file.puts "ジャンルID: " + @item.genre_id.to_s
+    log_file.puts "出品者学籍番号: " + @item.student_id.to_s
+    log_file.close
   end
 
   # POST /items
@@ -134,6 +167,22 @@ end
   def create
     @item = Item.new(item_params)
     items = Item
+
+    #log
+    log_file = File.open('./app/assets/log_file.txt', 'a')
+    log_file.puts "************************"
+    log_file.puts Time.current
+    log_file.puts "<出品完了>"
+    log_file.puts "商品ID: " + @item.id.to_s
+    log_file.puts "商品名: " + @item.name.to_s
+    log_file.puts "場所ID: " + @item.place_id.to_s
+    log_file.puts "商品画像: " + @item.image.url.to_s
+    log_file.puts "商品価格: " + @item.price.to_s
+    log_file.puts "商品詳細: " + @item.detail.to_s
+    log_file.puts "ジャンルID: " + @item.genre_id.to_s
+    log_file.puts "出品者学籍番号: " + @item.student_id.to_s
+    log_file.close
+
     pass_check = "0"
     id_i = 1
         while id_i <= Item.last.id do

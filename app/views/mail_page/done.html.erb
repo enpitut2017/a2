@@ -62,5 +62,19 @@ https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
 ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]閲覧者からの連絡", body:body).deliver
 %>
 
+<%
+#log
+log_file = File.open('./app/assets/log_file.txt', 'a')
+log_file.puts "************************"
+log_file.puts Time.current
+log_file.puts "<出品者に連絡>"
+log_file.puts "商品ID: " + @item.id.to_s
+log_file.puts "商品名: " + @item.name.to_s
+log_file.puts "出品者学籍番号: " + @item.student_id.to_s
+log_file.puts "購入検討者学籍番号: " + params[:mail][:student_id].to_s
+log_file.puts "連絡内容: " + params[:mail][:content].to_s
+log_file.close
+%>
+
  <%= link_to '商品一覧に戻る', items_path, :class => "red_line"  %>
 <% end %>
