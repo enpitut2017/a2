@@ -6,7 +6,8 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.integer :price
       t.string :detail
       t.integer :student_id
-
+      t.integer :sold
+     
       t.timestamps
     end
   end
