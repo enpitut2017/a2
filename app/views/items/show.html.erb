@@ -13,6 +13,7 @@
     <div class="item_place"><%= @item.place.name %></div>
     <div class="item_genre"><%= @item.genre.name %></div>
     <div class="item_dep"><%= @item.department.name %></div>
+    <div class="date_time2"><%= (@item.created_at).to_s.slice(0, 16) %></div>
   </div>
   <div class="detail_cell">
     <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
@@ -39,14 +40,14 @@
   <% if comment.reply == "0" %>
     <% if comment.judge == "1" %>
       <div class="comment seller">
-        <div class="comment_num"><%= num %>.</div>
+        <div class="comment_num"><%= num %>.<span class="date_time"><%= (comment.created_at).to_s.slice(0, 16) %></span></div>
         <div class="comment_body seller">
           <p>[出品者のコメント]</p>
           <%= simple_format(h(comment.comment_body)) %>
         </div>
     <% else %>
       <div class="comment buyer">
-        <div class="comment_num"><%= num %>.</div>
+        <div class="comment_num"><%= num %>.<span class="date_time"><%= (comment.created_at).to_s.slice(0, 16) %></span></div>
         <div class="comment_body buyer">
           <%= simple_format(h(comment.comment_body)) %>
         </div>
@@ -55,6 +56,7 @@
       <% comments.each do |rep| %>
           <% if rep.reply.to_i == num %>
             <div class="comment_reply">
+              <span class="date_time"><%= (rep.created_at).to_s.slice(0, 16) %></span>
               <% if rep.judge == "0" %>
                 <div class="comment_body buyer">
                   <%= simple_format(h(rep.comment_body)) %>
