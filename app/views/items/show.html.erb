@@ -1,11 +1,17 @@
 <h2>商品の詳細</h2>
 <div class="item_table_show">
   <div class="img">
+    <div class="relative">
     <% if @item.image? %>
       <%= image_tag @item.image.url %>
     <% else %>
       <%= image_tag 'no_image.png' %>
     <% end %>
+
+    <% if Time.current - @item.created_at < 3600 * 6 %>
+      <div class="sold_over_ribbon"><%= image_tag 'new_over_ribbon.png'%></div>
+    <% end %>
+  </div>
   </div>
   <div class="item_cell">
     <div class="item_name"><%= @item.name %></div>

@@ -151,6 +151,8 @@ end
     <% if item.sold == 8181 %>
       <%= link_to item, :class=>"sold_over_black" do%><%= image_tag 'soldout_over_black.png'%><% end %>
       <%= link_to item, :class=>"sold_over_ribbon" do%><%= image_tag 'soldout_over_ribbon.png'%><% end %>
+    <% elsif Time.current - item.created_at < 3600 * 6 %>
+      <%= link_to item, :class=>"sold_over_ribbon" do%><%= image_tag 'new_over_ribbon.png'%><% end %>
     <% end %>
   </div>
   </div>
