@@ -15,6 +15,10 @@
 //= require_tree .
 
 $(function() {
+  $(document).ready(function(e) {
+    $('img[usemap]').rwdImageMaps();
+  });
+
   $('.toggle_container').toggle();
 
   $('.toggle_button').click(function() {
