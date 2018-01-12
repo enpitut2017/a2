@@ -726,6 +726,26 @@ div.item_table_show div.detail_cell {
   color: #aaaaaa;
 }
 
+.relative {
+  position: relative;
+}
+
+.sold_over_black {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.sold_over_ribbon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.sold_over_ribbon:hover {
+  background-color: transparent;
+}
+
+
 @media screen and (max-width: 480px) {
   body, p, ol, ul, td, input, textarea, select, button {
     font-size: 14px;

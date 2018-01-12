@@ -1,31 +1,36 @@
 <h2>商品の詳細</h2>
 <div class="item_table_show">
   <div class="img">
+    <div class="relative">
     <% if @item.image? %>
       <%= image_tag @item.image.url %>
     <% else %>
       <%= image_tag 'no_image.png' %>
     <% end %>
+    <div class="sold_over_black"><%= image_tag 'soldout_over_black.png'%></div>
+    <div class="sold_over_ribbon"><%= image_tag 'soldout_over_ribbon.png'%></div>
   </div>
+    </div>
   <div class="item_cell">
     <div class="item_name"><%= @item.name %></div>
     <div class="item_price"><span class="value"><%= number_with_delimiter(@item.price) %></span> 円</div>
     <div class="item_place"><%= @item.place.name %></div>
     <div class="item_genre"><%= @item.genre.name %></div>
     <div class="item_dep"><%= @item.department.name %></div>
+    <div class="date_time2"><%= (@item.created_at).to_s.slice(0, 16) %></div>
   </div>
   <div class="detail_cell">
     <div class="item_detail"><%= simple_format(h(@item.detail)) %></div>
-      <div class="to_mail_button"><%= submit_tag('Sold out', :class => "color_btn") %></div>
+      <!-- <div class="to_mail_button"><%= submit_tag('Sold out', :class => "color_btn") %></div> -->
   </div>
 </div>
 
 <h2 class="comment_main">コメント</h2>　　　　
-<p class="comment_explain">
+<!-- <p class="comment_explain">
   <% image_tag 'comment_explain1.png' %>
 ・出品者のコメントは区別できるようになっています。<br>
 ・返信の場合は返信ボタンを押してからコメント入力してください
-</p>
+</p> -->
 
 <% comments = Comment.where(item_id: @item.id ) %>
 <% num = 1 %>
@@ -34,14 +39,14 @@
   <% if comment.reply == "0" %>
     <% if comment.judge == "1" %>
       <div class="comment seller">
-        <div class="comment_num"><%= num %>.</div>
+        <div class="comment_num"><%= num %>.<span class="date_time"><%= (comment.created_at).to_s.slice(0, 16) %></span></div>
         <div class="comment_body seller">
           <p>[出品者のコメント]</p>
           <%= simple_format(h(comment.comment_body)) %>
         </div>
     <% else %>
       <div class="comment buyer">
-        <div class="comment_num"><%= num %>.</div>
+        <div class="comment_num"><%= num %>.<span class="date_time"><%= (comment.created_at).to_s.slice(0, 16) %></span></div>
         <div class="comment_body buyer">
           <%= simple_format(h(comment.comment_body)) %>
         </div>
@@ -50,6 +55,7 @@
       <% comments.each do |rep| %>
           <% if rep.reply.to_i == num %>
             <div class="comment_reply">
+              <span class="date_time"><%= (rep.created_at).to_s.slice(0, 16) %></span>
               <% if rep.judge == "0" %>
                 <div class="comment_body buyer">
                   <%= simple_format(h(rep.comment_body)) %>
@@ -86,7 +92,7 @@
 
     <% return_comment = params['return_send']%>
 
-<p id="com"></p>
+<!-- <p id="com"></p>
 <h3>コメントする</h3>
 <div class="comment_form">
 <% if flash[:null] == "1" %>
@@ -109,13 +115,12 @@
         <%= hidden_field_tag 'item_id', @item.id %>
         <%= hidden_field_tag 'choice_c', choice_c %>
 
-      </div><!--form-group-->
+      </div>
       <button type="submit" class="color_btn">Sold out</button>
 </div>
 <div class="comment_explain2"></div>
-</p>
+</p> -->
 
 <div class="bottom_button">
 <%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
 </div>
-
