@@ -315,6 +315,8 @@ def done
       flash[:error_n] = "学籍番号を入力してください。"
    end
    if params[:mail][:content].empty? || params[:mail][:student_id].empty?
+     flash[:id] = params[:to_mail][:item_id]
+     flash[:number] = params[:to_mail][:student_id]
      redirect_to '/mail_page/cancel'
    else
 
@@ -325,7 +327,7 @@ def done
     else
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
     end
-    
+
     body = @item.student_id.to_s + "様
 
   " + params[:mail][:student_id].to_s + "さんから出品した商品に取引を希望する連絡が届きました。
