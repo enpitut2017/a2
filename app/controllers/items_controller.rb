@@ -371,6 +371,50 @@ else
 end
 end
 
+
+def done
+   if params[:mail][:content].empty?
+      flash[:error_m] = "空欄のまま出品者に連絡はできません。"
+   end
+   if params[:mail][:student_id].empty?
+      flash[:error_n] = "学籍番号を入力してください。"
+   end
+   if params[:mail][:content].empty? || params[:mail][:student_id].empty?
+     redirect_to '/mail_page/cancel'
+   else
+
+    @item = Item.find(params[:to_mail][:item_id])
+
+    email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
+    body = @item.student_id.to_s + "様
+
+  " + params[:mail][:student_id].to_s + "さんから出品した商品に取引を希望する連絡が届きました。
+  " + params[:mail][:student_id].to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jpへ返信をして取引を始めてください。
+
+  連絡内容:" + params[:mail][:content].to_s + "
+  https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+  商品名:" + @item.name.to_s + "
+
+  このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+  心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+  ==========================
+      enPiT2017 チームA1
+    tsuku.byebuy@gmail.com
+  ==========================
+  "
+
+  ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]閲覧者からの連絡", body:body).deliver
+  redirect_to '/mail_page/done2'
+end
+end
+
+
+
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
