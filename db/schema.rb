@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127064329) do
+ActiveRecord::Schema.define(version: 20180112071234) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "item_id"
@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 20171127064329) do
     t.integer "price"
     t.string "detail"
     t.integer "student_id"
-    t.integer "sold"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "department_id"
     t.integer "place_id"
     t.integer "genre_id"
     t.string "pass"
+    t.integer "sold"
     t.index ["department_id"], name: "index_items_on_department_id"
     t.index ["genre_id"], name: "index_items_on_genre_id"
     t.index ["place_id"], name: "index_items_on_place_id"
