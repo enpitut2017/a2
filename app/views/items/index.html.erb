@@ -49,7 +49,7 @@
               </span>
             <% end %>
             <br>
-            <%= link_to ">>地図で場所を確認する", '/map' %>
+            <a href="javascript:window.open('/map', 'map');">地図から選択（新しいウィンドウが開きます）</a>
           </td>
         </tr>
         <tr>
@@ -148,6 +148,9 @@ end
     <% end %>
   </div>
   <div class="cell_label name">商品名</div>
+  <% if item.sold == 8181 %>
+    [Sold out]
+  <% end %>
   <div class="data_cell"><%= link_to item.name, item %></div>
   <div class="cell_label price">価格</div>
   <div class="data_cell"><%= number_with_delimiter(item.price) %> 円</div>

@@ -14,9 +14,17 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @comments = @item.comments.all
     @comment = @item.comments.build
-
+    if @item.sold == 8181
+      redirect_to action: "sold",id: @item.id
+    end
   end
-
+  
+  def sold
+    @item = Item.find(params[:id])
+    @comments = @item.comments.all
+    @comment = @item.comments.build
+  end
+  
   def comment
       @item = Item.find(params[:item_id])
       password = params[:password]
@@ -24,16 +32,17 @@ class ItemsController < ApplicationController
       judge = "3"
       c_error = "0"
 
-      if password == @item.pass || password == 'kojimaisgod' then
+      if password == @item.pass || password == ENV['MASTER_PASS'] then
         judge = "1"
       elsif commentCh == "s2"
         judge = "2"
-        flash[:notice] = "※※※パスワードを入力してください。"
-      elsif password == "" then
+        if password == "" then
+          flash[:notice] = "※※※パスワードを入力してください。"
+        else
+          flash[:notice] = "※※※パスワードが間違っています。"
+        end
+      elsif commentCh == "s1" then
         judge = "0"
-      else
-        judge = "2"
-        flash[:notice] = "※※※パスワードが間違っています。"
       end
 
       if params[:comment_body].empty?
@@ -57,28 +66,66 @@ class ItemsController < ApplicationController
         @comment = Comment.new(comment_body: params[:comment_body], item_id: params[:item_id],reply: params[:choice_c],judge: judge)
         @comment.save
 
+        #log
+        log_file = File.open('./app/assets/log_file.txt', 'a')
+        log_file.puts "************************"
+        log_file.puts Time.current
+        log_file.puts "<コメント>"
+        log_file.puts "商品ID: " + params[:item_id].to_s
+        if commentCh == "s1" then
+          log_file.puts "[購入者のコメント]"
+        elsif commentCh == "s2" then
+          log_file.puts "[出品者のコメント]"
+        end
+        if params[:choice_c].to_s == "0" then
+          log_file.puts "[返信なし]"
+        else
+          log_file.puts "[" + params[:choice_c].to_s + "への返信]"
+        end
+        log_file.puts "コメント内容: " + params[:comment_body].to_s
+        log_file.close
+
       redirect_to :action => "show", :id => @comment.item_id, :anchor => 'com'
       if @comment.save
         if @comment.judge == "0"
         @item = Item.find(params[:item_id])
-        email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
-        body = @item.student_id.to_s + "様
+
+        if @item.student_id.to_s == "818129298"
+          email = "tsuku.byebuy@gmail.com"
+          body = "レビュー用のアカウントにメールを送っています。
+          出品した商品に新しくコメントが届きました。
+          以下のリンクから返信フォームをご利用ください。
+
+          https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+          商品名:" + @item.name.to_s + "
+          コメント内容:" + @comment.comment_body.to_s + "
+
+          このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+          心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+          ==========================
+              enPiT2017 チームA1
+            tsuku.byebuy@gmail.com
+          ==========================
+          "
+        else
+          email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
+          body = @item.student_id.to_s + "様
+
 
 出品した商品に新しくコメントが届きました。
 以下のリンクから返信フォームをご利用ください。
 
-https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 商品名:" + @item.name.to_s + "
 コメント内容:" + @comment.comment_body.to_s + "
 
-このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
-
 ==========================
-    enPiT2017 チームA1
+      つくByeBuy運営
   tsuku.byebuy@gmail.com
 ==========================
 "
+end
 
         ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]新着コメント", body:body).deliver
       end
@@ -96,6 +143,20 @@ end
 
   # GET /items/1/edit
   def edit
+    #log
+    log_file = File.open('./app/assets/log_file.txt', 'a')
+    log_file.puts "************************"
+    log_file.puts Time.current
+    log_file.puts "<商品編集完了>"
+    log_file.puts "商品ID: " + @item.id.to_s
+    log_file.puts "商品名: " + @item.name.to_s
+    log_file.puts "場所ID: " + @item.place_id.to_s
+    log_file.puts "商品画像: " + @item.image.url.to_s
+    log_file.puts "商品価格: " + @item.price.to_s
+    log_file.puts "商品詳細: " + @item.detail.to_s
+    log_file.puts "ジャンルID: " + @item.genre_id.to_s
+    log_file.puts "出品者学籍番号: " + @item.student_id.to_s
+    log_file.close
   end
 
   # POST /items
@@ -103,6 +164,22 @@ end
   def create
     @item = Item.new(item_params)
     items = Item
+
+    #log
+    log_file = File.open('./app/assets/log_file.txt', 'a')
+    log_file.puts "************************"
+    log_file.puts Time.current
+    log_file.puts "<出品完了>"
+    log_file.puts "商品ID: " + @item.id.to_s
+    log_file.puts "商品名: " + @item.name.to_s
+    log_file.puts "場所ID: " + @item.place_id.to_s
+    log_file.puts "商品画像: " + @item.image.url.to_s
+    log_file.puts "商品価格: " + @item.price.to_s
+    log_file.puts "商品詳細: " + @item.detail.to_s
+    log_file.puts "ジャンルID: " + @item.genre_id.to_s
+    log_file.puts "出品者学籍番号: " + @item.student_id.to_s
+    log_file.close
+
     pass_check = "0"
     id_i = 1
         while id_i <= Item.last.id do
@@ -120,6 +197,31 @@ end
       @item.pass = Array.new(4){num[rand(num.size)]}.join
     end
     if @item.save
+
+      if @item.student_id.to_s == "818129298"
+        email = "tsuku.byebuy@gmail.com"
+        body = "レビュー用のアカウントにメールを送っています。
+
+        出品が完了しました。
+
+        あなたがつくByeBuyで使用するパスワードは " + @item.pass.to_s + " です。
+        商品の情報編集・コメントの返信・取引終了手続きに必要なので大事に保存してください。
+
+        商品名:" + @item.name.to_s + "
+
+        ↓商品詳細ページはコチラ↓
+        https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+
+        このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+        心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+        ==========================
+            enPiT2017 チームA1
+          tsuku.byebuy@gmail.com
+        ==========================
+        "
+      else
+
       email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       body = @item.student_id.to_s + "様
 
@@ -131,16 +233,15 @@ end
 商品名:" + @item.name.to_s + "
 
 ↓商品詳細ページはコチラ↓
-https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
-
-このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 
 ==========================
-    enPiT2017 チームA1
+      つくByeBuy運営
   tsuku.byebuy@gmail.com
 ==========================
 "
+end
+
 
       ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
     end
@@ -160,7 +261,7 @@ https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
   # PATCH/PUT /items/1.json
   def update
 password = params[:item][:confirm]
-if password == @item.pass || password == 'kojimaisgod'
+if password == @item.pass || password == ENV['MASTER_PASS']
 
     respond_to do |format|
       if @item.update(item_params)
@@ -168,6 +269,28 @@ if password == @item.pass || password == 'kojimaisgod'
         format.json { render :show, status: :ok, location: @item }
 
         if @item.save
+
+          if @item.student_id.to_s == "818129298"
+            email = "tsuku.byebuy@gmail.com"
+            body = "レビュー用のアカウントにメールを送っています。
+
+            商品の編集が完了しました。
+
+            商品名:" + @item.name.to_s + "
+
+            ↓商品詳細ページはコチラ↓
+            https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+
+            このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+            心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+            ==========================
+                enPiT2017 チームA1
+              tsuku.byebuy@gmail.com
+            ==========================
+            "
+          else
+
           email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
           body = @item.student_id.to_s + "様
 
@@ -176,16 +299,14 @@ if password == @item.pass || password == 'kojimaisgod'
 商品名:" + @item.name.to_s + "
 
 ↓商品詳細ページはコチラ↓
-https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
-
-このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 
 ==========================
-    enPiT2017 チームA1
+      つくByeBuy運営
   tsuku.byebuy@gmail.com
 ==========================
 "
+end
 
           ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品の編集完了", body:body).deliver
         end
@@ -206,36 +327,93 @@ end
   # DELETE /items/1.json
   def destroy
 password = params[:password]
-if @item.pass == password || password == 'kojimaisgod'
+if @item.pass == password || password == ENV['MASTER_PASS']
+  if @item.student_id.to_s == "818129298"
+    email = "tsuku.byebuy@gmail.com"
+    body = "レビュー用のアカウントにメールを送っています。
+
+    出品の取り消しが完了しました。
+    つくByeBuyのご利用、ありがとうございました。
+
+    商品名:" + @item.name.to_s + "
+
+    このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+    心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+    ==========================
+        enPiT2017 チームA1
+      tsuku.byebuy@gmail.com
+    ==========================
+    "
+  else
     email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
     body = @item.student_id.to_s + "様
 
-出品の取り消しが完了しました。
+取引お疲れ様です。
 つくByeBuyのご利用、ありがとうございました。
 
 商品名:" + @item.name.to_s + "
 
-このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
-
 ==========================
-    enPiT2017 チームA1
+      つくByeBuy運営
   tsuku.byebuy@gmail.com
 ==========================
 "
-
+end
     ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
-    @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :no_content }
-    end
+    @item.sold = 8181
+    @item.save
+    redirect_to :action => "index"
 else
   flash[:pass_destroy] = "※※※パスワードが間違っています。"
   redirect_to :action => "show", :id => @item.id,:anchor => 'des'
 
 end
 end
+
+
+def done
+   if params[:mail][:content].empty?
+      flash[:error_m] = "空欄のまま出品者に連絡はできません。"
+   end
+   if params[:mail][:student_id].empty?
+      flash[:error_n] = "学籍番号を入力してください。"
+   end
+   if params[:mail][:content].empty? || params[:mail][:student_id].empty?
+     redirect_to '/mail_page/cancel'
+   else
+
+    @item = Item.find(params[:to_mail][:item_id])
+
+    email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
+    body = @item.student_id.to_s + "様
+
+  " + params[:mail][:student_id].to_s + "さんから出品した商品に取引を希望する連絡が届きました。
+  " + params[:mail][:student_id].to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jpへ返信をして取引を始めてください。
+
+  連絡内容:" + params[:mail][:content].to_s + "
+  https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+  商品名:" + @item.name.to_s + "
+
+  このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
+  心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+
+  ==========================
+      enPiT2017 チームA1
+    tsuku.byebuy@gmail.com
+  ==========================
+  "
+
+  ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]閲覧者からの連絡", body:body).deliver
+  redirect_to '/mail_page/done2'
+end
+end
+
+
+
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
