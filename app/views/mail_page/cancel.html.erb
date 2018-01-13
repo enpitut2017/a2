@@ -6,4 +6,12 @@
 <br>
 もう１度入力お願いします。
 <br>
-<%= link_to '戻る', :back, :class => "red_line"  %>
+
+<%= form_tag('../mail_page/home', method: "post") do %>
+  <%= hidden_field :to_mail, :student_id, :value => flash[:number] %>
+  <%= hidden_field :to_mail, :item_id, :value => flash[:id] %>
+  <div class="to_mail_button"><%= submit_tag('戻る', :class => "color_btn") %></div>
+<% end %>
+
+  <% link_to '戻る', :back, :class => "red_line"  %>
+  <%= link_to '商品に戻る',:controller => "items",:action => "show", :id => flash[:id] %>
