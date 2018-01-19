@@ -275,6 +275,22 @@ end
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+
+    #log
+    log_file = File.open('./app/assets/log_file.txt', 'a')
+    log_file.puts "************************"
+    log_file.puts Time.current
+    log_file.puts "<取引終了(商品取り消し)>"
+    log_file.puts "商品ID: " + @item.id.to_s
+    log_file.puts "商品名: " + @item.name.to_s
+    log_file.puts "場所ID: " + @item.place_id.to_s
+    log_file.puts "商品画像: " + @item.image.url.to_s
+    log_file.puts "商品価格: " + @item.price.to_s
+    log_file.puts "商品詳細: " + @item.detail.to_s
+    log_file.puts "ジャンルID: " + @item.genre_id.to_s
+    log_file.puts "出品者学籍番号: " + @item.student_id.to_s
+    log_file.close
+
 password = params[:password]
 if @item.pass == password || password == ENV['MASTER_PASS']
   if @item.student_id.to_s == "818129298"
@@ -308,6 +324,7 @@ end
 
 
 def done
+
    if params[:mail][:content].empty?
       flash[:error_m] = "空欄のまま出品者に連絡はできません。"
    end
@@ -321,6 +338,20 @@ def done
    else
 
     @item = Item.find(params[:to_mail][:item_id])
+
+
+      #log
+      log_file = File.open('./app/assets/log_file.txt', 'a')
+      log_file.puts "************************"
+      log_file.puts Time.current
+      log_file.puts "<出品者へ連絡>"
+      log_file.puts "商品ID: " + @item.id.to_s
+      log_file.puts "商品名: " + @item.name.to_s
+      log_file.puts "出品者学籍番号: " + @item.student_id.to_s
+      log_file.puts "連絡者学籍番号: " + params[:mail][:student_id].to_s
+      log_file.puts "連絡内容: " + params[:mail][:content].to_s
+      log_file.close
+
 
     if @item.student_id.to_s == "818129298"
       email = "tsuku.byebuy@gmail.com"
