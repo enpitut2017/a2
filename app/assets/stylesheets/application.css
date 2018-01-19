@@ -728,6 +728,7 @@ div.item_table_show div.detail_cell {
 
 .relative {
   position: relative;
+  padding-top: 100%;
 }
 
 .sold_over_black {

@@ -143,10 +143,11 @@ end
 <div class="item_table">
   <div class="img">
     <div class="relative">
+
       <% if item.image? %>
-        <%= link_to item do %><%= image_tag item.image.url %><% end %>
+        <%= link_to item do %><%= image_tag item.image.url, :class=>"sold_over_black" %><% end %>
       <% else %>
-        <%= link_to item do %><%= image_tag 'no_image.png' %><% end %>
+        <%= link_to item do %><%= image_tag 'no_image.png', :class=>"sold_over_black" %><% end %>
       <% end %>
 
   </div>
@@ -170,9 +171,9 @@ end
   <div class="img">
     <div class="relative">
       <% if item.image? %>
-        <%= link_to item do %><%= image_tag item.image.url %><% end %>
+        <%= link_to item do %><%= image_tag item.image.url, :class=>"sold_over_black" %><% end %>
       <% else %>
-        <%= link_to item do %><%= image_tag 'no_image.png' %><% end %>
+        <%= link_to item do %><%= image_tag 'no_image.png', :class=>"sold_over_black" %><% end %>
       <% end %>
 
     <% if item.sold == 8181 %>
