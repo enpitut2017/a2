@@ -3,9 +3,9 @@
   <div class="img">
     <div class="relative">
     <% if @item.image? %>
-      <%= image_tag @item.image.url %>
+      <%= image_tag @item.image.url, :class=>"sold_over_black" %>
     <% else %>
-      <%= image_tag 'no_image.png' %>
+      <%= image_tag 'no_image.png', :class=>"sold_over_black" %>
     <% end %>
     <div class="sold_over_black"><%= image_tag 'soldout_over_black.png'%></div>
     <div class="sold_over_ribbon"><%= image_tag 'soldout_over_ribbon.png'%></div>
