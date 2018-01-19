@@ -139,15 +139,42 @@ end
 <p><span class="match_num"><%= @items.length %></span>件の商品</p>
 
 <% @items.each do |item| %>
+<% if item.sold != 8181 %>
 <div class="item_table">
   <div class="img">
     <div class="relative">
 
-    <% if item.image? %>
-      <%= link_to item do %><%= image_tag item.image.url, :class=>"sold_over_black" %><% end %>
-    <% else %>
-      <%= link_to item do %><%= image_tag 'no_image.png', :class=>"sold_over_black" %><% end %>
-    <% end %>
+      <% if item.image? %>
+        <%= link_to item do %><%= image_tag item.image.url, :class=>"sold_over_black" %><% end %>
+      <% else %>
+        <%= link_to item do %><%= image_tag 'no_image.png', :class=>"sold_over_black" %><% end %>
+      <% end %>
+
+  </div>
+  </div>
+  <div class="cell_label name">商品名</div>
+  <% if item.sold == 8181 %>
+    <!--[Sold out]-->
+  <% end %>
+  <div class="data_cell"><%= link_to item.name, item %></div>
+  <div class="cell_label price">価格</div>
+  <div class="data_cell"><%= number_with_delimiter(item.price) %> 円</div>
+  <div class="cell_label place">地域</div>
+  <div class="data_cell"><%= item.place.name %></div>
+</div>
+<% end %>
+<% end %>
+
+<% @items.each do |item| %>
+<% if item.sold == 8181 %>
+<div class="item_table">
+  <div class="img">
+    <div class="relative">
+      <% if item.image? %>
+        <%= link_to item do %><%= image_tag item.image.url, :class=>"sold_over_black" %><% end %>
+      <% else %>
+        <%= link_to item do %><%= image_tag 'no_image.png', :class=>"sold_over_black" %><% end %>
+      <% end %>
 
     <% if item.sold == 8181 %>
       <%= link_to item, :class=>"sold_over_black" do%><%= image_tag 'soldout_over_black.png'%><% end %>
@@ -167,4 +194,5 @@ end
   <div class="cell_label place">地域</div>
   <div class="data_cell"><%= item.place.name %></div>
 </div>
+<% end %>
 <% end %>

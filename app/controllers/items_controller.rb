@@ -319,6 +319,12 @@ def done
      flash[:number] = params[:to_mail][:student_id]
      redirect_to '/mail_page/cancel'
    else
+    from_mail = params[:mail][:student_id]
+    if from_mail == "818129298"
+      from_mail = "tsuku.byebuy@gmail.com"
+    else
+      from_mail = params[:mail][:student_id].to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
+    end
 
     @item = Item.find(params[:to_mail][:item_id])
 
@@ -331,7 +337,7 @@ def done
     body = @item.student_id.to_s + "様
 
   " + params[:mail][:student_id].to_s + "さんから出品した商品に取引を希望する連絡が届きました。
-  " + params[:mail][:student_id].to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jpへ返信をして取引を始めてください。
+  " + from_mail + "へ返信をして取引を始めてください。
 
   連絡内容:" + params[:mail][:content].to_s + "
   https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
