@@ -733,14 +733,20 @@ div.item_table_show div.detail_cell {
 
 .sold_over_black {
   position: absolute;
-  top: 0px;
   left: 0px;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform : translateY(-50%);
+  transform : translateY(-50%);
 }
 
 .sold_over_ribbon {
   position: absolute;
-  top: 0px;
   left: 0px;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform : translateY(-50%);
+  transform : translateY(-50%);
 }
 .sold_over_ribbon:hover {
   background-color: transparent;

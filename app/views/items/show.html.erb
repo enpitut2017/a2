@@ -8,7 +8,7 @@
       <%= image_tag 'no_image.png', :class=>"sold_over_black" %>
     <% end %>
 
-    <% if Time.current - @item.created_at < 3600 * 6 %>
+    <% if Time.current - @item.created_at < 3600 * 24 %>
       <div class="sold_over_ribbon"><%= image_tag 'new_over_ribbon.png'%></div>
     <% end %>
   </div>
