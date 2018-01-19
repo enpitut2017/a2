@@ -295,7 +295,7 @@ if @item.pass == password || password == ENV['MASTER_PASS']
 ==========================
 "
 
-    ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品の取り消し完了", body:body).deliver
+    ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品取引終了完了", body:body).deliver
     @item.sold = 8181
     @item.save
     redirect_to :action => "index"
@@ -340,14 +340,11 @@ def done
   " + from_mail + "へ返信をして取引を始めてください。
 
   連絡内容:" + params[:mail][:content].to_s + "
-  https://a2-autumn.herokuapp.com/items/" + @item.id.to_s + "
+https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
   商品名:" + @item.name.to_s + "
 
-  このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-  心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
-
   ==========================
-      enPiT2017 チームA1
+        つくByeBuy運営
     tsuku.byebuy@gmail.com
   ==========================
   "
