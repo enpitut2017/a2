@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :place, optional: true
   belongs_to :department, optional: true
   has_many :comments
+  has_many :tokens
 
   mount_uploader :image, PictureUploader
 
