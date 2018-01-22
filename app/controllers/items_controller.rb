@@ -221,7 +221,7 @@ tsuku.byebuy@gmail.com
 
   def token
     # 有効期限の確認
-    token = Token.find_by_uuid!(params[:uuid])
+    token = Token.find_by_uuid(params[:uuid])
     # 有効期限を過ぎていないか確認
     if token && token.expired_at > Time.now
       # 2回目アクセスできないように更新
@@ -273,7 +273,8 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
       if token && token.item.activated
         redirect_to :root, alert: "その商品は本登録が完了しています。"
       else
-        redirect_to :new, alert: "仮登録の有効期限が切れている。もしくは、URLが適切ではありません。"
+        flash[:alert] = "仮登録の有効期限が切れている。もしくは、URLが適切ではありません。"
+        redirect_to action: 'new'
       end
     end
   end
