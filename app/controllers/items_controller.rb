@@ -36,9 +36,9 @@ class ItemsController < ApplicationController
     elsif commentCh == "s2"
       judge = "2"
       if password == "" then
-        flash[:notice] = "※※※パスワードを入力してください。"
+        flash[:alert] = "※※※パスワードを入力してください。"
       else
-        flash[:notice] = "※※※パスワードが間違っています。"
+        flash[:alert] = "※※※パスワードが間違っています。"
       end
     elsif commentCh == "s1" then
       judge = "0"
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
 
     if params[:comment_body].empty?
       c_error = "0"
-      flash[:notice] = "※※※空欄のままでは送信できません。"
+      flash[:alert] = "※※※空欄のままでは送信できません。"
     else
       c_error = "1"
     end
@@ -264,7 +264,7 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 ==========================
 "
       respond_to do |format|
-        flash[:notice] = "商品の出品が完了しました"
+        flash[:notice] = "商品の出品が完了しました。"
         format.html { redirect_to @item}
         format.json { render :show, status: :created, location: @item }
       end

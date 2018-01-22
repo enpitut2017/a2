@@ -122,7 +122,7 @@
   <% choice_c = flash[:choice_c] %>
 <% end %>
 <p><strong><%= return_comment %></strong></p>
-<p style="color: red;"><%= notice %></p>
+<p style="color: red;"><%= alert %></p>
 <%= form_tag("/items/comment") do %>
       <div class="form-group">
         <textarea name="comment_body" class="form-control" style="width: 18em; height: 3rem;"></textarea>
