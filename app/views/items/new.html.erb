@@ -1,3 +1,6 @@
+<% if flash[:alert] %>
+  <p><%= flash[:alert] %></p>
+<% end %>
 <h2>出品フォーム</h2>
 
 <%= render 'newform', item: @item %>
