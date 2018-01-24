@@ -11,4 +11,5 @@
   <%= submit_tag('送信', :class => "color_btn") %>
 <% end %>
 <br><br>
-<%= link_to '戻る', :back, :class => "red_line"  %>
+<div class="color_btn"><%= link_to '商品に戻る', :class => "color_btn" ,:controller => "items",:action => "show", :id => params[:to_mail][:item_id] %></div>
+<% link_to '戻る',:back, :class => "color_btn"  %>

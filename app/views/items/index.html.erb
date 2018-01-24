@@ -148,7 +148,7 @@ end
 <% @items.each do |item| %>
   <% if item.sold != 8181 %>
     <div class="item_table">
-      <div class="img">
+        <div class="thumb_img_square">
         <div class="relative">
           <% if item.image? %>
             <%= link_to item do %><%= image_tag item.image.url, :class=>"sold_over_black" %><% end %>
