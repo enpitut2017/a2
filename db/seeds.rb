@@ -36,7 +36,8 @@ Item.create(
   :genre_id => "4",
   :student_id => "201511435",
   :department_id => "9",
-  :pass => "0000"
+  :pass => "0000",
+  :activated => true
 )
 
 Item.create(
@@ -49,7 +50,8 @@ Item.create(
   :genre_id => "1",
   :student_id => "201511454",
   :department_id => "4",
-  :pass => "0000"
+  :pass => "0000",
+  :activated => true
 )
 
 Item.create(
@@ -61,7 +63,8 @@ Item.create(
   :genre_id => "2",
   :student_id => "201511433",
   :department_id => "18",
-  :pass => "0000"
+  :pass => "0000",
+  :activated => true
 )
 
 Item.create(
@@ -73,5 +76,6 @@ Item.create(
   :genre_id => "5",
   :student_id => "201511457",
   :department_id => "20",
-  :pass => "0000"
+  :pass => "0000",
+  :activated => true
 )
