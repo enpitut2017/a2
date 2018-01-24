@@ -377,6 +377,15 @@ a.color_btn{
     color: var(--red-color);
 }
 
+.color_btn a{
+  color: white;
+  text-decoration: none;
+}
+
+.color_btn a:hover {
+    background: white;
+    color: var(--red-color);
+}
 
 /*ボタンの配置*/
 .bottom_button{
