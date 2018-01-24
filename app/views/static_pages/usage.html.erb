@@ -1,26 +1,121 @@
-<h2>使い方</h2>
+
+<div class = "us_block1">
+<h2>つくByeBuyの特徴</h2>
 <br>
+<div class = "us_block1-1">
+<div class="us_peculiarity"><%= image_tag 'peculiarity.png'  ,:class => 'peculiarity' %></div>
+</div>
+<div class = "us_block1-2">
+<h3>1.学籍番号の利用</h3>
+・学生用メールアドレスにメール通知<br>
+・アカウント作成なし<br>
+・筑波大生に限定<br>
+<div class = "us_img1-2"><%= image_tag 'hito.png'  ,:class => 'us1-2' %></div>
+</div>
+<div class = "us_block1-3">
+<h3>2.地域の限定</h3>
+・広大な筑波大周辺地域を最寄りのコンビニなどによる区分け<br>
+<div class = "us_img1-3"><%= image_tag 'tsukuba_map.png'  ,:class => 'us1-3' %></div><br>
+</div>
+</div>
+
+
+<div class = "us_block2">
+<h2>使い方</h2><br>
+
+<div class = "us_block2-a">
 <div class="usage_index">出品者</div>
-<h3>出品</h3>
-・カーソルを合わせるとフォーム入力の説明が見れます。<br>
-・出品が完了するとsアドにメールが届くので、パスワードを控えておきましょう。<br>
-<h3>出品情報の編集</h3>
-・商品の詳細ページの下部から編集ページに進むことができます。<br>
-・編集にはメールでお伝えしたパスワードが必要になります。<br>
-<h3>商品取引終了</h3>
-・パスワードを入力し「商品取引終了」ボタンを押すと、商品が削除されます。<br>
-・ボタンは商品の詳細ページの下部にあります。
-<h3>コメント</h3>
-・出品者がコメントするときは、パスワードを入力してください。<br>
-　出品者のコメントとその他を区別します。<br>
-<%= link_to '出品する', new_item_path, :class => "color_btn"  %>
-<br><br>
+</div>
+<div class = "us_block2-b">
 <div class="usage_index">購入者</div>
-<h3>コメント</h3>
-・コメント、コメントへの返信ができます。<br>
-・出品者のコメントは区別できるようになっています。<br>
-・出品者以外の方は、パスワードの欄は空欄で構いません。<br>
-<h3>取引開始</h3>
-・フォームから出品者にメールを送ることができます。<br>
-・要件と自分の学籍番号を入力してください。<br>
+</div>
+
+<div class = "us_block2-1-1">
+<h3>1.出品</h3>
+<div class = "us_text2-1-1a">
+<h4>フォーム入力</h4>
+→出品が完了すると学生用メールアドレスにメール通知<br>
+→パスワードを控える<br></div>
+<div class = "us_img2-1-1a"><%= image_tag 'us2-1-1.png'  %></div>
+<div class = "us_text2-1-1b">
+<br><h4>出品情報の編集</h4>
+詳細ページから編集へ<br>
+→パスワードが必要<br>（出品完了メールの確認）<br>
+</div>
+<div class = "us_img2-1-1b"><br><br><br><br><%= image_tag 'us2-1-1c.png'  %></div>
+</div>
+
+<div class = "us_block2-1-2">
+<h3>1.探す</h3>
+<b>学類検索！</b>
+教科書などをもらいたいときに便利
+<div class = "us_img2-1-2a"><%= image_tag 'us2-1-2a.png'  %></div>
+<br>
+<b>地域検索！</b>
+より近くの人からもらえる<br>
+<div class = "us_img2-1-2b"><%= image_tag 'us2-1-2b.png'  %></div>
+</div>
+
+<div class = "us_block2-2-1">
+<h3>2.質問に答える</h3>
+<div class = "us_text2-2-1">
+「出品者」を選択し、パスワードを入れてコメント<br>
+→出品者のコメントとその他を区別できる<br>
+</div>
+<div class = "us_img2-2-1"><%= image_tag 'us2-2-1.png'  %></div>
+</div>
+
+<div class = "us_block2-2-2">
+<div class = "us_text2-2-1">
+<h3>2.質問する</h3>
+「利用者」を選択し<br>コメント<br>
+</div>
+<div class = "us_img2-2-2"><%= image_tag 'us2-2-2.png'  %></div>
+</div>
+
+<div class = "us_block2-3-1">
+<div class = "us_text2-3-1">
+<h3>3.メールに対応</h3>
+利用者からのメールを待ちましょう！<br>
+</div>
+<div class = "us_img2-3-1"><%= image_tag 'us2-3-1.png'  %></div>
+</div>
+
+<div class = "us_block2-3-2">
+<div class = "us_text2-3-2">
+<h3>3.取引開始</h3>
+詳細ページから<br>「取引開始」<br><br>
+要件と学籍番号を入力<br>
+</div>
+<div class = "us_img2-3-2"><%= image_tag 'us2-3-2.png'  %></div>
+</div>
+
+<div class = "us_block2-4">
+<h3>4.取引</h3>
+<div class = "us_block2-4text">メールで場所などを指定し、受け渡し！！！<br></div>
+<div class = "us_img2-4"><%= image_tag 'osyaberi_woman.png'  %></div>
+</div>
+
+<div class = "us_block2-5-1">
+<h3>5.取引完了</h3>
+商品の詳細ページの下部から取引終了<br>
+→取引終了にはパスワードが必要<br>
+<div class = "us_img2-5-1"><%= image_tag 'us2-1-1c.png'  %></div>
+</div>
+
+<!--div class = "us_block2-5-2">
+<h3>5.大事に使う</h3>
+またのご利用お待ちしております。<br>
+</div-->
+
+
+<div class = "us_block2-6-1">
+<%= link_to '出品する', new_item_path, :class => "color_btn"  %>
+</div>
+
+<div class = "us_block2-6-2">
 <%= link_to '商品一覧へ', items_path, :class => "color_btn"  %>
+</div>
+
+<div class = "us_block3">
+</div>

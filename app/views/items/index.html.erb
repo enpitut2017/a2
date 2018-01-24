@@ -1,3 +1,10 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:alert] %>
+  <p><%= flash[:alert] %></p>
+<% end %>
+
 <h2>商品一覧</h2>
 <!--検索機能-->
 <div class="search">
@@ -78,10 +85,10 @@
 
 <% @sort_str = "" %>
 <% if params["sort_type"] == '0' || params["sort_type"] == nil%>
-  <% @items = Item.order('created_at DESC').all %>
+  <% @items = Item.order('created_at DESC').where(activated: true) %>
   <% @sort_str = "新しい順に表示" %>
 <% elsif params["sort_type"] == '1' %>
-  <% @items = Item.order('price ASC').all %>
+  <% @items = Item.order('price ASC').where(activated: true) %>
   <% @sort_str = "価格順に表示" %>
 <% end %>
 
