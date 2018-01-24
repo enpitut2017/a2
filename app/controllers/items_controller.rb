@@ -189,7 +189,7 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
       end
       body = @item.student_id.to_s + "様
 
-出品を受付ました。
+仮出品を受け付けました。
 
 商品名:" + @item.name.to_s + "
 
@@ -197,11 +197,12 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "/token/" + @token + "
 
 このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
-心当たりの無い場合は誤送ですので、無視していただければと思います。申し訳ありません。
+心当たりが無い場合、他の人が誤って貴方の学籍番号を登録した可能性があります。
+今後一切メールを受け取らないようにするには、大変お手数ですが下記のメールアドレスまでその旨の連絡をお願いいたします。
 
 ==========================
-enPiT2017 チームA1
-tsuku.byebuy@gmail.com
+      つくByeBuy運営
+  tsuku.byebuy@gmail.com
 ==========================
 "
 
@@ -253,17 +254,20 @@ tsuku.byebuy@gmail.com
       body = @item.student_id.to_s + "様
 
 出品が完了しました。
+
 あなたがつくByeBuyで使用するパスワードは " + @item.pass.to_s + " です。
 商品の情報編集・コメントの返信・取引終了手続きに必要なので大事に保存してください。
+
 商品名:" + @item.name.to_s + "
 ↓商品詳細ページはコチラ↓
 https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
+
 ==========================
       つくByeBuy運営
   tsuku.byebuy@gmail.com
 ==========================
 "
-      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]本出品完了", body:body).deliver
       respond_to do |format|
         flash[:notice] = "商品の出品が完了しました。"
         format.html { redirect_to @item}
