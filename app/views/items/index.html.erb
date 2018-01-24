@@ -94,7 +94,7 @@
 
 
 <% if params["freeword_select"] != "" && params["freeword_select"] != nil %>
-  <% @items = @items.where("name like(?)", "%#{params['freeword_select']}%") %>
+  <% @items = @items.where("name like(?) or detail like(?)", "%#{params['freeword_select']}%" , "%#{params['freeword_select']}%") %>
 <% end %>
 <% if params["department_select"].to_i > 0 %>
   <% @items = @items.where(department_id: params["department_select"]) %>
