@@ -187,6 +187,12 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
       else
         email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
       end
+      if Rails.env.development?
+        certification_email = "localhost:3000/items/" + @item.id.to_s + "/token/" + @token
+      end
+      if Rails.env.production?
+        certification_email = "https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "/token/" + @token
+      end
       body = @item.student_id.to_s + "様
 
 仮出品を受け付けました。
@@ -194,7 +200,8 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 商品名:" + @item.name.to_s + "
 
 出品を完了するには次のURLへのアクセスをお願いします。
-https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "/token/" + @token + "
+
+" + certification_email + "
 
 このメールは筑波大学の講義「情報メディア実験B」での実習で作成されたものです。
 心当たりが無い場合、他の人が誤って貴方の学籍番号を登録した可能性があります。
