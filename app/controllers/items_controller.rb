@@ -205,7 +205,7 @@ tsuku.byebuy@gmail.com
 ==========================
 "
 
-      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]仮出品完了", body:body).deliver
       respond_to do |format|
         flash[:notice] = "商品の仮登録が完了し、学生用メールアドレスにメールが送信されました。メールを確認して本登録を完了してください。"
         format.html { redirect_to @item}
@@ -263,6 +263,7 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
   tsuku.byebuy@gmail.com
 ==========================
 "
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品完了", body:body).deliver
       respond_to do |format|
         flash[:notice] = "商品の出品が完了しました。"
         format.html { redirect_to @item}
