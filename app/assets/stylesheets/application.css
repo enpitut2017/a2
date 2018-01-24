@@ -239,7 +239,8 @@ th.cell_label{
 
 img{
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit:cover;
   text-align:center;
   vertical-align: bottom;
 }
@@ -729,6 +730,7 @@ div.item_table_show div.detail_cell {
 .relative {
   position: relative;
   padding-top: 100%;
+  overflow: hidden;
 }
 
 .sold_over_black {
