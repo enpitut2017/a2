@@ -49,7 +49,7 @@ div#header {
 
 header {
   max-width: var(--page-width);
-  margin: 0 auto;
+  margin: 0 auto -0.5rem auto;
 }
 
 header h1 {
@@ -57,6 +57,11 @@ header h1 {
   font-size: 2rem;
   padding-top: 0.5rem;
   padding-left: 1.5rem;
+}
+
+header h1 img{
+  width: 20%;
+  height: auto;
 }
 
 header h1 a {
@@ -778,17 +783,22 @@ div.item_table_show div.detail_cell {
 
   header h1 {
     font-size: 1.7rem;
-    padding: 0.5rem;
+    padding: 0;
     text-align: center;
+  }
+  div#header nav ul {
+    width:100%;
   }
 
   div#header nav ul li {
     text-align: center;
+    width: 25%;
   }
 
   div#header nav ul li a {
     padding: 0.5rem;
     font-size: 2rem;
+    width: 100%;
   }
 
   div#header nav ul li a svg {
@@ -878,6 +888,10 @@ div.item_table_show div.detail_cell {
   }
 }
 
+
+@media screen and (min-width:450px){
+
+
 div.us_peculiarity {
   text-align:center
 }
@@ -915,6 +929,12 @@ div.us_img1-3 img {
     float: left;
     width: 30%;
  }
+}
+
+@media screen and (min-width:0px){
+  p{
+  }
+}
 
  div.us_block2 {
    clear: both;
@@ -931,7 +951,7 @@ div.us_img1-3 img {
 
  div.us_block2-1-1 {
    float: left;
-   width: 40%;
+   width: 36%;
    padding: 0.5em 1em;
    margin: 2em 0;
    color: #232323;
@@ -964,7 +984,7 @@ div.us_img1-3 img {
 
  div.us_block2-1-2 {
    float: right;
-   width: 40%;
+   width: 36%;
    padding: 0.5em 1em;
    margin: 2em 0;
    color: #232323;
@@ -986,7 +1006,7 @@ div.us_img1-3 img {
  div.us_block2-2-1 {
    clear: both;
     float: left;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1006,7 +1026,7 @@ div.us_img1-3 img {
 
  div.us_block2-2-2 {
     float: right;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1025,7 +1045,7 @@ div.us_img1-3 img {
  div.us_block2-3-1 {
    clear: both;
     float: left;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1043,7 +1063,7 @@ div.us_img1-3 img {
 
  div.us_block2-3-2 {
     float: right;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1079,7 +1099,7 @@ div.us_img1-3 img {
  div.us_block2-5-1 {
    clear: both;
     float: left;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1094,7 +1114,7 @@ div.us_img1-3 img {
 
  div.us_block2-5-2 {
     float: right;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
