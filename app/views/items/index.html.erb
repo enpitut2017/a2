@@ -148,7 +148,7 @@ end
 <% @items.each do |item| %>
   <% if item.sold != 8181 %>
     <div class="item_table">
-      <div class="img">
+        <div class="thumb_img_square">
         <div class="relative">
           <% if item.image? %>
             <%= link_to item do %><%= image_tag item.image.url, :class=>"sold_over_black" %><% end %>
@@ -174,9 +174,8 @@ end
 <% @items.each do |item| %>
   <% if item.sold == 8181 %>
     <div class="item_table">
-      <div class="img">
+      <div class="thumb_img_square">
         <div class="relative">
-          <div class="thumb_center">
             <% if item.image? %>
               <%= link_to item do %><%= image_tag item.image.url, :class=>"sold_over_black" %><% end %>
             <% else %>
@@ -185,8 +184,6 @@ end
 
             <%= link_to item, :class=>"sold_over_black" do%><%= image_tag 'soldout_over_black.png'%><% end %>
             <%= link_to item, :class=>"sold_over_ribbon" do%><%= image_tag 'soldout_over_ribbon.png'%><% end %>
-
-          </div>
         </div>
       </div>
       <div class="cell_label name">商品名</div>
