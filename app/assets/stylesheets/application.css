@@ -888,6 +888,10 @@ div.item_table_show div.detail_cell {
   }
 }
 
+
+@media screen and (min-width:450px){
+
+
 div.us_peculiarity {
   text-align:center
 }
@@ -925,6 +929,12 @@ div.us_img1-3 img {
     float: left;
     width: 30%;
  }
+}
+
+@media screen and (min-width:0px){
+  p{
+  }
+}
 
  div.us_block2 {
    clear: both;
@@ -941,7 +951,7 @@ div.us_img1-3 img {
 
  div.us_block2-1-1 {
    float: left;
-   width: 40%;
+   width: 36%;
    padding: 0.5em 1em;
    margin: 2em 0;
    color: #232323;
@@ -974,7 +984,7 @@ div.us_img1-3 img {
 
  div.us_block2-1-2 {
    float: right;
-   width: 40%;
+   width: 36%;
    padding: 0.5em 1em;
    margin: 2em 0;
    color: #232323;
@@ -996,7 +1006,7 @@ div.us_img1-3 img {
  div.us_block2-2-1 {
    clear: both;
     float: left;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1016,7 +1026,7 @@ div.us_img1-3 img {
 
  div.us_block2-2-2 {
     float: right;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1035,7 +1045,7 @@ div.us_img1-3 img {
  div.us_block2-3-1 {
    clear: both;
     float: left;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1053,7 +1063,7 @@ div.us_img1-3 img {
 
  div.us_block2-3-2 {
     float: right;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1089,7 +1099,7 @@ div.us_img1-3 img {
  div.us_block2-5-1 {
    clear: both;
     float: left;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
@@ -1104,7 +1114,7 @@ div.us_img1-3 img {
 
  div.us_block2-5-2 {
     float: right;
-    width: 40%;
+    width: 36%;
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #232323;
