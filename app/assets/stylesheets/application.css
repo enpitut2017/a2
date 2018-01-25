@@ -781,14 +781,19 @@ div.item_table_show div.detail_cell {
     padding: 0.5rem;
     text-align: center;
   }
+  div#header nav ul {
+    width:100%;
+  }
 
   div#header nav ul li {
     text-align: center;
+    width: 25%;
   }
 
   div#header nav ul li a {
     padding: 0.5rem;
     font-size: 2rem;
+    width: 100%;
   }
 
   div#header nav ul li a svg {
