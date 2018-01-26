@@ -10,8 +10,10 @@
 <%= form_tag('../mail_page/home', method: "post") do %>
   <%= hidden_field :to_mail, :student_id, :value => flash[:number] %>
   <%= hidden_field :to_mail, :item_id, :value => flash[:id] %>
-  <div class="to_mail_button"><%= submit_tag('戻る', :class => "color_btn") %></div>
+
+  <%= submit_tag('戻る', :class => "color_btn") %>
+  <br><br>
 <% end %>
 
-  <% link_to '戻る', :back, :class => "red_line"  %>
+  <% link_to '戻る', :back, :class => "color_btn"  %>
   <div class="color_btn"><%= link_to '商品に戻る',:controller => "items",:action => "show", :id => flash[:id] ,:class => "color_btn" %></div>

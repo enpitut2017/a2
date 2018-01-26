@@ -1,17 +1,17 @@
-<% if params[:mail][:content].empty? %>
+<% if params[:mail][:content].blank? %>
     空欄のまま出品者に連絡はできません。<br>
 <% end %>
-<% if params[:mail][:student_id].empty? %>
+<% if params[:mail][:student_id].blank? %>
     学籍番号を入力してください。<br>
 <% end %>
-<% if params[:mail][:content].empty? || params[:mail][:student_id].empty? %>
+<% if params[:mail][:content].blank? || params[:mail][:student_id].blank? %>
     もう１度入力お願いします。<br>
-    <%= link_to '戻る', :back, :class => "red_line"  %>
+    <%= link_to '戻る', :back, :class => "color_btn"  %>
 
 <% else %>
 
   出品者に連絡しました。<br>
-  出品者からの返信をお待ちください。
+  出品者からの返信をお待ちください。<br>
 
   <% @item = Item.find(params[:to_mail][:item_id]) %>
 
@@ -76,5 +76,6 @@ log_file.puts "連絡内容: " + params[:mail][:content].to_s
 log_file.close
 %>
 
- <%= link_to '商品一覧に戻る', items_path, :class => "red_line"  %>
+<br>
+ <%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
 <% end %>
