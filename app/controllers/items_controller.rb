@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
       judge = "0"
     end
 
-    if params[:comment_body].empty?
+    if params[:comment_body].blank?
       c_error = "0"
       flash[:alert] = "※※※空欄のままでは送信できません。"
     else
