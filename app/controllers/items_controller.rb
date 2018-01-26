@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
       judge = "0"
     end
 
-    if params[:comment_body].empty?
+    if params[:comment_body].blank?
       c_error = "0"
       flash[:alert] = "※※※空欄のままでは送信できません。"
     else
@@ -370,13 +370,13 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 
 
   def done
-    if params[:mail][:content].empty?
+    if params[:mail][:content].blank?
       flash[:error_m] = "空欄のまま出品者に連絡はできません。"
     end
-    if params[:mail][:student_id].empty?
+    if params[:mail][:student_id].blank?
       flash[:error_n] = "学籍番号を入力してください。"
     end
-    if params[:mail][:content].empty? || params[:mail][:student_id].empty?
+    if params[:mail][:content].blank? || params[:mail][:student_id].blank?
       flash[:id] = params[:to_mail][:item_id]
       flash[:number] = params[:to_mail][:student_id]
       redirect_to '/mail_page/cancel'
