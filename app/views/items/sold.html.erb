@@ -1,3 +1,11 @@
+<% if !@item.activated || @item.activated == nil %>
+  商品が存在しません。<br>
+
+  <div class="bottom_button">
+  <%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
+  </div>
+<% else %>
+
 <h2>商品の詳細</h2>
 <div class="item_table_show">
   <div class="thumb_img_square">
@@ -124,3 +132,5 @@
 <div class="bottom_button">
 <%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
 </div>
+
+<% end %>
