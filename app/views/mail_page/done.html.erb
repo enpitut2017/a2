@@ -1,10 +1,10 @@
-<% if params[:mail][:content].empty? %>
+<% if params[:mail][:content].blank? %>
     空欄のまま出品者に連絡はできません。<br>
 <% end %>
-<% if params[:mail][:student_id].empty? %>
+<% if params[:mail][:student_id].blank? %>
     学籍番号を入力してください。<br>
 <% end %>
-<% if params[:mail][:content].empty? || params[:mail][:student_id].empty? %>
+<% if params[:mail][:content].blank? || params[:mail][:student_id].blank? %>
     もう１度入力お願いします。<br>
     <%= link_to '戻る', :back, :class => "color_btn"  %>
 
