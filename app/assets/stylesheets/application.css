@@ -572,7 +572,19 @@ table.map {
 }
 
 table.map td.map_cell {
-  width: 40%;
+  width: 400px;
+  height: 600px;
+  padding: 0;
+}
+
+table.map td.map_cell img.pin {
+  width: 10%;
+  position: absolute;
+  cursor: pointer;
+}
+
+table.map td.map_cell img.pin:hover {
+  filter: drop-shadow(0px 0px 4px blue);
 }
 
 table.map td.place_cell {
@@ -855,6 +867,7 @@ div.item_table_show div.detail_cell {
 
   table.map td.map_cell {
     width: 100%;
+    height: auto;
   }
 
   .item_name{

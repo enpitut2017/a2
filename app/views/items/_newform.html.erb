@@ -22,7 +22,7 @@
     <div class="explain_place">お住まいの場所に一番近い場所を選んでください。</div>
     <%= form.collection_select :place_id, Place.all, :id, :name ,:place_id => 1 %>
     <br>
-    <%= link_to ">>地図で場所を確認する", '/map' %><br>
+    <a href="javascript:window.open('/map', 'map');">地図から選択（新しいウィンドウが開きます）</a>
   </div>
 
   <div class="field">
