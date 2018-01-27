@@ -786,8 +786,13 @@ div.item_table_show div.detail_cell {
     padding: 0;
     text-align: center;
   }
+
+  header h1 img {
+    width: 60%;
+  }
+
   div#header nav ul {
-    width:100%;
+    width: 100%;
   }
 
   div#header nav ul li {
@@ -796,8 +801,9 @@ div.item_table_show div.detail_cell {
   }
 
   div#header nav ul li a {
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     font-size: 2rem;
+    box-sizing: border-box;
     width: 100%;
   }
 
@@ -808,6 +814,7 @@ div.item_table_show div.detail_cell {
 
   div#header nav ul li a span.menu_text {
     font-size: 14px;
+    line-height: 1;
   }
 
   table.search_form td,
