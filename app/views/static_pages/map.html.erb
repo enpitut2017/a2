@@ -1,4 +1,4 @@
-<h2>地図を確認</h2>
+<h2>地図から選択</h2>
 <% @places = Place.all %>
 <%
 @map_url = [
@@ -29,42 +29,55 @@
       window.opener.$(id).prop('checked', function(index, prop) {
         return !prop;
       });
+      window.opener.$('select[name="item[place_id]"]').val(i);
       window.open('about:blank','_self').close();
     }
   }
+
+  $(function() {
+    $('img.pin').click(function() {
+      toggle_check($(this).attr('alt'));
+    });
+
+    $('img.pin').hover(function() {
+      $('#place' + $(this).attr('alt')).css('background', 'lightgray');
+    }, function() {
+      $('#place' + $(this).attr('alt')).css('background', '');
+    });
+  });
 </script>
-<map name="map">
-  <area shape="circle" coords="537,1189,37" href="javascript:toggle_check(1);" alt="1">
-  <area shape="circle" coords="522,947,37" href="javascript:toggle_check(2);" alt="2">
-  <area shape="circle" coords="471,815,37" href="javascript:toggle_check(3);" alt="3">
-  <area shape="circle" coords="320,121,37" href="javascript:toggle_check(4);" alt="4">
-  <area shape="circle" coords="291,1224,37" href="javascript:toggle_check(5);" alt="5">
-  <area shape="circle" coords="326,1088,37" href="javascript:toggle_check(6);" alt="6">
-  <area shape="circle" coords="330,902,37" href="javascript:toggle_check(7);" alt="7">
-  <area shape="circle" coords="394,809,37" href="javascript:toggle_check(8);" alt="8">
-  <area shape="circle" coords="329,763,37" href="javascript:toggle_check(9);" alt="9">
-  <area shape="circle" coords="664,937,37" href="javascript:toggle_check(10);" alt="10">
-  <area shape="circle" coords="570,951,37" href="javascript:toggle_check(11);" alt="11">
-  <area shape="circle" coords="547,865,37" href="javascript:toggle_check(12);" alt="12">
-  <area shape="circle" coords="546,564,37" href="javascript:toggle_check(13);" alt="13">
-  <area shape="circle" coords="495,515,37" href="javascript:toggle_check(14);" alt="14">
-  <area shape="circle" coords="342,555,37" href="javascript:toggle_check(15);" alt="15">
-  <area shape="circle" coords="623,565,37" href="javascript:toggle_check(16);" alt="16">
-  <area shape="circle" coords="667,344,37" href="javascript:toggle_check(17);" alt="17">
-</map>
+<p>地図上のピンをクリックすると、元の画面で該当の地点を選択できます。</p>
 <table class="map">
   <tr>
-    <td class="map_cell"><%= image_tag 'tsukuba_map.png', :usemap => 'map' %></td>
+    <td class="map_cell" style="position: relative;">
+      <%= image_tag 'tsukuba_map_clear.png', :style => 'width: 100%;' %>
+      <%= image_tag 'pin1.png', :class => 'pin', :style => 'left: 54%; top: 82%;', :alt => '1' %>
+      <%= image_tag 'pin2.png', :class => 'pin', :style => 'left: 52%; top: 66%;', :alt => '2' %>
+      <%= image_tag 'pin3.png', :class => 'pin', :style => 'left: 48%; top: 56%;', :alt => '3' %>
+      <%= image_tag 'pin4.png', :class => 'pin', :style => 'left: 32%; top: 6%;', :alt => '4' %>
+      <%= image_tag 'pin5.png', :class => 'pin', :style => 'left: 34%; top: 85%;', :alt => '5' %>
+      <%= image_tag 'pin6.png', :class => 'pin', :style => 'left: 33%; top: 76%;', :alt => '6' %>
+      <%= image_tag 'pin7.png', :class => 'pin', :style => 'left: 31%; top: 63%;', :alt => '7' %>
+      <%= image_tag 'pin8.png', :class => 'pin', :style => 'left: 39%; top: 56%;', :alt => '8' %>
+      <%= image_tag 'pin9.png', :class => 'pin', :style => 'left: 32%; top: 52%;', :alt => '9' %>
+      <%= image_tag 'pin10.png', :class => 'pin', :style => 'left: 69%; top: 66%;', :alt => '10' %>
+      <%= image_tag 'pin11.png', :class => 'pin', :style => 'left: 58%; top: 66%;', :alt => '11' %>
+      <%= image_tag 'pin12.png', :class => 'pin', :style => 'left: 56%; top: 59%;', :alt => '12' %>
+      <%= image_tag 'pin13.png', :class => 'pin', :style => 'left: 57%; top: 37%;', :alt => '13' %>
+      <%= image_tag 'pin14.png', :class => 'pin', :style => 'left: 49%; top: 34%;', :alt => '14' %>
+      <%= image_tag 'pin15.png', :class => 'pin', :style => 'left: 32%; top: 37%;', :alt => '15' %>
+      <%= image_tag 'pin16.png', :class => 'pin', :style => 'left: 64%; top: 38%;', :alt => '16' %>
+      <%= image_tag 'pin17.png', :class => 'pin', :style => 'left: 69%; top: 21%;', :alt => '17' %>
+    </td>
     <td class="place_cell">
-      <p>
-        クリックするとGoogleマップが開きます。<br><br>
+      <p>以下のリンクをクリックするとGoogleマップが開きます。</p>
+      <ol>
         <% @places.each do |place| %>
           <% if place != @places[@places.length-1] %>
-            <span class="map_num"> (<%= place.id %>)</span> <%= link_to place.name, @map_url[place.id], :target=>["_blank"] %><br>
+            <li id="place<%= place.id %>"><%= link_to place.name, @map_url[place.id], :target=>["_blank"] %></li>
           <% end %>
         <% end %>
-      </p>
+      </ol>
     </td>
   </tr>
 </table>
-
