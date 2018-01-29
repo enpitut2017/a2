@@ -19,8 +19,10 @@
   </div>
 
   <div class="field">
-    <%= form.label :place_id, "お住いの場所に１番近い場所" %>
+    <%= form.label :place_id, "お住まいの場所に一番近い場所" %>
     <%= form.collection_select :place_id, Place.all, :id, :name ,:place_id => 1 %>
+    <br>
+    <a href="javascript:window.open('/map', 'map');">地図から選択（新しいウィンドウが開きます）</a>
   </div>
 
   <div class="field">

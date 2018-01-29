@@ -577,7 +577,19 @@ table.map {
 }
 
 table.map td.map_cell {
-  width: 40%;
+  width: 400px;
+  height: 600px;
+  padding: 0;
+}
+
+table.map td.map_cell img.pin {
+  width: 10%;
+  position: absolute;
+  cursor: pointer;
+}
+
+table.map td.map_cell img.pin:hover {
+  filter: drop-shadow(0px 0px 4px blue);
 }
 
 table.map td.place_cell {
@@ -786,8 +798,13 @@ div.item_table_show div.detail_cell {
     padding: 0;
     text-align: center;
   }
+
+  header h1 img {
+    width: 60%;
+  }
+
   div#header nav ul {
-    width:100%;
+    width: 100%;
   }
 
   div#header nav ul li {
@@ -796,8 +813,9 @@ div.item_table_show div.detail_cell {
   }
 
   div#header nav ul li a {
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     font-size: 2rem;
+    box-sizing: border-box;
     width: 100%;
   }
 
@@ -808,6 +826,7 @@ div.item_table_show div.detail_cell {
 
   div#header nav ul li a span.menu_text {
     font-size: 14px;
+    line-height: 1;
   }
 
   table.search_form td,
@@ -865,6 +884,7 @@ div.item_table_show div.detail_cell {
 
   table.map td.map_cell {
     width: 100%;
+    height: auto;
   }
 
   .item_name{

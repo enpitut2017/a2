@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112071234) do
+ActiveRecord::Schema.define(version: 20180122115551) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "item_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20180112071234) do
     t.integer "genre_id"
     t.string "pass"
     t.integer "sold"
+    t.boolean "activated", default: false
     t.index ["department_id"], name: "index_items_on_department_id"
     t.index ["genre_id"], name: "index_items_on_genre_id"
     t.index ["place_id"], name: "index_items_on_place_id"
@@ -55,6 +56,15 @@ ActiveRecord::Schema.define(version: 20180112071234) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tokens", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.string "uuid", null: false
+    t.datetime "expired_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_tokens_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|

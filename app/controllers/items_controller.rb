@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.order('created_at DESC').where(activated: true)
+    respond_to do |format|
+      format.html
+      format.json {render html: '<strong>404 Not Found</strong>'.html_safe}
+    end
   end
 
   # GET /items/1
@@ -16,12 +20,20 @@ class ItemsController < ApplicationController
     if @item.sold == 8181
       redirect_to action: "sold",id: @item.id
     end
+    respond_to do |format|
+      format.html
+      format.json {render html: '<strong>404 Not Found</strong>'.html_safe}
+    end
   end
 
   def sold
     @item = Item.find(params[:id])
     @comments = @item.comments.all
     @comment = @item.comments.build
+    respond_to do |format|
+      format.html
+      format.json {render html: '<strong>404 Not Found</strong>'.html_safe}
+    end
   end
 
   def comment
