@@ -370,7 +370,7 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 ==========================
 "
 
-      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品取引終了完了", body:body).deliver
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品取引完了", body:body).deliver
       @item.sold = 8181
       @item.save
       redirect_to :action => "index"
