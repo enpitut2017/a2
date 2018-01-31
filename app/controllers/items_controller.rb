@@ -388,7 +388,7 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
     if params[:mail][:student_id].blank?
       flash[:error_n] = "学籍番号を入力してください。"
     end
-    if params[:mail][:student_id] !~ /20+\d{7}/
+    if params[:mail][:student_id] !~ /20\d{7}/
       flash[:error_l] = "学籍番号を正しく入力してください。"
     end
     if params[:mail][:content].blank? || params[:mail][:student_id].blank? || params[:mail][:student_id] !~ /20+\d{7}/
