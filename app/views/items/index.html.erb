@@ -145,13 +145,13 @@ end
 
 <!-- タブ -->
 <% if params["genre"] ==  nil %>
-  <% params["genre"] = "-1" %>
+  <% params["genre"] = "0" %>
 <% end %>
 
 <div class="genre_tab">
   <form name="genre_form" method="get" class="genre_tab_item">
-    <input type="hidden" name="genre" value="-1">
-    <% if params["genre"] ==  "-1" %>
+    <input type="hidden" name="genre" value="0">
+    <% if params["genre"] ==  "0" %>
       <input type="submit" value="全ての商品" class="genre_tab_item_active">
     <% else %>
       <input type="submit" value="全ての商品" class="genre_tab_item_inactive">
@@ -168,7 +168,7 @@ end
     </form>
   <% end %>
 </div>
-<% if params["genre"] != "-1" %>
+<% if params["genre"] != "0" %>
   <% @items = @items.where(genre_id: params["genre"]) %>
 <% end %>
 
