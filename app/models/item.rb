@@ -67,8 +67,8 @@ class Item < ApplicationRecord
           #学籍番号が空の時にエラーメッセージを追加する
           if student_id.nil?
             errors[:base] << "学籍番号の欄は空白のまま送信できません"
-          elsif student_id !~ /20+\d{7}/
-            errors[:base] << "学籍番号は９桁で入力してください"
+          elsif student_id.to_s !~ /20\d{7}/
+            errors[:base] << "正しい学籍番号を入力してください"
           end
 
         end
