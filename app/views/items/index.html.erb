@@ -22,7 +22,8 @@
             <input type="text" name="freeword_select" style="max-width: 90%;">
           </td>
         </tr>
-        <tr>
+        <% @genres = Genre.all %>
+        <!-- <tr>
           <th>ジャンル</th>
           <td>
             <% @genres = Genre.all %>
@@ -33,7 +34,7 @@
               <% end %>
             </select>
           </td>
-        </tr>
+        </tr> -->
         <tr>
           <th>所属</th>
           <td>
