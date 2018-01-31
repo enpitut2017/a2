@@ -954,27 +954,15 @@ div.us_img1-3 img {
    border-left: solid 10px #d06d8c;
  }
 
-
- div.us_text2-1-1a{
-   float: left;
-   width: 50%;
- }
  div.us_img2-1-1a{
-   float: right;
-   width: 40%;
-
+   
+   margin-left: auto;
+   margin-right: auto;
+   width: 65%;
  }
 
- div.us_text2-1-1b{
-   clear: both;
-   float: left;
-   width: 50%;
- }
  div.us_img2-1-1b{
-   float: right;
-
-   width: 40%;
-
+   width: 50%;
  }
 
  div.us_block2-1-2 {
@@ -1009,10 +997,6 @@ div.us_img1-3 img {
     border-left: solid 10px #d06d8c;
  }
 
- div.us_text2-2-1{
-   float: left;
-   width: 50%;
- }
 
  div.us_img2-2-1{
    width: 45%;
@@ -1028,10 +1012,7 @@ div.us_img1-3 img {
     background: AliceBlue;
     border-left: solid 10px #65ace4;
  }
- div.us_text2-2-2{
-   float: left;
-   width: 50%;
- }
+
  div.us_img2-2-2{
    float: right;
    width: 40%;
@@ -1047,10 +1028,7 @@ div.us_img1-3 img {
     background: Snow;
     border-left: solid 10px #d06d8c;
  }
- div.us_text2-3-1{
-   float: left;
-   width: 50%;
- }
+
  div.us_img2-3-1{
    float: right;
    width: 40%;
@@ -1065,10 +1043,7 @@ div.us_img1-3 img {
     background: AliceBlue;
     border-left: solid 10px #65ace4;
  }
- div.us_text2-3-2{
-   float: left;
-   width: 50%;
- }
+
  div.us_img2-3-2{
    float: right;
    width: 40%;
