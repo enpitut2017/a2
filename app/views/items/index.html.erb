@@ -22,7 +22,8 @@
             <input type="text" name="freeword_select" style="max-width: 90%;">
           </td>
         </tr>
-        <tr>
+        <% @genres = Genre.all %>
+        <!-- <tr>
           <th>ジャンル</th>
           <td>
             <% @genres = Genre.all %>
@@ -33,9 +34,9 @@
               <% end %>
             </select>
           </td>
-        </tr>
+        </tr> -->
         <tr>
-          <th>学類</th>
+          <th>所属</th>
           <td>
             <% @departments = Department.all %>
             <select name="department_select">
@@ -140,7 +141,38 @@ end
 %>
 
 <h3>現在の検索条件</h3>
-<p><span style="display: inline-block;">【並び替え：<strong><%= @sort_str %></strong>】</span><span style="display: inline-block;">【キーワード：<strong><%= @key %></strong>】</span><span style="display: inline-block;">【ジャンル：<strong><%= @gen %></strong>】</span><span style="display: inline-block;">【学類：<strong><%= @dep %></strong>】</span><span style="display: inline-block;">【場所：<strong><%= @pla %></strong>】</span></p>
+<p><span style="display: inline-block;">【並び替え：<strong><%= @sort_str %></strong>】</span><span style="display: inline-block;">【キーワード：<strong><%= @key %></strong>】</span><span style="display: inline-block;">【ジャンル：<strong><%= @gen %></strong>】</span><span style="display: inline-block;">【所属：<strong><%= @dep %></strong>】</span><span style="display: inline-block;">【場所：<strong><%= @pla %></strong>】</span></p>
+
+
+<!-- タブ -->
+<% if params["genre"] ==  nil %>
+  <% params["genre"] = "0" %>
+<% end %>
+
+<div class="genre_tab">
+  <form name="genre_form" method="get" class="genre_tab_item">
+    <input type="hidden" name="genre" value="0">
+    <% if params["genre"] ==  "0" %>
+      <input type="submit" value="全ての商品" class="genre_tab_item_active">
+    <% else %>
+      <input type="submit" value="全ての商品" class="genre_tab_item_inactive">
+    <% end %>
+  </form>
+  <% @genres.each do |gen| %>
+    <form name="genre_form" method="get" class="genre_tab_item">
+      <input type="hidden" name="genre" value=<%=gen.id%>>
+      <% if params["genre"] == gen.id.to_s %>
+        <input type="submit" value=<%=gen.name%> class="genre_tab_item_active">
+      <% else %>
+        <input type="submit" value=<%=gen.name%> class="genre_tab_item_inactive">
+      <% end %>
+    </form>
+  <% end %>
+</div>
+<% if params["genre"] != "0" %>
+  <% @items = @items.where(genre_id: params["genre"]) %>
+<% end %>
+
 
 <h3>検索結果</h3>
 <p><span class="match_num"><%= @items.length %></span>件の商品</p>
