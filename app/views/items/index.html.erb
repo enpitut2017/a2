@@ -144,6 +144,10 @@ end
 
 
 <!-- タブ -->
+<% if params["genre"] ==  nil %>
+  <% params["genre"] = "-1" %>
+<% end %>
+
 <div class="genre_tab">
   <form name="genre_form" method="get" class="genre_tab_item">
     <input type="hidden" name="genre" value="-1">
@@ -167,6 +171,7 @@ end
 <% if params["genre"] != "-1" %>
   <% @items = @items.where(genre_id: params["genre"]) %>
 <% end %>
+
 
 <h3>検索結果</h3>
 <p><span class="match_num"><%= @items.length %></span>件の商品</p>
