@@ -57,9 +57,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :department_id, "学類", :class=>"label_department" %>
-    <div class="explain_department">学類を入力してください。
-      特に教科書の出品では、学類を入力しておくと購入してもらえる可能性が高くなります。</div>
+    <%= form.label :department_id, "所属", :class=>"label_department" %>
+    <div class="explain_department">所属を入力してください。
+      特に教科書の出品では、所属を入力しておくと購入してもらえる可能性が高くなります。</div>
     <%= form.collection_select :department_id, Department.all, :id, :name ,:department_id => 1 %>
   </div>
 
