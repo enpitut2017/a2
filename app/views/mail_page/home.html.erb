@@ -2,7 +2,7 @@
 
 <%= form_tag('/items/done') do %>
 学籍番号<br>
-  <%= text_field :mail, :student_id, :placeholder => "例) 201512345" %><br><br>
+  <%= number_field :mail, :student_id, :placeholder => "例) 201512345" %><br><br>
 内容<br>
   <%= text_area :mail, :content, :size => "35x10" %> <br><br>
   <%= hidden_field :to_mail, :student_id, :value => params[:to_mail][:student_id] %>
