@@ -167,6 +167,12 @@ end
       <div class="data_cell"><%= number_with_delimiter(item.price) %> 円</div>
       <div class="cell_label place">地域</div>
       <div class="data_cell"><%= item.place.name %></div>
+      <% if item.updated_at.to_s != item.created_at.to_s %>
+        <div class="cell_label">更新日時</div>
+        <div class="data_cell"><%= (item.updated_at).to_s.slice(0, 16) %></div>
+      <% end %>
+      <div class="cell_label place">作成日時</div>
+      <div class="data_cell"><%= (item.created_at).to_s.slice(0, 16) %></div>
     </div>
   <% end %>
 <% end %>
