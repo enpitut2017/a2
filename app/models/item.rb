@@ -44,6 +44,8 @@ class Item < ApplicationRecord
           #価格が空の時にエラーメッセージを追加する
           if price.nil?
             errors[:base] << "価格の欄は空白のまま送信できません"
+          elsif price < 0
+            errors[:base] << "価格を正しく入力してください"
           end
         end
 
@@ -65,7 +67,10 @@ class Item < ApplicationRecord
           #学籍番号が空の時にエラーメッセージを追加する
           if student_id.nil?
             errors[:base] << "学籍番号の欄は空白のまま送信できません"
+          elsif student_id !~ /20+\d{7}/
+            errors[:base] << "学籍番号は９桁で入力してください"
           end
+
         end
 
 	def department_id_error
