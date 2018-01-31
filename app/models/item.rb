@@ -74,9 +74,9 @@ class Item < ApplicationRecord
         end
 
 	def department_id_error
-          #学類が空の時にエラーメッセージを追加する
+          #所属が空の時にエラーメッセージを追加する
           if department_id.nil?
-            errors[:base] << "学類の欄は空白のまま送信できません"
+            errors[:base] << "所属の欄は空白のまま送信できません"
           end
         end
 
