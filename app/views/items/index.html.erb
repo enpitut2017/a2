@@ -142,6 +142,32 @@ end
 <h3>現在の検索条件</h3>
 <p><span style="display: inline-block;">【並び替え：<strong><%= @sort_str %></strong>】</span><span style="display: inline-block;">【キーワード：<strong><%= @key %></strong>】</span><span style="display: inline-block;">【ジャンル：<strong><%= @gen %></strong>】</span><span style="display: inline-block;">【学類：<strong><%= @dep %></strong>】</span><span style="display: inline-block;">【場所：<strong><%= @pla %></strong>】</span></p>
 
+
+<!-- タブ -->
+<div class="genre_tab">
+  <form name="genre_form" method="get" class="genre_tab_item">
+    <input type="hidden" name="genre" value="-1">
+    <% if params["genre"] ==  "-1" %>
+      <input type="submit" value="全ての商品" class="genre_tab_item_active">
+    <% else %>
+      <input type="submit" value="全ての商品" class="genre_tab_item_inactive">
+    <% end %>
+  </form>
+  <% @genres.each do |gen| %>
+    <form name="genre_form" method="get" class="genre_tab_item">
+      <input type="hidden" name="genre" value=<%=gen.id%>>
+      <% if params["genre"] == gen.id.to_s %>
+        <input type="submit" value=<%=gen.name%> class="genre_tab_item_active">
+      <% else %>
+        <input type="submit" value=<%=gen.name%> class="genre_tab_item_inactive">
+      <% end %>
+    </form>
+  <% end %>
+</div>
+<% if params["genre"] != "-1" %>
+  <% @items = @items.where(genre_id: params["genre"]) %>
+<% end %>
+
 <h3>検索結果</h3>
 <p><span class="match_num"><%= @items.length %></span>件の商品</p>
 
@@ -167,12 +193,6 @@ end
       <div class="data_cell"><%= number_with_delimiter(item.price) %> 円</div>
       <div class="cell_label place">地域</div>
       <div class="data_cell"><%= item.place.name %></div>
-      <% if item.updated_at.to_s != item.created_at.to_s %>
-        <div class="cell_label">更新日時</div>
-        <div class="data_cell"><%= (item.updated_at).to_s.slice(0, 16) %></div>
-      <% end %>
-      <div class="cell_label place">作成日時</div>
-      <div class="data_cell"><%= (item.created_at).to_s.slice(0, 16) %></div>
     </div>
   <% end %>
 <% end %>

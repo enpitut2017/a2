@@ -787,8 +787,34 @@ div.item_table_show div.detail_cell {
   background-color: transparent;
 }
 
+
 header h1 img.header_logo {
   width: 250px;
+
+.genre_tab {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.genre_tab_item {
+  display: inline-flex;
+  margin-bottom: 10px;
+}
+
+.genre_tab_item_active {
+  text-decoration: none;
+  color: white;
+  border: solid 2px var(--red-color);
+  background-color: var(--red-color);
+  cursor: pointer;
+  padding-top: 10px;
+}
+.genre_tab_item_inactive {
+  text-decoration: none;
+  color: var(--red-color);
+  border: solid 2px var(--red-color);
+  background-color: white;
+  cursor: pointer;
 }
 
 

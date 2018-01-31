@@ -291,6 +291,9 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
         flash[:notice] = "商品の出品が完了しました。"
         format.html { redirect_to @item}
         format.json { render :show, status: :created, location: @item }
+
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: "tsuku.byebuy@gmail.com", subject: "出品完了アラート", body:body).deliver
+      
       end
     else
       # トークンがない、もしくは２回目のアクセス -> 失敗を通知、ユーザ登録ページのリンクを貼る
@@ -370,7 +373,7 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
 ==========================
 "
 
-      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品取引終了完了", body:body).deliver
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]商品取引完了", body:body).deliver
       @item.sold = 8181
       @item.save
       redirect_to :action => "index"
@@ -388,7 +391,7 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
     if params[:mail][:student_id].blank?
       flash[:error_n] = "学籍番号を入力してください。"
     end
-    if params[:mail][:student_id] !~ /20+\d{7}/
+    if params[:mail][:student_id] !~ /20\d{7}/
       flash[:error_l] = "学籍番号を正しく入力してください。"
     end
     if params[:mail][:content].blank? || params[:mail][:student_id].blank? || params[:mail][:student_id] !~ /20+\d{7}/
