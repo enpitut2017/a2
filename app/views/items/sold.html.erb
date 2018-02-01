@@ -11,7 +11,8 @@
   <div class="thumb_img_square">
     <div class="relative">
       <% if @item.image? %>
-        <%= image_tag @item.image.url, :class=>"sold_over_black" %>
+        <%= link_to url_for(controller: :static_pages, action: :image, id: @item.id) do %><%= image_tag @item.image.url, :class=>"sold_over_black" %><% end %>
+        <div class="sold_over_ribbon"><%= image_tag 'enlarge_image_over.png'%></div>
       <% else %>
         <%= image_tag 'no_image.png', :class=>"sold_over_black" %>
       <% end %>

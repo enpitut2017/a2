@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'usage' => 'static_pages#usage'
 
+  get 'image' => 'static_pages#image'
+
   get 'comments/new'
 
   get 'comments/create'

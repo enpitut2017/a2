@@ -818,6 +818,10 @@ header h1 img.header_logo {
   cursor: pointer;
 }
 
+.enlarge_image img{
+  width: 100%;
+  height: auto;
+}
 
 @media screen and (max-width: 480px) {
   body, p, ol, ul, td, input, textarea, select, button {
