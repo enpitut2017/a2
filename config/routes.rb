@@ -37,6 +37,10 @@ post "items/show" => "mail_page#home"
     get 'token/:uuid' => 'items#token'
   end
   resources :comments
+
+  get 'wants/home'
+  post 'wants/home' => 'wants#new'
+  post 'wants/new' => 'wants#home'
   root 'items#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
