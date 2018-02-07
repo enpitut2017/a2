@@ -18,8 +18,13 @@
 @import "materialize/components/color";
 
 $primary-color: color("deep-orange", "darken-1") !default;
+$secondary-color: color("grey", "darken-3") !default;
+
+$button-raised-background: $primary-color !default;
+$input-border-color: color("grey", "darken-1") !default;
 
 $h1-fontsize: 1.5rem !default;
+$h2-fontsize: 1.3rem !default;
 
 @import 'materialize';
 @import "materialize/components/icons-material-design";
@@ -43,7 +48,8 @@ header a.brand-logo img {
   flex-wrap: wrap;
 
   & > * {
-    margin-right: 1.5em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
   }
 }
 
@@ -51,34 +57,20 @@ input[type="checkbox"] + label {
   padding-left: 30px;
 }
 
-
-
-.toggle_button {
-  cursor: pointer;
-  border: 1px solid white;
+.right-margin {
+  margin-right: 1.5em;
 }
 
-.toggle_button:hover {
-  border: 1px solid black;
+.btn.secondary {
+  @extend .white, .black-text;
 }
 
-/*ページのタイトル*/
-h2{
-  font-size: 1.5rem;
-  margin-left: -100vw;
-  padding-left: 100vw;
-  padding-right: 1em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  background-color: var(--red-color);
-  color: #ffffee;
-  display: inline-block;
+.match-num-text {
+  @extend .red-text;
+  font-size: 1.5em;
 }
 
-h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5em;
-}
+
 
 /* Safariのボタン */
 input[type="submit"],
