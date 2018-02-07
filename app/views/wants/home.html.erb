@@ -1,6 +1,6 @@
 <h1>欲しいもの掲示板</h1>
 <% @wants.each do |want| %>
-  <%= want.content %><br>
+  <%= want.content %>   --<%= want.created_at.to_s.slice(0, 16) %><br>
 <% end %>
 <%= form_tag(:controller => 'wants', :action => 'new') do %>
   <textarea name="content" style="width: 18em; height: 3rem;"></textarea>
