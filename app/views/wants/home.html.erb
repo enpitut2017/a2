@@ -1,0 +1,8 @@
+<h1>欲しいもの掲示板</h1>
+<% @wants.each do |want| %>
+  <%= want.content %><br>
+<% end %>
+<%= form_tag(:controller => 'wants', :action => 'new') do %>
+  <textarea name="content" style="width: 18em; height: 3rem;"></textarea>
+  <button type="submit">送信</button>
+<% end %>
