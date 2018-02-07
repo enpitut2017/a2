@@ -19,30 +19,27 @@
         <tr>
           <th>フリーワード</th>
           <td>
-            <input type="text" name="freeword_select" style="max-width: 90%;">
+            <% if params["freeword_select"] == nil then @fwd_default = "" else @fwd_default = params["freeword_select"] end %>
+            <input type="text" name="freeword_select" style="max-width: 90%;" value=<%=@fwd_default%>>
           </td>
         </tr>
         <% @genres = Genre.all %>
-        <!-- <tr>
-          <th>ジャンル</th>
-          <td>
-            <% @genres = Genre.all %>
-            <select name="genre_select">
-              <option value="0" selected="selected">指定しない</option>
-              <% @genres.each do |gen| %>
-                <option value="<%= gen.id %>"><%= gen.name %></option>
-              <% end %>
-            </select>
-          </td>
-        </tr> -->
         <tr>
           <th>所属</th>
           <td>
             <% @departments = Department.all %>
             <select name="department_select">
-              <option value="0" selected="selected">指定しない</option>
+              <% if params["department_select"] == nil || params["department_select"] == 0 %>
+                <option value="0" selected="selected">指定しない</option>
+              <% else %>
+                <option value="0">指定しない</option>
+              <% end %>
               <% @departments.each do |dep| %>
-                <option value="<%= dep.id %>"><%= dep.name %></option>
+                <% if params["department_select"] == dep.id.to_s %>
+                  <option value="<%= dep.id %>" selected="selected"><%= dep.name %></option>
+                <% else %>
+                  <option value="<%= dep.id %>"><%= dep.name %></option>
+                <% end %>
               <% end %>
             </select>
           </td>
@@ -53,7 +50,11 @@
             <% @places = Place.all %>
             <% @places.each do |pla| %>
               <span class="place_checkbox_item">
-                <label><%= check_box 'place_check', pla.id, {}, true, false %><%= pla.name %></label>
+                <% if params["place_check"] != nil && params["place_check"][pla.id.to_s] == "true" %>
+                  <label><%= check_box 'place_check', pla.id, {:checked => "checked"}, true, false %><%= pla.name %></label>
+                <% else %>
+                  <label><%= check_box 'place_check', pla.id, {}, true, false %><%= pla.name %></label>
+                <% end %>
               </span>
             <% end %>
             <br>
@@ -141,7 +142,7 @@ end
 %>
 
 <h3>現在の検索条件</h3>
-<p><span style="display: inline-block;">【並び替え：<strong><%= @sort_str %></strong>】</span><span style="display: inline-block;">【キーワード：<strong><%= @key %></strong>】</span><span style="display: inline-block;">【ジャンル：<strong><%= @gen %></strong>】</span><span style="display: inline-block;">【所属：<strong><%= @dep %></strong>】</span><span style="display: inline-block;">【場所：<strong><%= @pla %></strong>】</span></p>
+<p><span style="display: inline-block;">【並び替え：<strong><%= @sort_str %></strong>】</span><span style="display: inline-block;">【キーワード：<strong><%= @key %></strong>】</span><span style="display: inline-block;">【所属：<strong><%= @dep %></strong>】</span><span style="display: inline-block;">【場所：<strong><%= @pla %></strong>】</span></p>
 
 
 <!-- タブ -->
@@ -152,7 +153,7 @@ end
 <div class="genre_tab">
   <form name="genre_form" method="get" class="genre_tab_item">
     <input type="hidden" name="genre" value="0">
-    <% if params["genre"] ==  "0" %>
+    <% if params["genre"] == "0" %>
       <input type="submit" value="全ての商品" class="genre_tab_item_active">
     <% else %>
       <input type="submit" value="全ての商品" class="genre_tab_item_inactive">
