@@ -41,6 +41,8 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog'
+gem 'materialize-sass'
+gem 'material_icons'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
