@@ -39,7 +39,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 # 追加
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'rmagick'
 gem 'fog'
 
 group :development, :test do
