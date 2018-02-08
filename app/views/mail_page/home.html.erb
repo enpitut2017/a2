@@ -1,15 +1,26 @@
-<h2>出品者に連絡</h2>
-
-<%= form_tag('/items/done') do %>
-学籍番号<br>
-  <%= number_field :mail, :student_id, :placeholder => "例) 201512345" %><br><br>
-内容<br>
-  <%= text_area :mail, :content, :size => "35x10" %> <br><br>
-  <%= hidden_field :to_mail, :student_id, :value => params[:to_mail][:student_id] %>
-  <%= hidden_field :to_mail, :item_id, :value => params[:to_mail][:item_id] %>
-  <%= hidden_field_tag 'id' => params[:to_mail][:item_id] %>
-  <%= submit_tag('送信', :class => "color_btn") %>
-<% end %>
-<br><br>
-<div class="color_btn"><%= link_to '商品に戻る', :class => "color_btn" ,:controller => "items",:action => "show", :id => params[:to_mail][:item_id] %></div>
-<% link_to '戻る',:back, :class => "color_btn"  %>
+        <h1>出品者に連絡</h1>
+        <div class="card">
+          <div class="card-content">
+            <%= form_tag('/items/done') do %>
+              <div class="row">
+                <div class="col s12 input-field">
+                  <%= number_field :mail, :student_id, :placeholder => "例：201512345" %>
+                  <label for="mail_student_id" class="active">学籍番号</label>
+                  <p class="grey-text">あなたの学籍番号を9桁で入力してください。</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12 input-field">
+                  <%= text_area :mail, :content, :class => "materialize-textarea" %>
+                  <label for="mail_content">内容</label>
+                </div>
+              </div>
+              <div class="row center-align">
+                <%= hidden_field :to_mail, :student_id, :value => params[:to_mail][:student_id] %>
+                <%= hidden_field :to_mail, :item_id, :value => params[:to_mail][:item_id] %>
+                <%= hidden_field_tag 'id' => params[:to_mail][:item_id] %>
+                <%= submit_tag('送信', :class => "btn") %>
+              </div>
+            <% end %>
+          </div>
+        </div>

@@ -5,7 +5,6 @@
   <p><%= flash[:alert] %></p>
 <% end %>
 
-        <h1>商品一覧</h1>
         <div class="scroll-horizontal-wrapper">
 <% @genres = Genre.all %>
 <% if params["genre"] == nil %>
@@ -24,9 +23,9 @@
             <input type="hidden" name="sort_type" value="<%= params["sort_type"] %>">
 <% end%>
 <% if params["genre"] == "0" %>
-            <button type="submit" name="genre" value="0" class="btn">全て</button>
+            <button type="submit" name="genre" value="0" class="btn">全商品</button>
 <% else %>
-            <button type="submit" name="genre" value="0" class="btn secondary">全てのジャンル</button>
+            <button type="submit" name="genre" value="0" class="btn secondary">全商品</button>
 <% end%>
 <% @genres.each do |gen| %>
   <% if params["genre"] == gen.id.to_s %>
@@ -159,15 +158,17 @@
       <% end %>
             </div>
             <div class="card-content col s12 m7">
-              <table class="bordered">
+              <table class="item">
                 <tr>
                   <th><h2><%= item.name %></h2></th>
                 </tr>
                 <tr>
-                  <td><%= number_with_delimiter(item.price) %> 円</td>
-                </tr>
-                <tr>
-                  <td><%= item.place.name %></td>
+                  <td class="right-align">
+                    <p>
+                       <span class="price"><%= number_with_delimiter(item.price) %></span> 円<br>
+                      <%= item.place.name %>
+                    </p>
+                 </td>
                 </tr>
               </table>
             </div>
@@ -179,7 +180,7 @@
 <% @items.each do |item| %>
   <% if item.sold == 8181 %>
     <%= link_to(item) do %>
-        <div class="card hoverable">
+        <div class="card grey lighten-5 hoverable">
           <div class="row">
             <div class="card-image col s12 m5 ribbon sold">
       <% if item.image? %>
@@ -189,15 +190,17 @@
       <% end %>
             </div>
             <div class="card-content col s12 m7">
-              <table class="bordered">
+              <table class="item">
                 <tr>
                   <th><h2><%= item.name %></h2></th>
                 </tr>
                 <tr>
-                  <td><%= number_with_delimiter(item.price) %> 円</td>
-                </tr>
-                <tr>
-                  <td><%= item.place.name %></td>
+                  <td class="right-align">
+                    <p>
+                       <span class="price"><%= number_with_delimiter(item.price) %></span> 円<br>
+                      <%= item.place.name %>
+                    </p>
+                 </td>
                 </tr>
               </table>
             </div>

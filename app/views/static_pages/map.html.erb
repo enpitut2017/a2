@@ -1,4 +1,4 @@
-<h2>地図から選択</h2>
+        <h1>地図から選択</h1>
 <% @places = Place.all %>
 <%
 @map_url = [
@@ -22,63 +22,65 @@
   "https://goo.gl/maps/hCheXD3DybR2"
 ]
 %>
-<script>
-  function toggle_check(i) {
-    if (window.opener && !window.opener.closed) {
-      var id = '#place_check_' + i;
-      window.opener.$(id).prop('checked', function(index, prop) {
-        return !prop;
-      });
-      window.opener.$('select[name="item[place_id]"]').val(i);
-      window.opener.$('select[name="item[place_id]"]').material_select();
-      window.open('about:blank','_self').close();
-    }
-  }
+        <script>
+          function toggle_check(i) {
+            if (window.opener && !window.opener.closed) {
+              var id = '#place_check_' + i;
+              window.opener.$(id).prop('checked', function(index, prop) {
+                return !prop;
+              });
+              window.opener.$('select[name="item[place_id]"]').val(i);
+              window.opener.$('select[name="item[place_id]"]').material_select();
+              window.open('about:blank','_self').close();
+            }
+          }
 
-  $(function() {
-    $('img.pin').click(function() {
-      toggle_check($(this).attr('alt'));
-    });
+          $(function() {
+            $('img.pin').click(function() {
+              toggle_check($(this).attr('alt'));
+            });
 
-    $('img.pin').hover(function() {
-      $('#place' + $(this).attr('alt')).css('background', 'lightgray');
-    }, function() {
-      $('#place' + $(this).attr('alt')).css('background', '');
-    });
-  });
-</script>
-<p>地図上のピンをクリックすると、元の画面で該当の地点を選択できます。</p>
-<table class="map">
-  <tr>
-    <td class="map_cell" style="position: relative;">
-      <%= image_tag 'tsukuba_map_clear.png', :style => 'width: 100%;' %>
-      <%= image_tag 'pin1.png', :class => 'pin', :style => 'left: 54%; top: 82%;', :alt => '1' %>
-      <%= image_tag 'pin2.png', :class => 'pin', :style => 'left: 52%; top: 66%;', :alt => '2' %>
-      <%= image_tag 'pin3.png', :class => 'pin', :style => 'left: 48%; top: 56%;', :alt => '3' %>
-      <%= image_tag 'pin4.png', :class => 'pin', :style => 'left: 32%; top: 6%;', :alt => '4' %>
-      <%= image_tag 'pin5.png', :class => 'pin', :style => 'left: 34%; top: 85%;', :alt => '5' %>
-      <%= image_tag 'pin6.png', :class => 'pin', :style => 'left: 33%; top: 76%;', :alt => '6' %>
-      <%= image_tag 'pin7.png', :class => 'pin', :style => 'left: 31%; top: 63%;', :alt => '7' %>
-      <%= image_tag 'pin8.png', :class => 'pin', :style => 'left: 39%; top: 56%;', :alt => '8' %>
-      <%= image_tag 'pin9.png', :class => 'pin', :style => 'left: 32%; top: 52%;', :alt => '9' %>
-      <%= image_tag 'pin10.png', :class => 'pin', :style => 'left: 69%; top: 66%;', :alt => '10' %>
-      <%= image_tag 'pin11.png', :class => 'pin', :style => 'left: 58%; top: 66%;', :alt => '11' %>
-      <%= image_tag 'pin12.png', :class => 'pin', :style => 'left: 56%; top: 59%;', :alt => '12' %>
-      <%= image_tag 'pin13.png', :class => 'pin', :style => 'left: 57%; top: 37%;', :alt => '13' %>
-      <%= image_tag 'pin14.png', :class => 'pin', :style => 'left: 49%; top: 34%;', :alt => '14' %>
-      <%= image_tag 'pin15.png', :class => 'pin', :style => 'left: 32%; top: 37%;', :alt => '15' %>
-      <%= image_tag 'pin16.png', :class => 'pin', :style => 'left: 64%; top: 38%;', :alt => '16' %>
-      <%= image_tag 'pin17.png', :class => 'pin', :style => 'left: 69%; top: 21%;', :alt => '17' %>
-    </td>
-    <td class="place_cell">
-      <p>以下のリンクをクリックするとGoogleマップが開きます。</p>
-      <ol>
-        <% @places.each do |place| %>
-          <% if place != @places[@places.length-1] %>
-            <li id="place<%= place.id %>"><%= link_to place.name, @map_url[place.id], :target=>["_blank"] %></li>
-          <% end %>
-        <% end %>
-      </ol>
-    </td>
-  </tr>
-</table>
+            $('img.pin').hover(function() {
+              $('#place' + $(this).attr('alt') + ' a').css('color', 'red');
+              $('#place' + $(this).attr('alt') + ' a').css('font-weight', 'bold');
+            }, function() {
+              $('#place' + $(this).attr('alt') + ' a').css('color', '');
+              $('#place' + $(this).attr('alt') + ' a').css('font-weight', '');
+            });
+          });
+        </script>
+        <p>地図上のピンを押すと、元の画面で該当の地点を選択できます。</p>
+        <table class="map">
+          <tr>
+            <td class="map_cell" style="position: relative;">
+              <%= image_tag 'tsukuba_map_clear.png', :style => 'width: 100%;' %>
+              <%= image_tag 'pin1.png', :class => 'pin', :style => 'left: 54%; top: 82%;', :alt => '1' %>
+              <%= image_tag 'pin2.png', :class => 'pin', :style => 'left: 52%; top: 66%;', :alt => '2' %>
+              <%= image_tag 'pin3.png', :class => 'pin', :style => 'left: 48%; top: 56%;', :alt => '3' %>
+              <%= image_tag 'pin4.png', :class => 'pin', :style => 'left: 32%; top: 6%;', :alt => '4' %>
+              <%= image_tag 'pin5.png', :class => 'pin', :style => 'left: 34%; top: 85%;', :alt => '5' %>
+              <%= image_tag 'pin6.png', :class => 'pin', :style => 'left: 33%; top: 76%;', :alt => '6' %>
+              <%= image_tag 'pin7.png', :class => 'pin', :style => 'left: 31%; top: 63%;', :alt => '7' %>
+              <%= image_tag 'pin8.png', :class => 'pin', :style => 'left: 39%; top: 56%;', :alt => '8' %>
+              <%= image_tag 'pin9.png', :class => 'pin', :style => 'left: 32%; top: 52%;', :alt => '9' %>
+              <%= image_tag 'pin10.png', :class => 'pin', :style => 'left: 69%; top: 66%;', :alt => '10' %>
+              <%= image_tag 'pin11.png', :class => 'pin', :style => 'left: 58%; top: 66%;', :alt => '11' %>
+              <%= image_tag 'pin12.png', :class => 'pin', :style => 'left: 56%; top: 59%;', :alt => '12' %>
+              <%= image_tag 'pin13.png', :class => 'pin', :style => 'left: 57%; top: 37%;', :alt => '13' %>
+              <%= image_tag 'pin14.png', :class => 'pin', :style => 'left: 49%; top: 34%;', :alt => '14' %>
+              <%= image_tag 'pin15.png', :class => 'pin', :style => 'left: 32%; top: 37%;', :alt => '15' %>
+              <%= image_tag 'pin16.png', :class => 'pin', :style => 'left: 64%; top: 38%;', :alt => '16' %>
+              <%= image_tag 'pin17.png', :class => 'pin', :style => 'left: 69%; top: 21%;', :alt => '17' %>
+            </td>
+            <td class="place_cell">
+              <p>以下のリンクを押すとGoogleマップが開きます。</p>
+              <ol>
+<% @places.each do |place| %>
+  <% if place != @places[@places.length-1] %>
+                <li id="place<%= place.id %>"><%= link_to place.name, @map_url[place.id], :target=>["_blank"] %></li>
+  <% end %>
+<% end %>
+              </ol>
+            </td>
+          </tr>
+        </table>

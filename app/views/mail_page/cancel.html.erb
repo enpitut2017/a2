@@ -1,22 +1,11 @@
-<% error2 = flash[:error_n] %>
-<%= error2 %>
-<br>
-<% error3 = flash[:error_m] %>
-<%= error3 %>
-<br>
-<% error4 = flash[:error_l] %>
-<%= error4 %>
-<br>
-もう１度入力お願いします。
-<br>
-
-<%= form_tag('../mail_page/home', method: "post") do %>
-  <%= hidden_field :to_mail, :student_id, :value => flash[:number] %>
-  <%= hidden_field :to_mail, :item_id, :value => flash[:id] %>
-
-  <%= submit_tag('戻る', :class => "color_btn") %>
-  <br><br>
-<% end %>
-
-  <% link_to '戻る', :back, :class => "color_btn"  %>
-  <div class="color_btn"><%= link_to '商品に戻る',:controller => "items",:action => "show", :id => flash[:id] ,:class => "color_btn" %></div>
+        <h1>出品者へ連絡</h1>
+        <div class="alert error">
+          <p><%= flash[:error_n] %></p>
+          <p><%= flash[:error_m] %></p>
+          <p><%= flash[:error_l] %></p>
+        </div>
+        <%= form_tag('../mail_page/home', method: "post") do %>
+          <%= hidden_field :to_mail, :student_id, :value => flash[:number] %>
+          <%= hidden_field :to_mail, :item_id, :value => flash[:id] %>
+          <p><%= submit_tag('戻る', :class => "btn") %></p>
+        <% end %>

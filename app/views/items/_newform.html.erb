@@ -4,7 +4,7 @@
 <% if item.errors.any? %>
                 <div class="alert error">
                   <p><%= item.errors.count %>個のエラーがあります。</p>
-                  <ul>
+                  <ul class="browser-default">
   <% item.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
   <% end %>
