@@ -23,15 +23,13 @@ $secondary-color: color("grey", "darken-3") !default;
 $button-raised-background: $primary-color !default;
 $input-border-color: color("grey", "darken-1") !default;
 
-$h1-fontsize: 1.5rem !default;
-$h2-fontsize: 1.3rem !default;
+$h1-fontsize: 1.8rem !default;
+$h2-fontsize: 1.5rem !default;
 
 @import 'materialize';
 @import "materialize/components/icons-material-design";
 
 :root {
-  --page-width: 1000px;
-  --red-color: #dd5500;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, "Yu Gothic Medium", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
 }
 
@@ -39,9 +37,42 @@ header a.brand-logo img {
   height: 60px;
 }
 
-.flex {
-  display: flex;
-  justify-content: flex-start;
+body {
+  @extend .grey;
+  @extend .lighten-5;
+}
+
+main {
+  margin-top: 1rem;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.scroll-horizontal-wrapper {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scroll-horizontal {
+  display: inline-block;
+  white-space: nowrap;
+
+  & > * {
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+  }
 }
 
 .flex-wrap {
@@ -70,423 +101,85 @@ input[type="checkbox"] + label {
   font-size: 1.5em;
 }
 
-
-
-/* Safariのボタン */
-input[type="submit"],
-input[type="button"],
-button {
-  -webkit-appearance: none;
-}
-
-/*リンク*/
-a.red_line {
+.ribbon {
   position: relative;
-  display: inline-block;
-  transition: .3s;
-  background-color: white;
-}
-a.red_line:hover{
-  color: #555555;
-  text-decoration:none;
-  background-color: white;
-}
-a.red_line::after {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  content: '';
-  width: 0;
-  height: 2px;
-  background-color: #ff5500;
-  transition: .3s;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  margin-bottom: 2px;
-}
-a.red_line:hover::after {
-  width: 100%;
-  background-color: #ff5500;
-  margin-bottom: 2px;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: 999;
+    pointer-events: none;
+  }
 }
 
-.place_checkbox_item{
-  font-weight: normal;
-  display: inline-block;
+.ribbon.new::before {
+  background-image: image-url("new_over_ribbon.png");
 }
 
-/*検索結果件数*/
-.match_num{
-  color: red;
-  font-size: 1.6em;
+.ribbon.sold::before {
+  background-image: image-url("soldout_over_ribbon.png");
 }
 
-/*検索フォーム*/
-table.search_form {
-  border: solid 1px #000000;
-  width: 100%;
+.sold img {
+  filter: brightness(50%);
 }
 
-table.search_form td, table.search_form th {
-  vertical-align: top;
-}
-
-table.search_form th {
-  width: 7em;
-  text-align: right;
-}
-
-table.search_form label input[type="checkbox"] {
-  margin-left: 1em;
-}
-
-table.search_form input[type="submit"] {
-  letter-spacing: 2em;
-  padding: 0.5em;
-  padding-left: 2.5em;
-}
-
-/*一覧表示*/
-table.item_table{
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-table.item_table td.img {
-  padding: 0;
-  width: 40%;
-}
-
-th.cell_label{
-  width: 4em;
-  border-right: hidden;
-}
-
-
-.thumb_img_square img {
-  width: 100%;
-  height: 100%;
-  object-fit:cover;
-  text-align:center;
-  vertical-align: bottom;
-}
-
-
-/*詳細表示*/
-table.item_table_show{
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-table.item_table_show td.img {
-  padding: 0;
-  width: 40%;
-}
-
-table.item_table_show td.item_cell {
-  padding: 1rem;
-  vertical-align: top;
-}
-
-.item_name{
-  font-size: 2.5rem;
+.price {
+  font-size: 2.5em;
   font-weight: bold;
+  @extend .red-text;
 }
 
-.item_price{
-  font-size: 1.5rem;
-  text-align: right;
-  margin-top: 40px;
-  margin-bottom: 20px;
+.alert {
+  @extend .card, .card-content;
+
+  &.error {
+    @extend .red;
+    @extend .lighten-5;
+    @extend .red-text;
+  }
+
+  &.success {
+    @extend .light-green;
+    @extend .lighten-5;
+    @extend .green-text;
+  }
 }
 
-.value{
-  color: red;
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.item_place{
-  font-size: 1.6em;
-  text-align: right;
-}
-
-.item_genre, .item_dep{
-  font-size: 1.2em;
-  color: #aaaaaa;
-  text-align: right;
-}
-
-table.item_table_show td.detail_cell {
-  padding: 1rem;
-}
-
-.to_mail_button{
-  text-align: right;
-}
-
-/*コメント*/
-div.comment {
-  border: 1px solid #cccccc;
-  margin-bottom: 1em;
-  padding-right: 0.5em;
-}
-
-div.comment.seller {
-  background-color: #e0fefa;
-}
-
-div.comment.buyer {
-  background-color: #fffae0;
-}
-
-div.comment div.comment_num {
-  padding-top: 1em;
-  padding-left: 1em;
-}
-
-div.comment div.seller {
-  background-color: #e0fefa;
-  color: #ff5500;
-  font-weight: bold;
-}
-
-div.comment div.buyer {
-  background-color: #fffae0;
-}
-
-div.comment_body {
-  padding: 0.5em;
-  border: 1px solid #cccccc;
-  margin-bottom: 0.5em;
-}
-
-div.comment > div.comment_body {
-  border: none;
-  margin-left: 0.5em;
-  margin-bottom: 0;
-  font-weight: bold;
-}
-
-div.comment_reply {
-  margin-left: 4em;
-}
-
-.comment_form{
-  background-color: #fffcee;
-  border: solid #dddddd 1px;
-  padding: 24px 10px;
-  display: inline-block;
-}
-
-/*ボタン*/
-.color_btn {
-    display: inline-block;
-    padding: 0.3em 1em;
-    margin: 16px 0px 8px 0px;
-    text-decoration: none;
-    color: white;
-    border: solid 2px var(--red-color);
-    background-color: var(--red-color);
-    border-radius: 3px;
-    transition: .4s;
-    cursor: pointer;
-}
-
-a.color_btn{
+.card .chip {
+  background-color: $primary-color;
   color: white;
 }
 
-.color_btn:hover {
-    background: white;
-    color: var(--red-color);
+.card.seller {
+  @extend .blue;
+  @extend .lighten-5;
+  @extend .blue-text;
+  @extend .text-darken-2;
+
+  & .chip {
+    @extend .blue;
+  }
 }
 
-.color_btn a{
-  color: white;
-  text-decoration: none;
-}
-
-.color_btn a:hover {
-    background: white;
-    color: var(--red-color);
-}
-
-/*ボタンの配置*/
-.bottom_button{
-  margin-top: 60px;
-}
-
-.actions{
-  margin-top: 20px;
-}
-
-.contact_address{
-  margin: 20px 0px;
+.card.buyer {
+  @extend .grey;
+  @extend .lighten-5;
 }
 
 
 
-/*商品登録ページの説明*/
-.label_name{
-  font-weight: bold;
-}
-.explain_name {
-      display: none;
-      width: 200px;
-      position: absolute;
-      top: 10;
-      left: 200px;
-      padding: 10px;
-      margin-top: -10px;
-      border-radius: 5px;
-      background: #fffae0;
-      color: #333333;
-}
-.label_name:hover + .explain_name {
-      display: block;
-}
 
-.label_place{
-  font-weight: bold;
-}
-.explain_place {
-      display: none;
-      width: 200px;
-      position: absolute;
-      top: 10;
-      left: 300px;
-      padding: 10px;
-      margin-top: -10px;
-      border-radius: 5px;
-      background: #fffae0;
-      color: #333333;
-}
-.label_place:hover + .explain_place {
-      display: block;
-}
 
-.label_image{
-  font-weight: bold;
-}
-.explain_image {
-      display: none;
-      width: 200px;
-      position: absolute;
-      top: 10;
-      left: 250px;
-      padding: 10px;
-      margin-top: -10px;
-      border-radius: 5px;
-      background: #fffae0;
-      color: #333333;
-}
-.label_image:hover + .explain_image {
-      display: block;
-}
 
-.label_price{
-  font-weight: bold;
-}
-.explain_price {
-      display: none;
-      width: 200px;
-      position: absolute;
-      top: 10;
-      left: 200px;
-      padding: 10px;
-      margin-top: -10px;
-      border-radius: 5px;
-      background: #fffae0;
-      color: #333333;
-}
-.label_price:hover + .explain_price {
-      display: block;
-}
 
-.label_detail{
-  font-weight: bold;
-}
-.explain_detail {
-      display: none;
-      width: 200px;
-      position: absolute;
-      top: 10;
-      left: 320px;
-      padding: 10px;
-      margin-top: -10px;
-      border-radius: 5px;
-      background: #fffae0;
-      color: #333333;
-}
-.label_detail:hover + .explain_detail {
-      display: block;
-}
 
-.label_genre{
-  font-weight: bold;
-}
-.explain_genre {
-      display: none;
-      width: 250px;
-      position: absolute;
-      top: 10;
-      left: 160px;
-      padding: 10px;
-      margin-top: -10px;
-      border-radius: 5px;
-      background: #fffae0;
-      color: #333333;
-}
-.label_genre:hover + .explain_genre {
-      display: block;
-}
 
-.label_student_id{
-  font-weight: bold;
-}
-.explain_student_id {
-      display: none;
-      width: 250px;
-      position: absolute;
-      top: 10;
-      left: 200px;
-      padding: 10px;
-      margin-top: -10px;
-      border-radius: 5px;
-      background: #fffae0;
-      color: #333333;
-}
-.label_student_id:hover + .explain_student_id {
-      display: block;
-}
 
-.label_department{
-  font-weight: bold;
-}
-.explain_department {
-      display: none;
-      width: 250px;
-      position: absolute;
-      top: 10;
-      left: 200px;
-      padding: 10px;
-      margin-top: -10px;
-      border-radius: 5px;
-      background: #fffae0;
-      color: #333333;
-}
-.label_department:hover + .explain_department {
-      display: block;
-}
-
-.thumb {
-  width: 100px;
-}
 
 table.map {
   width: 100%;
@@ -739,6 +432,7 @@ header h1 img.header_logo {
   height: auto;
 }
 
+/*
 @media screen and (max-width: 480px) {
   body, p, ol, ul, td, input, textarea, select, button {
     font-size: 14px;
@@ -1269,3 +963,4 @@ div.us_img1-3 img {
     clear: both;
   }
 }
+*/

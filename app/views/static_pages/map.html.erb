@@ -30,6 +30,7 @@
         return !prop;
       });
       window.opener.$('select[name="item[place_id]"]').val(i);
+      window.opener.$('select[name="item[place_id]"]').material_select();
       window.open('about:blank','_self').close();
     }
   }

@@ -20,33 +20,13 @@ $(document).ready(function() {
   $('select').material_select();
 });
 
-$(function() {
-  $('.toggle_container').toggle();
-
-  $('.toggle_button').click(function() {
-    var id = $(this).attr('data-toggle-id');
-    var sel = '.toggle_container[data-toggle-id="' + id + '"]';
-    $(sel).toggle();
+function commentChange() {
+  $(function() {
+    if ($('[name="commentCh"]')[0].checked) {
+      $('#pass_check').css('display', 'none');
+    }
+    else {
+      $('#pass_check').css('display', '');
+    }
   });
-
-  $('.pagetop').click(function() {
-    $('html, body').animate({scrollTop: 0}, 'slow');
-    return false;
-  });
-});
-
-
-
-function commentChange1(){
-radio = document.getElementsByName('commentCh')
-if(radio[0].checked) {
-//フォーム
-document.getElementById('pass_check').style.display = "none";
-}else if(radio[1].checked) {
-//フォーム
-document.getElementById('pass_check').style.display = "";
-//document.getElementById('secondBox').style.display = "";
 }
-}
-//オンロードさせ、リロード時に選択を保持
-window.onload = entryChange1;
