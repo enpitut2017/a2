@@ -1,8 +1,10 @@
         <h1>出品者へ連絡</h1>
-        <div class="alert error">
-          <p><%= flash[:error_n] %></p>
-          <p><%= flash[:error_m] %></p>
-          <p><%= flash[:error_l] %></p>
+        <div class="alert">
+          <div class="error">
+            <p><%= flash[:error_n] %></p>
+            <p><%= flash[:error_m] %></p>
+            <p><%= flash[:error_l] %></p>
+          </div>
         </div>
         <%= form_tag('../mail_page/home', method: "post") do %>
           <%= hidden_field :to_mail, :student_id, :value => flash[:number] %>

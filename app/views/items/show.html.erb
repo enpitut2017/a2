@@ -1,7 +1,9 @@
 <% if flash[:notice] %>
-  <div class="alert success">
-    <p><%= flash[:notice] %></p>
-  </div>
+        <div class="alert">
+          <div class="success">
+            <p>これはテストです。</p>
+          </div>
+        </div>
 <% end %>
 <% if @item.activated && @item.activated != nil %>
         <div class="card">
@@ -170,7 +172,11 @@
                   <div class="col s6"><button type="submit" class="btn">取引終了</button></div>
                 <% end %>
   <% if flash[:pass_destroy] %>
-                <div class="alert error"><%= flash[:pass_destroy] %></div>
+                <div class="alert">
+                  <div class="error">
+                    <%= flash[:pass_destroy] %>
+                  </div>
+                </div>
   <% end %>
               </div>
             </div>

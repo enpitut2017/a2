@@ -48,9 +48,9 @@ class ItemsController < ApplicationController
     elsif commentCh == "s2"
       judge = "2"
       if password == "" then
-        flash[:alert] = "※※※パスワードを入力してください。"
+        flash[:alert] = "パスワードを入力してください。"
       else
-        flash[:alert] = "※※※パスワードが間違っています。"
+        flash[:alert] = "パスワードが間違っています。"
       end
     elsif commentCh == "s1" then
       judge = "0"
@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
 
     if params[:comment_body].blank?
       c_error = "0"
-      flash[:alert] = "※※※空欄のままでは送信できません。"
+      flash[:alert] = "空欄のままでは送信できません。"
     else
       c_error = "1"
     end

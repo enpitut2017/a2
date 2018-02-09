@@ -2,13 +2,15 @@
             <div class="card-content">
               <%= form_with(model: item, local: true) do |form| %>
 <% if item.errors.any? %>
-                <div class="alert error">
-                  <p><%= item.errors.count %>個のエラーがあります。</p>
-                  <ul class="browser-default">
+                <div class="alert">
+                  <div class="error">
+                    <p><%= item.errors.count %>個のエラーがあります。</p>
+                    <ul class="browser-default">
   <% item.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
+                      <li><%= message %></li>
   <% end %>
-                  </ul>
+                    </ul>
+                  </div>
                 </div>
 <% end %>
                 <div class="row">
@@ -76,12 +78,14 @@
                     <%= form.password_field :confirm %>
                     <label for="item_pass" class="active">パスワード</label>
 <% if !notice.nil? %>
-                    <div class="alert error">
-                      <%= notice %>
+                    <div class="alert">
+                      <div class="error">
+                        <%= notice %>
+                      </div>
                     </div>
 <% end %>
                     <p class="grey-text">出品完了時のメールに記載されているパスワードを入力してください。</p>
-                  </>
+                  </div>
                 </div>
                 <div class="row center-align">
                   <p class="grey-text center-align">入力内容に誤りがないかもう一度確認してください。</p>
