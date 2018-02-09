@@ -15,9 +15,11 @@
 <% if params["freeword_select"] != nil %>
             <input type="hidden" name="freeword_select" value="<%= params["freeword_select"] %>">
             <input type="hidden" name="department_select" value="<%= params["department_select"] %>">
-  <% for i in 1..@places.length %>
-    <% if params["place_check"].include?(i.to_s) %>
+  <% if params["place_check"] != nil %>
+    <% for i in 1..@places.length %>
+      <% if params["place_check"].include?(i.to_s) %>
             <input type="hidden" name="place_check[]" value="<%= i %>">
+      <% end %>
     <% end %>
   <% end %>
             <input type="hidden" name="sort_type" value="<%= params["sort_type"] %>">
