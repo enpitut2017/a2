@@ -35,11 +35,6 @@
           <div class="row">
             <div class="card-content">
               <%= simple_format(h(@item.detail)) %>
-              <%= form_tag('../mail_page/home', method: "post") do %>
-                <%= hidden_field :to_mail, :student_id, :value => @item.student_id %>
-                <%= hidden_field :to_mail, :item_id, :value => @item.id %>
-                <div class="right-align"><%= submit_tag('取引開始', :class => "btn") %></div>
-              <% end %>
             </div>
           </div>
         </div>

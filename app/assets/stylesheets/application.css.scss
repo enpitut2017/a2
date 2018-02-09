@@ -75,13 +75,25 @@ h2 {
 }
 
 .scroll-horizontal {
-  display: inline-block;
-  white-space: nowrap;
-
-  & > * {
+  @media #{$small-and-down} {
     display: inline-block;
-    margin-right: 0.5em;
-    margin-bottom: 0.5em;
+    white-space: nowrap;
+  
+    & > * {
+      display: inline-block;
+      margin-right: 0.5em;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  @media #{$medium-and-up} {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+      margin-right: 0.5em;
+      margin-bottom: 0.5em;
+    }
   }
 }
 
@@ -229,3 +241,13 @@ table.map span.map_num {
   text-align: right;
 }
 
+@media #{$small-and-down} {
+  table.map td{
+    display: block;
+  }
+
+  table.map td.map_cell {
+    width: 100%;
+    height: auto;
+  }
+}
