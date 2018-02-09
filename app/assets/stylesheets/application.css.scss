@@ -68,7 +68,6 @@ h2 {
 
 .scroll-horizontal-wrapper {
   overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
 
   &::-webkit-scrollbar {
     display: none;
