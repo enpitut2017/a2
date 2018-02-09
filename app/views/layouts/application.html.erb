@@ -6,28 +6,43 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   </head>
-
   <body>
-    <div id="header">
-      <header>
-        <h1><%= link_to image_tag('tsuku_byebuy_logo_transparent.png', { :border => '0', :alt => 'つくbyebuy', :class => 'header_logo'}), items_path %></h1>
-      </header>
-      <div id="nav">
-        <nav>
-          <ul>
-            <li><%= link_to items_path do %><i class="fas fa-list-ul"></i><span class="menu_text">商品一覧</span><% end %></li>
-            <li><%= link_to new_item_path do %><i class="fas fa-plus-circle"></i><span class="menu_text">出品</span><% end %></li>
-            <li><%= link_to '/usage' do %><i class="fas fa-question-circle"></i><span class="menu_text">使い方</span><% end %></li>
-            <li><%= link_to '/wants/home' do %><i class="fas fa-info-circle"></i><span class="menu_text">欲しいもの掲示板</span><% end %></li>
+    <header>
+      <nav>
+        <div class="nav-wrapper container">
+          <%= link_to image_tag('tsuku_byebuy_logo_transparent.png', {:alt => 'つくByeBuy'}), items_path, class: "brand-logo" %>
+          <a href="javascript:void(0);" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><%= link_to new_item_path do %>出品<% end %></li>
+            <li><%= link_to '/wants/home' do %>欲しいもの掲示板<% end %></li>
+            <li><%= link_to '/usage' do %>使い方<% end %></li>
+            <li><%= link_to '/contact' do %>お問い合わせ<% end %></li>
           </ul>
-        </nav>
-      </div>
-    </div>
+          <ul id="nav-mobile" class="side-nav">
+            <li><%= link_to new_item_path do %><i class="material-icons left">add_circle</i>出品<% end %></li>
+            <li><%= link_to '/wants/home' do %><i class="material-icons left">view_list</i>欲しいもの掲示板<% end %></li>
+            <li><%= link_to '/usage' do %><i class="material-icons left">help</i>使い方<% end %></li>
+            <li><%= link_to '/contact' do %><i class="material-icons left">mail</i>お問い合わせ<% end %></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <main>
-      <%= yield %>
-      <p><a href="#" class="pagetop color_btn">ページ上部へ</a></p>
+      <div class="container">
+<%= yield %>
+      </div>
     </main>
+    <footer class="page-footer">
+      <div class="container">
+        <a href="#" class="btn secondary right">ページ上部へ</a>
+        <p>このサービスは、筑波大学「情報メディア実験B」の一環で作成されたものです。</p>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          <address>Copyright (C) つくByeBuy 2018</address>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

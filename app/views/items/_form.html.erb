@@ -1,79 +1,96 @@
-<%= form_with(model: item, local: true) do |form| %>
-  <% if item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-      <ul>
-      <% item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+          <div class="card">
+            <div class="card-content">
+              <%= form_with(model: item, local: true) do |form| %>
+<% if item.errors.any? %>
+                <div class="alert">
+                  <div class="error">
+                    <p><%= item.errors.count %>個のエラーがあります。</p>
+                    <ul class="browser-default">
+  <% item.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
   <% end %>
-
-
-
-  <div class="field">
-    <%= form.label :name, "商品名" %>
-    <%= form.text_field :name, id: :item_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :place_id, "お住まいの場所に一番近い場所" %>
-    <%= form.collection_select :place_id, Place.all, :id, :name ,:place_id => 1 %>
-    <br>
-    <a href="javascript:window.open('/map', 'map');">地図から選択（新しいウィンドウが開きます）</a>
-  </div>
-
-  <div class="field">
-    <%= form.label :image, "商品画像" %>
-    <div class="thumb">
-      <% if @item.image? %>
-        <%= image_tag @item.image.url %>
-      <% else %>
-        <%= image_tag 'no_image.png' %>
-      <% end %>
-    </div>
-    <%= form.file_field :image, id: :item_image %>
-    <%= form.hidden_field :image_cache %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price, "価格" %>
-    <%= form.number_field :price, id: :item_price %> 円
-  </div>
-
-  <div class="field">
-    <%= form.label :detail, "商品の状態、値下げの対応、運搬の対応など" %>
-    <%= form.text_area :detail, id: :item_detail, :size=>"40x10"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :genre_id, "ジャンル" %>
-    <%= form.collection_select :genre_id, Genre.all, :id, :name ,:genre_id => 1 %>
-  </div>
-
-<!--
-  <div class="field">
-    <%= form.label :student_id, "学籍番号" %>
-    <%= form.number_field :student_id, id: :item_student_id %>
-  </div>
--->
-
-  <div class="field">
-    <%= form.label :department_id, "所属" %>
-    <%= form.collection_select :department_id, Department.all, :id, :name ,:department_id => 1 %>
-  </div>
-
-<p id="upd"></p>
-<font color = "red"><%= notice %></font>
-  <div class="field">
-    <%= form.label :confirm, "パスワード", :class=>"label_pass" %>
-    <div class="explain_pass">メールの中のパスワードを確認してください。</div>
-    <%= form.password_field :confirm %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "登録", :class => "color_btn"%>
-  </div>
+                    </ul>
+                  </div>
+                </div>
 <% end %>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.text_field :name, id: :item_name %>
+                    <label for="item_name" class="active">商品名</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.collection_select :place_id, Place.all, :id, :name ,:place_id => 1 %>
+                    <label>地域</label>
+                  </div>
+                  <a class="btn secondary right" href="javascript:window.open('/map', 'map'); void(0);">地図から選択</a>
+                </div>
+                <div class="row">
+                  <div class="col s12 file-field input-field">
+                    <div class="btn">
+                      <span>ファイルを選択</span>
+                      <%= form.file_field :image, id: :item_image %>
+                      <%= form.hidden_field :image_cache %>
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="PNG・JPEG形式">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 thumb">
+                    <p class="grey-text">現在の商品画像</p>
+<% if @item.image? %>
+                    <%= image_tag @item.image.url %>
+<% else %>
+                    <%= image_tag 'no_image.png' %>
+<% end %>
+                  </div>
+                </div>
+                <div class="row valign-wrapper">
+                  <div class="input-field col s6">
+                    <%= form.number_field :price, id: :item_price %>
+                    <label for="item_price" class="active">希望取引価格</label>
+                  </div>
+                  <div class="col s6">円</div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.text_area :detail, id: :item_detail, :class => "materialize-textarea" %>
+                    <label for="item_detail" class="active">詳細情報</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.collection_select :genre_id, Genre.all, :id, :name ,:genre_id => 1 %>
+                    <label>ジャンル</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.collection_select :department_id, Department.all, :id, :name ,:department_id => 1 %>
+                    <label>所属</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.password_field :confirm %>
+                    <label for="item_pass" class="active">パスワード</label>
+<% if !notice.nil? %>
+                    <div class="alert">
+                      <div class="error">
+                        <%= notice %>
+                      </div>
+                    </div>
+<% end %>
+                    <p class="grey-text">出品完了時のメールに記載されているパスワードを入力してください。</p>
+                  </div>
+                </div>
+                <div class="row center-align">
+                  <p class="grey-text center-align">入力内容に誤りがないかもう一度確認してください。</p>
+                  <%= form.submit "登録", :class => "btn" %>
+                </div>
+              <% end %>
+            </div>
+          </div>

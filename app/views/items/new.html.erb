@@ -1,10 +1,2 @@
-<% if flash[:alert] %>
-  <p><%= flash[:alert] %></p>
-<% end %>
-<h2>出品フォーム</h2>
-
+        <h1>出品フォーム</h1>
 <%= render 'newform', item: @item %>
-
-<div class="bottom_button">
-<%= link_to '商品一覧に戻る', items_path, :class => "color_btn"  %>
-</div>
