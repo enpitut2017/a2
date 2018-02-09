@@ -1,9 +1,8 @@
+        <p><%= link_to '商品ページに戻る', {:controller => "items", :action => "show", :id => @item.id}, :class => "btn" %></p>
 <% @item = Item.find(params["id"]) %>
-
 <% if @item.image.url == "" || @item.image.url == nil %>
-  <%= image_tag "no_image.png", :class=>"enlarge_image" %>
+        <%= image_tag "no_image.png" %>
 <% else %>
-  <%= image_tag @item.image.url, :class=>"enlarge_image" %>
+        <%= image_tag @item.image.url %>
 <% end %>
-
-<div class="color_btn"><%= link_to '商品に戻る', :controller => "items",:action => "show", :id => @item.id %></div>
+        <p><%= link_to '商品ページに戻る', {:controller => "items", :action => "show", :id => @item.id}, :class => "btn" %></p>

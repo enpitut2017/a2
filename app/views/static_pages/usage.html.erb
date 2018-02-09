@@ -1,121 +1,152 @@
-
-<div class = "us_block1">
-<h2>つくByeBuyの特徴</h2>
-<br>
-<div class = "us_block1-1">
-<div class="us_peculiarity"><%= image_tag 'peculiarity.png'  ,:class => 'peculiarity' %></div>
-</div>
-<div class = "us_block1-2">
-<h3>1.学籍番号の利用</h3>
-・学生用メールアドレスにメール通知<br>
-・アカウント作成なし<br>
-・筑波大生に限定<br>
-<div class = "us_img1-2"><%= image_tag 'hito.png'  ,:class => 'us1-2' %></div>
-</div>
-<div class = "us_block1-3">
-<h3>2.地域の限定</h3>
-・広大な筑波大周辺地域を最寄りのコンビニなどによる区分け<br>
-<div class = "us_img1-3"><%= image_tag 'tsukuba_map.png'  ,:class => 'us1-3' %></div><br>
-</div>
-</div>
-
-
-<div class = "us_block2">
-<h2>使い方</h2><br>
-
-<div class = "us_block2-a">
-<div class="usage_index">出品者</div>
-</div>
-<div class = "us_block2-b">
-<div class="usage_index">購入者</div>
-</div>
-
-<div class = "us_block2-1-1">
-<h3>1.出品</h3>
-<div class = "us_text2-1-1a">
-<h4>フォーム入力</h4>
-→出品が完了すると学生用メールアドレスにメール通知<br>
-→パスワードを控える<br></div>
-<div class = "us_img2-1-1a"><%= image_tag 'us2-1-1.png'  %></div>
-<br><h4>出品情報の編集</h4>
-<div class = "us_text2-1-1b">
-詳細ページから編集へ<br>
-→パスワードが必要（出品完了メールの確認）<br>
-</div>
-<div class = "us_img2-1-1b"><%= image_tag 'us2-1-1c.png'  %></div>
-</div>
-
-<div class = "us_block2-1-2">
-<h3>1.探す</h3>
-<b>所属検索！</b>
-教科書などをもらいたいときに便利
-<div class = "us_img2-1-2a"><%= image_tag 'us2-1-2a.png'  %></div>
-<br>
-<b>地域検索！</b>
-より近くの人からもらえる<br>
-<div class = "us_img2-1-2b"><%= image_tag 'us2-1-2b.png'  %></div>
-</div>
-
-<div class = "us_block2-2-1">
-<h3>2.質問に答える</h3>
-<div class = "us_text2-2-1">
-「出品者」を選択し、パスワードを入れてコメント<br>
-→出品者のコメントとその他を区別できる<br>
-</div>
-<div class = "us_img2-2-1"><%= image_tag 'us2-2-1.png'  %></div>
-</div>
-
-<div class = "us_block2-2-2">
-<div class = "us_text2-2-1">
-<h3>2.質問する</h3>
-「利用者」を選択しコメント<br>
-</div>
-<div class = "us_img2-2-2"><%= image_tag 'us2-2-2.png'  %></div>
-</div>
-
-<div class = "us_block2-3-1">
-<div class = "us_text2-3-1">
-<h3>3.メールに対応</h3>
-利用者からのメールを待ちましょう！<br>
-</div>
-<div class = "us_img2-3-1"><%= image_tag 'us2-3-1.png'  %></div>
-</div>
-
-<div class = "us_block2-3-2">
-<div class = "us_text2-3-2">
-<h3>3.取引開始</h3>
-詳細ページから「取引開始」<br>
-要件と学籍番号を入力<br>
-</div>
-<div class = "us_img2-3-2"><%= image_tag 'us2-3-2.png'  %></div>
-</div>
-
-<div class = "us_block2-4">
-<h3>4.取引</h3>
-<div class = "us_block2-4text">メールで場所などを指定し、受け渡し！！！<br></div>
-<div class = "us_img2-4"><%= image_tag 'osyaberi_woman.png'  %></div>
-</div>
-
-<div class = "us_block2-5-1">
-<h3>5.取引完了</h3>
-商品の詳細ページの下部から取引終了<br>
-→取引終了にはパスワードが必要<br>
-<div class = "us_img2-5-1"><%= image_tag 'us2-1-1c.png'  %></div>
-</div>
-
-<!--div class = "us_block2-5-2">
-<h3>5.大事に使う</h3>
-またのご利用お待ちしております。<br>
-</div-->
-
-
-<div class = "us_block2-6-1">
-<%= link_to '出品する', new_item_path, :class => "color_btn"  %>
-</div>
-
-<div class = "us_block2-6-2">
-<%= link_to '商品一覧へ', items_path, :class => "color_btn"  %>
-</div>
-
-<div class = "us_block3">
-</div>
+        <h1>つくByeBuyの特徴</h1>
+        <div class="card">
+          <div class="card-content">
+            <div class="row">
+              <div class="col s12 m4">
+                <%= image_tag 'peculiarity.png'  ,:class => 'responsive-img' %>
+              </div>
+              <div class="col s12 m4">
+                <h2>1.学籍番号の利用</h2>
+                <ul class="browser-default">
+                  <li>学生用メールアドレスにメール通知</li>
+                  <li>アカウント作成なし</li>
+                  <li>筑波大生に限定</li>
+                </ul>
+                <%= image_tag 'hito.png'  ,:class => 'responsive-img' %>
+              </div>
+              <div class="col s12 m4">
+                <h2>2.地域の限定</h2>
+                <ul class="browser-default">
+                  <li>広大な筑波大周辺地域を最寄りのコンビニなどによる区分け</li>
+                </ul>
+                <%= image_tag 'tsukuba_map.png'  ,:class => 'responsive-img' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1>使い方</h1>
+        <div class="row">
+          <div class="col s6">
+            <h2>出品者</h2>
+            <div class="card red lighten-5">
+              <div class="card-content">
+                <h3>1.出品</h3>
+                <h4>フォーム入力</h4>
+                <ul class="browser-default">
+                  <li>出品が完了すると学生用メールアドレスにメール通知</li>
+                  <li>パスワードを控える</li>
+                </ul>
+                <%= image_tag 'us2-1-1.png'  ,:class => 'responsive-img' %>
+                <h4>出品情報の編集</h4>
+                <ul class="browser-default">
+                  <li>詳細ページから編集へ</li>
+                  <li>パスワードが必要（出品完了メールの確認）</li>
+                </ul>
+                <%= image_tag 'us2-1-1c.png'  ,:class => 'responsive-img' %>
+              </div>
+            </div>
+          </div>
+          <div class="col s6">
+            <h2>購入者</h2>
+            <div class="card blue lighten-5">
+              <div class="card-content">
+                <h3>1.探す</h3>
+                <h4>所属検索！</h4>
+                <ul class="browser-default">
+                  <li>教科書などをもらいたいときに便利</li>
+                </ul>
+                <%= image_tag 'us2-1-2a.png'  ,:class => 'responsive-img' %>
+                <h4>地域検索！</h4>
+                <ul class="browser-default">
+                  <li>より近くの人からもらえる</li>
+                </ul>
+                <%= image_tag 'us2-1-2b.png'  ,:class => 'responsive-img' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <div class="card red lighten-5">
+              <div class="card-content">
+                <h3>2.質問に答える</h3>
+                <ul class="browser-default">
+                  <li>「出品者」を選択し、パスワードを入れてコメント</li>
+                  <li>出品者のコメントとその他を区別できる</li>
+                </ul>
+                <%= image_tag 'us2-2-1.png'  ,:class => 'responsive-img' %>
+              </div>
+            </div>
+          </div>
+          <div class="col s6">
+            <div class="card blue lighten-5">
+              <div class="card-content">
+                <h3>2.質問する</h3>
+                <ul class="browser-default">
+                  <li>「利用者」を選択しコメント</li>
+                </ul>
+                <%= image_tag 'us2-2-2.png'  ,:class => 'responsive-img' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <div class="card red lighten-5">
+              <div class="card-content">
+                <h3>3.メールに対応</h3>
+                <ul class="browser-default">
+                  <li>利用者からのメールを待ちましょう！</li>
+                </ul>
+                <%= image_tag 'us2-3-1.png'  ,:class => 'responsive-img' %>
+              </div>
+            </div>
+          </div>
+          <div class="col s6">
+            <div class="card blue lighten-5">
+              <div class="card-content">
+                <h3>3.取引開始</h3>
+                <ul class="browser-default">
+                  <li>詳細ページから「取引開始」</li>
+                  <li>要件と学籍番号を入力</li>
+                </ul>
+                <%= image_tag 'us2-3-2.png'  ,:class => 'responsive-img' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <div class="card orange lighten-5">
+              <div class="card-content">
+                <h3>4.取引</h3>
+                <ul class="browser-default">
+                  <li>メールで場所などを指定し、受け渡し！！！</li>
+                </ul>
+                <%= image_tag 'osyaberi_woman.png'  ,:class => 'responsive-img' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            <div class="card red lighten-5">
+              <div class="card-content">
+                <h3>5.取引完了</h3>
+                <ul class="browser-default">
+                  <li>商品の詳細ページの下部から取引終了</li>
+                  <li>取引終了にはパスワードが必要</li>
+                </ul>
+                <%= image_tag 'us2-1-1c.png'  ,:class => 'responsive-img' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6 center-align">
+            <%= link_to '出品する', new_item_path, :class => "btn" %>
+          </div>
+          <div class="col s6 center-align">
+            <%= link_to '商品一覧', items_path, :class => "btn" %>
+          </div>
+        </div>

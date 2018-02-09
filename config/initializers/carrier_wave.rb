@@ -11,5 +11,10 @@ CarrierWave.configure do |config|
     aws_signature_version: 2
   }
   config.fog_directory = ENV['IDCF_BUCKET'] # バケット名を記述
-  config.asset_host = ENV['IDCF_ASSET'] # CDNを使用する場合
+
+  if Rails.env.production?
+    config.asset_host = ENV['IDCF_ASSET'] # CDNを使用する場合
+  else
+    config.asset_host = "http://localhost:3000"
+  end
 end

@@ -1,0 +1,232 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require material_icons
+ *= require_tree .
+ *= require_self
+*/
+
+@import "materialize/components/color";
+
+$primary-color: color("deep-orange", "darken-1") !default;
+$secondary-color: color("grey", "darken-3") !default;
+
+$button-raised-background: $primary-color !default;
+$input-border-color: color("grey", "darken-1") !default;
+
+$h1-fontsize: 1.8rem !default;
+$h2-fontsize: 1.5rem !default;
+$h3-fontsize: 1.3rem !default;
+$h4-fontsize: 1.1rem !default;
+
+@import 'materialize';
+@import "materialize/components/icons-material-design";
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, "Yu Gothic Medium", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
+}
+
+header a.brand-logo img {
+  height: 60px;
+}
+
+body {
+  @extend .grey;
+  @extend .lighten-5;
+}
+
+main {
+  margin-top: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.scroll-horizontal-wrapper {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scroll-horizontal {
+  display: inline-block;
+  white-space: nowrap;
+
+  & > * {
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+
+  & > * {
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
+input[type="checkbox"] + label {
+  padding-left: 30px;
+}
+
+.right-margin {
+  margin-right: 1.5em;
+}
+
+.btn.secondary {
+  @extend .white, .black-text;
+}
+
+.match-num-text {
+  @extend .red-text;
+  font-size: 1.5em;
+}
+
+.ribbon {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: 990;
+    pointer-events: none;
+  }
+}
+
+.ribbon.new::before {
+  background-image: image-url("new_over_ribbon.png");
+}
+
+.ribbon.sold::before {
+  background-image: image-url("soldout_over_ribbon.png");
+}
+
+.sold img {
+  filter: brightness(50%);
+}
+
+a table.item {
+  color: rgba(0, 0, 0, 0.87);
+
+  h1,
+  h2 {
+    margin: 0;
+  }
+}
+
+.price {
+  font-size: 2.5em;
+  font-weight: bold;
+  @extend .red-text;
+}
+
+.alert {
+  @extend .card;
+
+  & > * {
+    @extend .card-content;
+  }
+
+  & > .error {
+    @extend .red;
+    @extend .lighten-5;
+    @extend .red-text;
+  }
+
+  & > .success {
+    @extend .blue;
+    @extend .lighten-5;
+    @extend .blue-text;
+    @extend .text-darken-2;
+  }
+}
+
+.card .chip {
+  background-color: $primary-color;
+  color: white;
+}
+
+.card.seller {
+  @extend .blue;
+  @extend .lighten-5;
+  @extend .blue-text;
+  @extend .text-darken-2;
+
+  & .chip {
+    @extend .blue;
+  }
+}
+
+.card.buyer {
+  @extend .grey;
+  @extend .lighten-5;
+}
+
+.thumb img {
+  max-width: 50%;
+}
+
+table.map {
+  width: 100%;
+}
+
+table.map td.map_cell {
+  width: 400px;
+  height: 600px;
+  padding: 0;
+}
+
+table.map td.map_cell img.pin {
+  width: 10%;
+  position: absolute;
+  cursor: pointer;
+}
+
+table.map td.map_cell img.pin:hover {
+  filter: drop-shadow(0px 0px 4px red);
+}
+
+table.map td.place_cell {
+  vertical-align: top;
+}
+
+table.map span.map_num {
+  display: inline-block;
+  width: 2em;
+  text-align: right;
+}
+

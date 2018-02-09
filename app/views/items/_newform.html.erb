@@ -1,69 +1,82 @@
-<%= form_with(model: item, local: true) do |form| %>
-  <% if item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-      <ul>
-      <% item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+          <div class="card">
+            <div class="card-content">
+              <%= form_with(model: item, local: true) do |form| %>
+<% if item.errors.any? %>
+                <div class="alert">
+                  <div class="error">
+                    <p><%= item.errors.count %>個のエラーがあります。</p>
+                    <ul class="browser-default">
+  <% item.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name, "商品名", :class=>"label_name" %>
-      <div class="explain_name">商品名を入力してください。</div>
-    <%= form.text_field :name, id: :item_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :place_id, "お住まいの場所に一番近い場所", :class=>"label_place" %>
-    <div class="explain_place">お住まいの場所に一番近い場所を選んでください。</div>
-    <%= form.collection_select :place_id, Place.all, :id, :name ,:place_id => 1 %>
-    <br>
-    <a href="javascript:window.open('/map', 'map');">地図から選択（新しいウィンドウが開きます）</a>
-  </div>
-
-  <div class="field">
-    <%= form.label :image, "商品画像", :class=>"label_image" %>
-    <div class="explain_image">画像をアップロードしてください。JPEG, PNG形式に対応しています。</div>
-    <%= form.file_field :image, id: :item_image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price, "価格", :class=>"label_price" %>
-    <div class="explain_price">商品の価格を入力してください。</div>
-    <%= form.number_field :price, id: :item_price %> 円
-  </div>
-
-  <div class="field">
-    <%= form.label :detail, "商品の状態、値下げの対応、運搬の対応など", :class=>"label_detail" %>
-    <div class="explain_detail">商品の詳細情報を入力してください。
-      商品の状態、値下げの対応、運搬の対応などを明記しておくと購入者の参考になります。</div>
-    <%= form.text_area :detail, id: :item_detail, :size=>"40x10"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :genre_id, "ジャンル", :class=>"label_genre" %>
-    <div class="explain_genre">商品のジャンルを選択してください。</div>
-    <%= form.collection_select :genre_id, Genre.all, :id, :name ,:genre_id => 1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :student_id, "学籍番号", :class=>"label_student_id" %>
-    <div class="explain_student_id">学籍番号を9桁で入力してください。</div>
-    <%= form.number_field :student_id, id: :item_student_id, :placeholder => "例) 201512345" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :department_id, "所属", :class=>"label_department" %>
-    <div class="explain_department">所属を入力してください。
-      特に教科書の出品では、所属を入力しておくと購入してもらえる可能性が高くなります。</div>
-    <%= form.collection_select :department_id, Department.all, :id, :name ,:department_id => 1 %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "登録", :class => "color_btn"%>
-  </div>
+                    </ul>
+                  </div>
+                </div>
 <% end %>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.text_field :name, id: :item_name %>
+                    <label for="item_name" class="active">商品名</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.collection_select :place_id, Place.all, :id, :name ,:place_id => 1 %>
+                    <label>地域</label>
+                    <p class="grey-text">お住まいの場所に一番近い場所を選んでください。</p>
+                  </div>
+                  <a class="btn secondary right" href="javascript:window.open('/map', 'map'); void(0);">地図から選択</a>
+                </div>
+                <div class="row">
+                  <div class="col s12 file-field input-field">
+                    <div class="btn">
+                      <span>ファイルを選択</span>
+                      <%= form.file_field :image, id: :item_image %>
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="PNG・JPEG形式">
+                    </div>
+                    <p class="grey-text">商品の写真をアップロードしてください。</p>
+                  </div>
+                </div>
+                <div class="row valign-wrapper">
+                  <div class="input-field col s6">
+                    <%= form.number_field :price, id: :item_price %>
+                    <label for="item_price" class="active">希望取引価格</label>
+                  </div>
+                  <div class="col s6">円</div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.text_area :detail, id: :item_detail, :class => "materialize-textarea" %>
+                    <label for="item_detail">詳細情報</label>
+                    <p class="grey-text">商品の状態、値下げの対応、運搬の対応など、購入者の参考となる情報を入力してください。</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.collection_select :genre_id, Genre.all, :id, :name ,:genre_id => 1 %>
+                    <label>ジャンル</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.number_field :student_id, id: :item_student_id, :placeholder => "例：201512345" %>
+                    <label for="item_student_id" class="active">学籍番号</label>
+                    <p class="grey-text">あなたの学籍番号を9桁で間違えないように入力してください。</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12 input-field">
+                    <%= form.collection_select :department_id, Department.all, :id, :name ,:department_id => 1 %>
+                    <label>所属</label>
+                    <p class="grey-text">所属する学類・研究科を選択してください。教科書等の商品が見つかりやすくなります。</p>
+                  </div>
+                </div>
+                <div class="row center-align">
+                  <p class="grey-text center-align">入力内容に誤りがないかもう一度確認してください。</p>
+                  <%= form.submit "出品", :class => "btn" %>
+                </div>
+              <% end %>
+            </div>
+          </div>

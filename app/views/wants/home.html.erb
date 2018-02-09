@@ -1,0 +1,22 @@
+        <h1>欲しいもの掲示板</h1>
+        <div class="card">
+          <div class="card-content">
+            <%= form_tag(:controller => 'wants', :action => 'new') do %>
+              <div class="input-field">
+                <input type="text" name="content" id="content"></input>
+                <label for="content" class="active">欲しいもの</label>
+              </div>
+              <div class="input-field center-align">
+                <button type="submit" class="btn">送信</button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <ul class="collection">
+<% @wants.each do |want| %>
+          <li class="collection-item">
+            <%= want.content %>
+            <span class="right grey-text"><%= want.created_at.to_s.slice(0, 16) %></span>
+          </li>
+<% end %>
+        </ul>
