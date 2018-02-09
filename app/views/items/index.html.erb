@@ -143,71 +143,79 @@
 <% end %>
         <h2>検索結果</h2>
         <p><span class="match-num-text"><%= @items.length %></span>件の商品</p>
+        <div class="row">
 <% @items.each do |item| %>
   <% if item.sold != 8181 %>
+          <div class="col s12 m6 l4">
     <%= link_to(item) do %>
-        <div class="card hoverable">
-          <div class="row">
+            <div class="card hoverable">
+              <div class="row">
       <% if Time.current - item.created_at < 3600 * 24 %>
-            <div class="card-image col s12 m5 ribbon new">
+                <div class="card-image col s12 ribbon new square">
       <% else %>
-            <div class="card-image col s12 m5">
+                <div class="card-image col s12 square">
       <% end %>
       <% if item.image? %>
-              <%= image_tag item.image.url %>
+                  <div class="img" style="background-image: url(<%= asset_path item.image.url %>);"></div>
       <% else %>
-              <%= image_tag 'no_image.png' %>
+                  <div class="img" style="background-image: url(<%= asset_path 'no_image.png' %>);"></div>
       <% end %>
+                </div>
+                <div class="card-content col s12">
+                  <table class="item">
+                    <tr>
+                      <th><h2><%= item.name %></h2></th>
+                    </tr>
+                    <tr>
+                      <td class="right-align">
+                        <p>
+                          <span class="price"><%= number_with_delimiter(item.price) %></span> 円<br>
+                          <%= item.place.name %>
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
             </div>
-            <div class="card-content col s12 m7">
-              <table class="item">
-                <tr>
-                  <th><h2><%= item.name %></h2></th>
-                </tr>
-                <tr>
-                  <td class="right-align">
-                    <p>
-                       <span class="price"><%= number_with_delimiter(item.price) %></span> 円<br>
-                      <%= item.place.name %>
-                    </p>
-                 </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
     <% end %>
+          </div>
   <% end %>
 <% end %>
+        </div>
+        <div class="row">
 <% @items.each do |item| %>
   <% if item.sold == 8181 %>
+          <div class="col s12 m6 l4">
     <%= link_to(item) do %>
-        <div class="card grey lighten-5 hoverable">
-          <div class="row">
-            <div class="card-image col s12 m5 ribbon sold">
+            <div class="card grey lighten-5 hoverable">
+              <div class="row">
+                <div class="card-image col s12 ribbon sold square">
       <% if item.image? %>
-              <%= image_tag item.image.url %>
+                  <div class="img" style="background-image: url(<%= asset_path item.image.url %>);"></div>
       <% else %>
-              <%= image_tag 'no_image.png' %>
+                  <div class="img" style="background-image: url(<%= asset_path 'no_image.png' %>);"></div>
       <% end %>
+                </div>
+                <div class="card-content col s12">
+                  <table class="item">
+                    <tr>
+                      <th><h2><%= item.name %></h2></th>
+                    </tr>
+                    <tr>
+                      <td class="right-align">
+                        <p>
+                          <span class="price"><%= number_with_delimiter(item.price) %></span> 円<br>
+                          <%= item.place.name %>
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
             </div>
-            <div class="card-content col s12 m7">
-              <table class="item">
-                <tr>
-                  <th><h2><%= item.name %></h2></th>
-                </tr>
-                <tr>
-                  <td class="right-align">
-                    <p>
-                       <span class="price"><%= number_with_delimiter(item.price) %></span> 円<br>
-                      <%= item.place.name %>
-                    </p>
-                 </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
     <% end %>
+          </div>
   <% end %>
 <% end %>
+        </div>
