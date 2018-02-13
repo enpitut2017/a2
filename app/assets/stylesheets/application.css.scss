@@ -130,6 +130,7 @@ input[type="checkbox"] + label {
     content: '';
     display: block;
     position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -146,6 +147,29 @@ input[type="checkbox"] + label {
   background-image: image-url("soldout_over_ribbon.png");
 }
 
+.card {
+  overflow: hidden;
+}
+
+.card-image.square {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 60%;
+  overflow: hidden;
+
+  & > .img {
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+
 .sold img {
   filter: brightness(50%);
 }
@@ -157,12 +181,23 @@ a table.item {
   h2 {
     margin: 0;
   }
+
+  h2 {
+    text-overflow: ellipsis;
+    height: 2.2em;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 90%, rgba(255, 255, 255, 1) 100%);
+  }
 }
 
 .price {
   font-size: 2.5em;
   font-weight: bold;
   @extend .red-text;
+}
+
+.place {
+  display: inline-block;
+  height: 3em;
 }
 
 .alert {
