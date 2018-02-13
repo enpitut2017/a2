@@ -183,9 +183,8 @@ a table.item {
   }
 
   h2 {
-    overflow: hidden;
     text-overflow: ellipsis;
-    height: 1em;
+    height: 2.2em;
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 90%, rgba(255, 255, 255, 1) 100%);
   }
 }
@@ -194,6 +193,11 @@ a table.item {
   font-size: 2.5em;
   font-weight: bold;
   @extend .red-text;
+}
+
+.place {
+  display: inline-block;
+  height: 3em;
 }
 
 .alert {
