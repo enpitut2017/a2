@@ -68,6 +68,8 @@ h2 {
 
 .scroll-horizontal-wrapper {
   overflow-x: scroll;
+  -ms-overflow-style: none;
+  padding-left: 2px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -170,7 +172,8 @@ input[type="checkbox"] + label {
   }
 }
 
-.sold img {
+.sold img,
+.sold .img {
   filter: brightness(50%);
 }
 
@@ -196,8 +199,7 @@ a table.item {
 }
 
 .place {
-  display: inline-block;
-  height: 3em;
+  height: 1.5em;
 }
 
 .alert {
