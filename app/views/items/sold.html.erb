@@ -1,7 +1,10 @@
 <% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
+        <div class="alert">
+          <div class="success">
+            <p><%= flash[:notice] %></p>
+          </div>
+        </div>
 <% end %>
-
 <% if @item.activated && @item.activated != nil %>
         <div class="card">
           <div class="row">
