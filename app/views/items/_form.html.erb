@@ -1,6 +1,13 @@
           <div class="card">
             <div class="card-content">
               <%= form_with(model: item, local: true) do |form| %>
+<% if !notice.nil? %>
+                <div class="alert">
+                  <div class="error">
+                    <%= notice %>
+                  </div>
+                </div>
+<% end %>
 <% if item.errors.any? %>
                 <div class="alert">
                   <div class="error">
@@ -77,13 +84,6 @@
                   <div class="col s12 input-field">
                     <%= form.password_field :confirm %>
                     <label for="item_pass" class="active">パスワード</label>
-<% if !notice.nil? %>
-                    <div class="alert">
-                      <div class="error">
-                        <%= notice %>
-                      </div>
-                    </div>
-<% end %>
                     <p class="grey-text">出品完了時のメールに記載されているパスワードを入力してください。</p>
                   </div>
                 </div>
