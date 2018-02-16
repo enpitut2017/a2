@@ -116,6 +116,10 @@ input[type="checkbox"] + label {
   margin-right: 1.5em;
 }
 
+.left-margin {
+  margin-left: 1.5em;
+}
+
 .btn.secondary {
   @extend .white, .black-text;
 }
@@ -286,5 +290,22 @@ table.map span.map_num {
   table.map td.map_cell {
     width: 100%;
     height: auto;
+  }
+}
+
+ul.wants {
+  & > li {
+    display: flex;
+
+    & .content {
+      flex-grow: 1;
+    }
+
+    & .date {
+      flex-basis: 10em;
+      flex-shrink: 0;
+      @extend .grey-text;
+      @extend .right-align;
+    }
   }
 }
