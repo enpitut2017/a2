@@ -1,10 +1,17 @@
 <% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
+        <div class="alert">
+          <div class="success">
+            <p><%= flash[:notice] %></p>
+          </div>
+        </div>
 <% end %>
 <% if flash[:alert] %>
-  <p><%= flash[:alert] %></p>
+        <div class="alert">
+          <div class="error">
+            <p><%= flash[:alert] %></p>
+          </div>
+        </div>
 <% end %>
-
         <div class="scroll-horizontal-wrapper">
 <% @genres = Genre.all %>
 <% if params["genre"] == nil %>
@@ -169,10 +176,8 @@
                     </tr>
                     <tr>
                       <td class="right-align">
-                        <p>
-                          <span class="price"><%= number_with_delimiter(item.price) %></span> 円<br>
-                          <span class="place"><%= item.place.name %></span>
-                        </p>
+                        <p><span class="price"><%= number_with_delimiter(item.price) %></span> 円</p>
+                        <p class="place"><%= item.place.name %></p>
                       </td>
                     </tr>
                   </table>
@@ -205,10 +210,8 @@
                     </tr>
                     <tr>
                       <td class="right-align">
-                        <p>
-                          <span class="price"><%= number_with_delimiter(item.price) %></span> 円<br>
-                          <%= item.place.name %>
-                        </p>
+                        <p><span class="price"><%= number_with_delimiter(item.price) %></span> 円</p>
+                        <p class="place"><%= item.place.name %></p>
                       </td>
                     </tr>
                   </table>
