@@ -11,4 +11,7 @@ class StaticPagesController < ApplicationController
   def image
     @item = Item.find(params[:id])
   end
+
+  def about
+  end
 end
