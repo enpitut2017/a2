@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'image' => 'static_pages#image'
 
+  get 'about' => 'static_pages#about'
+
   get 'comments/new'
 
   get 'comments/create'
