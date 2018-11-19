@@ -41,7 +41,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog'
-gem 'materialize-sass'
+gem 'materialize-sass', '0.100.2'
 gem 'material_icons'
 
 group :development, :test do
