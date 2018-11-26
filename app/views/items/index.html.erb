@@ -121,18 +121,18 @@
           </li>
         </ul>
 <% if params["sort_type"] == '0' || params["sort_type"] == nil %>
-  <% @items = Item.order('created_at DESC').where(activated: true) %>
+  <% @items = Item.order(sold: :ASC, created_at: :DESC).where(activated: true) %>
 <% elsif params["sort_type"] == '1' %>
-  <% @items = Item.order('price ASC').where(activated: true) %>
+  <% @items = Item.order(sold: :ASC, price: :ASC).where(activated: true) %>
 <% end %>
 <% if params["freeword_select"] != "" && params["freeword_select"] != nil %>
-  <% @items = @items.where("name like(?) or detail like(?)", "%#{params['freeword_select']}%" , "%#{params['freeword_select']}%") %>
+  <% @items = @items.order(sold: :ASC).where("name like(?) or detail like(?)", "%#{params['freeword_select']}%" , "%#{params['freeword_select']}%") %>
 <% end %>
 <% if params["department_select"].to_i > 0 %>
-  <% @items = @items.where(department_id: params["department_select"]) %>
+  <% @items = @items.order(sold: :ASC).where(department_id: params["department_select"]) %>
 <% end %>
 <% if params["genre_select"].to_i > 0 %>
-  <% @items = @items.where(genre_id: params["genre_select"]) %>
+  <% @items = @items.order(sold: :ASC).where(genre_id: params["genre_select"]) %>
 <% end %>
 <% if params["place_check"] != nil %>
   <% @place_check_id = [] %>
@@ -146,20 +146,21 @@
   <% @place_check_id = [] %>
 <% end %>
 <% if params["genre"] != "0" %>
-  <% @items = @items.where(genre_id: params["genre"]) %>
+  <% @items = @items.order(sold: :ASC).where(genre_id: params["genre"]) %>
 <% end %>
 <% @solditems = @items.where(sold: "8181") %>
         <h2>検索結果</h2>
         <p><span class="match-num-text"><%= @items.length - @solditems.length %></span>件の商品（取引終了<%= @solditems.length %>件）</p>
         <div class="row">
 <% @items.each do |item| %>
-  <% if item.sold != 8181 %>
           <div class="col s12 m6 l4">
     <%= link_to(item) do %>
             <div class="card hoverable">
               <div class="row">
-      <% if Time.current - item.created_at < 3600 * 24 %>
+      <% if Time.current - item.created_at < 3600 * 24 && item.sold != 8181%>
                 <div class="card-image col s12 ribbon new square">
+      <% elsif item.sold == 8181 %>
+                <div class="card-image col s12 ribbon sold square">
       <% else %>
                 <div class="card-image col s12 square">
       <% end %>
@@ -168,8 +169,8 @@
       <% else %>
                   <div class="img" style="background-image: url(<%= asset_path 'no_image.png' %>);"></div>
       <% end %>
-                </div>
-                <div class="card-content col s12">
+              </div>
+              <div class="card-content col s12">
                   <table class="item">
                     <tr>
                       <th><h2><%= item.name %></h2></th>
@@ -186,40 +187,6 @@
             </div>
     <% end %>
           </div>
-  <% end %>
 <% end %>
         </div>
-        <div class="row">
-<% @items.each do |item| %>
-  <% if item.sold == 8181 %>
-          <div class="col s12 m6 l4">
-    <%= link_to(item) do %>
-            <div class="card grey lighten-5 hoverable">
-              <div class="row">
-                <div class="card-image col s12 ribbon sold square">
-      <% if item.image? %>
-                  <div class="img" style="background-image: url(<%= asset_path item.image.url %>);"></div>
-      <% else %>
-                  <div class="img" style="background-image: url(<%= asset_path 'no_image.png' %>);"></div>
-      <% end %>
-                </div>
-                <div class="card-content col s12">
-                  <table class="item">
-                    <tr>
-                      <th><h2><%= item.name %></h2></th>
-                    </tr>
-                    <tr>
-                      <td class="right-align">
-                        <p><span class="price"><%= number_with_delimiter(item.price) %></span> 円</p>
-                        <p class="place"><%= item.place.name %></p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-    <% end %>
-          </div>
-  <% end %>
-<% end %>
-        </div>
+      </div>

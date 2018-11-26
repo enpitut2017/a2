@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207033716) do
+ActiveRecord::Schema.define(version: 20181126021334) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "item_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20180207033716) do
     t.integer "place_id"
     t.integer "genre_id"
     t.string "pass"
-    t.integer "sold"
+    t.integer "sold", default: 0
     t.boolean "activated", default: false
     t.index ["department_id"], name: "index_items_on_department_id"
     t.index ["genre_id"], name: "index_items_on_genre_id"

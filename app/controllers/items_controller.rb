@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.order('created_at DESC').where(activated: true)
+    @items = Item.order(created_at: :DESC, sold: :DESC).where(activated: true)
     respond_to do |format|
       format.html
       format.json {render html: '<strong>404 Not Found</strong>'.html_safe}
