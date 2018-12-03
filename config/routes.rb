@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
 post "items/comment" => "items#comment"
 post "items/destroy" => "items#destroy"
+post "items/delete" => "items#delete"
 
 post "items/done" => "items#done"
 
