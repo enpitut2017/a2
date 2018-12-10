@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :delete]
 
   # GET /items
   # GET /items.json
@@ -383,6 +383,35 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
     end
   end
 
+  def delete
+    password = params[:password]
+    if @item.pass == password || password == ENV['MASTER_PASS']
+      if @item.student_id.to_s == "818129298"
+        email = "tsuku.byebuy@gmail.com"
+      else
+        email = @item.student_id.to_s.gsub(/^20/, "s") + "@u.tsukuba.ac.jp"
+      end
+      body = @item.student_id.to_s + "様
+
+出品の取消が完了いたしました。
+つくByeBuyのご利用、ありがとうございました。
+
+商品名:" + @item.name.to_s + "
+
+==========================
+      つくByeBuy運営
+  tsuku.byebuy@gmail.com
+==========================
+"
+
+      ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: email, subject: "[つくByeBuy]出品取消完了", body:body).deliver
+      @item.destroy
+      redirect_to :action => "index"
+    else
+      flash[:pass_destroy] = "※※※パスワードが間違っています。"
+      redirect_to :action => "show", :id => @item.id,:anchor => 'des'
+    end
+  end
 
   def done
     if params[:mail][:content].blank?

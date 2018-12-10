@@ -1,6 +1,6 @@
 class WantsController < ApplicationController
   def home
-    @wants = Want.all
+    @wants = Want.all.order('created_at DESC')
   end
 
   def new

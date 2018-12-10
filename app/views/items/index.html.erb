@@ -43,7 +43,24 @@
             <button type="submit" name="genre" value="<%= gen.id %>" class="btn secondary"><%= gen.name %></button>
   <% end%>
 <% end %>
-          </form>
+
+<% if params["0yen"] == nil %>
+  <% params["0yen"] = "0" %>
+<% end %>
+</form>
+
+<form method="get" class="scroll-horizontal">
+
+<% if params["0yen"] == "0"%>
+<input type="hidden" name="genre" value="<%=params["genre"]%>">
+<button type="submit" name="0yen" value="1" class="btn secondary">0円</button>
+<% elsif params["0yen"] == "1"%>
+<input type="hidden" name="genre" value="<%=params["genre"]%>">
+<button type="submit" name="0yen" value="0" class="btn">0円</button>
+<% end %>
+
+</form>
+
         </div>
         <ul class="collapsible" data-collapsible="accordion">
           <li>
@@ -131,9 +148,13 @@
 <% if params["department_select"].to_i > 0 %>
   <% @items = @items.where(department_id: params["department_select"]) %>
 <% end %>
-<% if params["genre_select"].to_i > 0 %>
-  <% @items = @items.where(genre_id: params["genre_select"]) %>
+
+<% if params["genre_select"].to_i > 0  && params["0yen"] == "0" %>
+  <% @items = @items.where(genre_id: params["genre"]) %>
+<% elsif params["genre_select"].to_i > 0 && params["0yen"] == "1" %>
+  <% @items = @items.where({ genre_id: params["genre"], price: 0 }) %>
 <% end %>
+
 <% if params["place_check"] != nil %>
   <% @place_check_id = [] %>
   <% for i in 1..@places.length %>
@@ -145,9 +166,18 @@
 <% else%>
   <% @place_check_id = [] %>
 <% end %>
-<% if params["genre"] != "0" %>
+
+<% if params["genre"] != "0" && params["0yen"] == "0" %>
   <% @items = @items.where(genre_id: params["genre"]) %>
+<% elsif params["genre"] != "0" && params["0yen"] == "1" %>
+  <% @items = @items.where({ genre_id: params["genre"], price: 0 }) %>
 <% end %>
+
+<% if params["genre"] == "0" && params["0yen"] == "1" %>
+  <% @items = @items.where(price: 0 ) %>
+<% end %>
+
+
 <% @solditems = @items.where(sold: "8181") %>
         <h2>検索結果</h2>
         <p><span class="match-num-text"><%= @items.length - @solditems.length %></span>件の商品（取引終了<%= @solditems.length %>件）</p>

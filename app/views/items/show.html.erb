@@ -171,6 +171,15 @@
                   </div>
                   <div class="col s6"><button type="submit" class="btn">取引終了</button></div>
                 <% end %>
+
+                <%= form_tag("/items/delete", :class => "valign-wrapper") do %>
+                  <%= hidden_field_tag 'id', @item.id %>
+                  <div class="col s6 input-field">
+                    <%= password_field_tag 'password' %>
+                    <label for="password">パスワード</label>
+                  </div>
+                  <div class="col s6"><button type="submit" class="btn">出品取消</button></div>
+                <% end %>
   <% if flash[:pass_destroy] %>
                 <div class="alert">
                   <div class="error">
@@ -178,6 +187,13 @@
                   </div>
                 </div>
   <% end %>
+  <% if flash[:pass_delete] %>
+  <div class="alert">
+    <div class="error">
+      <%= flash[:pass_delete] %>
+    </div>
+  </div>
+<% end %>
               </div>
             </div>
           </div>
