@@ -293,7 +293,7 @@ https://tsukubyebuy.herokuapp.com/items/" + @item.id.to_s + "
         format.json { render :show, status: :created, location: @item }
 
       ActionMailer::Base.mail(from: "sg5td9uo@idcf.kke.com", to: "tsuku.byebuy@gmail.com", subject: "出品完了アラート", body:body).deliver
-      
+
       end
     else
       # トークンがない、もしくは２回目のアクセス -> 失敗を通知、ユーザ登録ページのリンクを貼る

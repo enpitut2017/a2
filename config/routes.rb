@@ -43,6 +43,16 @@ post "items/show" => "mail_page#home"
   get 'wants/home'
   post 'wants/home' => 'wants#new'
   post 'wants/new' => 'wants#home'
+
+  get 'password_reference/ref_home'
+  get 'password_reference/do_ref_mail'
+  post 'password_reference/ref_home' => 'password_reference#do_ref_mail'
+  post 'password_reference/ref_home' => 'password_reference#ref_home'
+  post 'password_reference/do_ref_mail' => 'password_reference#do_ref_mail'
+  post 'password_reference/do_ref_mail' => 'password_reference#ref_home'
+
+
+
   root 'items#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
