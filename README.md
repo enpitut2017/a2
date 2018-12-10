@@ -13,3 +13,4 @@
 * 加藤靖之 [kato11433](https://github.com/kato11433)
 * 佐々木好祐 [sasaki-trombone](https://github.com/sasaki-trombone)
 * 中島悠介 [Yusuke57](https://github.com/Yusuke57)
+* 加藤靖之 [kato0905](https://github.com/kato0905)
